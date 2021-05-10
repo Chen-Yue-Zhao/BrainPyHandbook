@@ -7,7 +7,7 @@
 
 
 <div align="center">
-  <img src="../../figs/decision.png" width="300">
+  <img src="../figs/decision.png" width="300">
   <br>
   <strong>图3-1 简化的抉择模型</strong> (引自 <cite>Wong & Wang, 2006 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
@@ -57,15 +57,15 @@ $$
 
 接下来，我们将继承``bp.NeuGroup``类，并用BrainPy提供的相平面分析方法``bp.analysis.PhasePlane``进行动力学分析。首先，我们把上面的动力学公式写到一个``derivative``函数中，定义一个Decision类。
 
-![decision01](../../figs/codes/decision01.png)
+![decision01](../figs/codes/decision01.png)
 
-![decision02](../../figs/codes/decision02.png)
+![decision02](../figs/codes/decision02.png)
 
 
 
 接下来，我们想要看模型在不同输入情况下的动力学，因此，我们先定义一个对抉择模型做相平面分析的方法，可以让我们改变``I``（即外界输入强度$$\mu_0$$）和``coh``（即输入的一致性$$c'$$），而固定了参数的值等。
 
-![decision_run](../../figs/codes/decision_run.png)
+![decision_run](../figs/codes/decision_run.png)
 
 
 
@@ -87,7 +87,7 @@ phase_analyze(I=0., coh=0.)
 
 
 
-![png](../../figs/out/output_77_1.png)
+![png](../figs/out/output_77_1.png)
 
 
 由此可见，用BrainPy进行动力学分析是非常方便的。向量场和不动点 (fixed point)表示了不同初始值下最终会落在哪个选项。
@@ -121,7 +121,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](../../figs/out/output_79_1.png)
+![png](../figs/out/output_79_1.png)
 
 
     coherence = 51.2%
@@ -134,7 +134,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](../../figs/out/output_79_3.png)
+![png](../figs/out/output_79_3.png)
 
 
     coherence = 100%
@@ -145,7 +145,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](../../figs/out/output_79_5.png)
+![png](../figs/out/output_79_5.png)
 
 
 ### 3.2.2 连续吸引子模型（CANN）
@@ -153,7 +153,7 @@ phase_analyze(I=30., coh=1.)
 这里我们将介绍发放率模型的另一个例子——连续吸引子神经网络（CANN）。一维CANN的结构如下：
 
 <div align="center">
-  <img src="../../figs/cann.png" width="300">
+  <img src="../figs/cann.png" width="300">
   <br>
   <strong>图3-2 连续吸引子神经网络</strong> (引自 <cite>Wu et al., 2008 <sup><a href="#fn_2">2</a></sup></cite>)
 </div>
@@ -184,9 +184,9 @@ $$
 
 用BrainPy实现的代码如下，我们通过继承``bp.NeuGroup``来创建一个``CANN1D``的类。
 
-![cann_init](../../figs/codes/cann_init.png)
+![cann_init](../figs/codes/cann_init.png)
 
-![cann_f](../../figs/codes/cann_f.png)
+![cann_f](../figs/codes/cann_f.png)
 
 这里我们用函数``dist``与``make_conn``来计算两群神经元之间的连接强度$$J(x, x')$$。其中``dist``函数用来处理环上的距离。
 
@@ -219,7 +219,7 @@ plot_animate(frame_step=1, frame_delay=100)
 
 
 
-<img src="../../figs/CANN-encoding.gif">
+<img src="../figs/CANN-encoding.gif">
 
 可以看到，$$u$$的形状编码了外界输入的形状。
 
@@ -242,7 +242,7 @@ cann.run(duration=dur1 + dur2 + dur3, inputs=('input', Iext))
 plot_animate()
 ```
 
-<img src="../../figs/CANN-decoding.gif">
+<img src="../figs/CANN-decoding.gif">
 
 我们可以看到$$u$$的形状保持一个类似高斯的钟形，这表明CANN可以进行模版匹配。
 
@@ -266,7 +266,7 @@ cann.run(duration=dur1 + dur2 + dur3, inputs=('input', Iext))
 plot_animate()
 ```
 
-<img src="../../figs/CANN-tracking.gif">
+<img src="../figs/CANN-tracking.gif">
 
 
 
