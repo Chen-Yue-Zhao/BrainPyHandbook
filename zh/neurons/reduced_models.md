@@ -20,7 +20,7 @@ $$
 
 <center><img src="../../figs/neus/LIF_circuit.png" width="200" height="271"></center>
 
-<center><b>Fig1-4 Equivalent circuit of LIF model</b></center>
+<center><b>Fig1-4 LIF模型对应的细胞膜等效电路图（简化后）</b></center>
 
 尽管LIF模型可以产生动作电位，但没有建模动作电位的形状。在发放动作电位前，LIF神经元膜电位的增长速度将逐渐降低，而并非像真实神经元那样先缓慢增长，在跨过阈值电位之后转为迅速增长。
 
@@ -127,6 +127,8 @@ $$
 下图中画出了$$V$$、$$y$$、$$z$$三个变量随时间的变化。可以看到，慢变量$$z$$的变化速率确实慢于$$V$$和$$y$$。而且，$$V$$和$$y$$在仿真过程中呈近似周期性的变化。
 
 ![png](../../figs/neus/out/output_60_1.png)
+
+<center><b>Fig. 1-5 Hindmarsh-Rose模型变量随时间的变化</b></center>
 
 利用BrainPy的理论分析模块`analysis`，我们可以找出这种周期性的产生原因。将慢变量$$z$$近似为常数，则Hindmarsh-Rose模型的二维相图中，变量$$V$$和$$y$$的轨迹趋近于一个极限环。因此，这两个变量的值会沿极限环周期性变化。
 

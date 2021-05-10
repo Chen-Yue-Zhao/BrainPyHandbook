@@ -10,7 +10,7 @@ Hodgkin和Huxley（1952）在枪乌贼的巨轴突上用膜片钳技术记录了
 
 <center><img src="../../figs/neus/1-2.png">	</center>
 
-<center><b>Fig. 1-4 Equivalent circuit diagram | NeuroDynamics </b></center>
+<center><b>Fig. 1-4 细胞膜的等效电路图 | NeuroDynamics </b></center>
 
 上图是将图1-1中真实神经元膜转换为电子元件所得到的等效电路图，图中电容$$C$$表示低电导的疏水性磷脂双层膜，电流$$I$$表示外界输入。
 
