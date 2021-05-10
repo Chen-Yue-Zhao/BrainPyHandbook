@@ -1,80 +1,84 @@
-# spiking\_neural\_networks
+# 3.1 Spiking neural networks
 
-脉冲神经网络的特点是网络分别建模、计算每个神经元和突触。研究者希望通过这种仿真来观察大规模神经网络的行为，并验证相关理论推导。本节将介绍两个经典的脉冲神经网络模型：Vreeswijk和Sompolinsky（1996）提出的兴奋-抑制平衡网络和Wang（2002）提出的决策网络。
+## 3.1.1 E/I balanced network
 
-## 3.1.1 兴奋-抑制平衡网络
+In 1990s, biologists found in experiments that neuron activities in brain cortex show a temporal irregular spiking pattern. This pattern exists widely in brain areas, but researchers knew few about its mechanism or function.
 
-上世纪90年代初，学界发现，在大脑皮层中神经元有时表现出一种在时间上不规则的发放特征。这种特征广泛地存在于脑区中，但当时人们对它的产生机制和主要功能都了解不多。
+Vreeswijk and Sompolinsky \(1996\) proposed **E/I balanced network** to explain this irregular spiking pattern. The feature of this network is the strong, random and sparse synapse connections between neurons. Because of this feature and corresponding parameter settings, each neuron in the network will receive great excitatory and inhibitory input from within the network. However, these two types of inputs will cancel each other, and maintain the total internal input at a relatively small order of magnitude, which is only enough to generate action potentials.
 
-Vreeswijk和Sompolinsky（1996）提出了**兴奋-抑制平衡网络**（E/I balanced network），希望能够解释神经元这种不规则的发放，并提示了这种结构在功能上可能的优势。
+The randomness and noise in E/I balanced network give each neuron in the network an internal input which varies with time and space at the order of threshold potential. Therefore, the firing of neurons also has randomness, ensures that E/I balanced network can generate temporal irregular firing pattern spontaneously.
 
 **Fig.3-1 Structure of E/I balanced network \| Vreeswijk and Sompolinsky, 1996**
 
-图3-1画出了兴奋-抑制平衡网络的结构。该网络由兴奋性LIF神经元和和抑制性LIF神经元构成，其数量比$$N_E: N_I = 4:1$$。在网络两类神经元之间和同类神经元之内，建立了四组指数型突触连接，分别是兴奋-兴奋连接（E2E conn），兴奋-抑制连接（E2I conn），抑制-兴奋连接（I2E conn），抑制-抑制连接（I2I conn）。在代码中我们通过定义符号相反的突触权重，来指明突触连接的兴奋性或抑制性。
+Vreeswijk and Sompolinsky also suggested a possible function of this irregular firing pattern: E/I balanced network can respond to the changes of external stimulus quickly.
 
-_注：LIF神经元和指数型突触的实现请参见第1节《神经元模型》和第2节《突触模型》_
-
-兴奋-抑制平衡网络在结构上最大的特征是神经元间强随机突触连接，连接概率为$$0.1$$，属于稀疏连接。
-
-这种强的突触连接使得网络中每个神经元都会接收到很大的来自网络内部的兴奋性和抑制性输入。但是，这两种输入一正一负相互抵消，最后神经元接收到的总输入将保持在一个相对小的数量级上，仅足以让神经元的膜电位上升到阈值电位，引发其产生动作电位。
-
-由于突触连接和噪声带来的随机性，网络中神经元接收到的输入也在时间和空间上具有一定的随机性（尽管总体保持在阈值电位量级上），这使得神经元的发放也具有随机性，保证兴奋-抑制平衡网络能够自发产生前述的时间上不规则的发放特征。
-
-下述仿真结果中，可以看到网络中的神经元从一开始的强同步发放慢慢变为时间上不规则的发放。
-
-与此同时，作者还提出了这种发放特征在大脑中可能提供的功能：兴奋-抑制平衡网络可以快速跟踪外部刺激的变化。假如该网络真的是大脑中神经元产生不规则发放背后的机制，那么真实的神经元网络也可能拥有同样的特性。
-
-如图3-2所示，当没有外部输入时，兴奋-抑制平衡网络中神经元的膜电位相对均匀且随机地分布在静息电位$$V_0$$和阈值电位$$\theta$$之间。当网络接收到一个小的外部恒定输入时，那些膜电位原本就落在阈值电位附近的神经元（图中标为红色）就能很快地发放，在网络尺度上，表现为网络的发放率随输入变化而快速改变。
+As shown in Fig. 3-3, when there is no external input, the distribution of neurons’ membrane potentials in E/I balanced network follows a relatively uniform random distribution between resting potential $$V_0$$and threshold potential $$\theta$$.
 
 **Fig.3-2 Distribution of neuron membrane potentials in E/I balanced network \| Tian et al., 2020**
 
-仿真证实，在这种情况下，网络对输入产生反应的延迟时间和突触的延迟时间处于同一量级，并且二者都远小于单神经元从静息电位开始积累同样大小的外部输入直到产生动作电位所需的延迟时间。因此，兴奋-抑制平衡网络面对外部输入的变化可以快速反应，改变自身的活跃水平。
+When we give the network a small constant external stimulus, those neurons whose membrane potentials fall near the threshold potential will soon meet the threshold, therefore spike rapidly. On the network scale, the firing rate of the network can adjust rapidly once the input changes.
 
-## 3.1.2 决策网络
+Simulation suggests that the delay of network response to input and the delay of synapses have the same time scale, and both are significantly smaller than the delay of a single neuron from resting potential to generating a spike. So E/I balanced network may provide a fast response mechanism for neural networks.
 
-计算神经科学的网络建模也可以对标特定的生理实验任务，比如视觉运动区分实验（Parker和Newsome，1998；Roitman和Shadlen，2002）。
+Fig. 3-1 shows the structure of E/I balanced network:
 
-在该实验中，参与实验的猕猴将观看一段随机点的运动展示。在展示过程中，随机点以一定比例（该比例被定义为一致度（coherence））向特定方向运动，其他点则向随机方向运动。猕猴被要求判断随机点一致运动的方向，并通过眼动给出答案。同时，研究者通过电生理手段记录猕猴LIP神经元的活动。
+1\) Neurons: Neurons are realized with LIF neuron model. The neurons can be divided into excitatory neurons and inhibitory neurons, the ratio of the two types of neurons is $$N_E$$: $$N_I$$ = 4:1.
+
+2\) Synapses: Synapses are realized with exponential synapse model. 4 groups of synapse connections are generated between the two groups of neurons, that is, excitatory-excitatory connection \(E2E conn\), excitatory-inhibitory connection \(E2I conn\), inhibitory-excitatory connection \(I2E conn\) and inhibitory-inhibitory connection \(I2I conn\). For excitatory or inhibitory synapse connections, we define synapse weights with different signal.
+
+3\) Inputs: All neurons in the network receive a constant external input current.
+
+See above section 1 and 2 for definition of LIF neuron and exponential synapse. After simulation, we visualize the raster plot and firing rate-t plot of E/I balanced network. the network firing rate changes from strong synchronization to irregular fluctuation.
+
+![png](../.gitbook/assets/output_8_0.png)
+
+**Fig.3-3 E/I balanced net raster plot**
+
+## 3.1.2 Decision Making Network
+
+The modeling of computational neuroscience networks can correspond to specific physiological tasks.
+
+For example, in the visual motion discrimination task \(Roitman and Shadlen, 2002\), rhesus watch a video in which random dots move towards left or right with definite coherence. Rhesus are required to choose the direction that most dots move to and give their answer by saccade. At the meantime, researchers record the activity of their LIP neurons by implanted electrode.
 
 **Fig.3-4 Experimental Diagram**
 
-Wang（2002）提出了本节所述的决策网络，希望建模在视觉运动区分实验中猕猴大脑新皮层的决策回路的活动。
+Wang \(2002\) proposed a decision making network to model the activity of rhesus LIP neurons during decision making period in the visual motion discrimination task.
+
+As shown in Fig. 3-5, this network is based on E/I balanced network. The ratio of excitatory neurons and inhibitory neurons is $$N_E:N_I = 4:1$$, and parameters are adjusted to maintain the balanced state.
+
+To accomplish the decision making task, among the excitatory neuron group, two selective subgroup A and B are chosen, both with a size of $$N_A = N_B = 0.15N_E$$. These two subgroups are marked as A and B in Fig. 3-5, and we call other excitatory neurons as non-selective neurons, $$N_{non} = (1-2*0.15)N_E$$.
 
 **Fig.3-5 structure of decision makingnetwork**
 
-如图3-5所示，网络同样基于兴奋-抑制平衡网络。兴奋性神经元和抑制型神经元的数量比是$$N_E:N_I = 4:1$$，调整参数使得网络处在平衡状态下。
+As it is in E/I balanced network, 4 groups of synapses ---- E2E connection, E2I connection, I2E connection and I2I connection ---- are built in decision making network. Excitatory connections are realized with AMPA synapse, inhibitory connections are realized with GABAa synapse.
 
-为了简化模型，实验被设定为一个二选一的任务：在兴奋性神经元群中，特别地标出两个选择性子神经元群A和B，其他的兴奋性神经元称为非选择性神经元，用下标$$_{non}$$表示。A群和B群的数目均为兴奋性神经元的0.15倍（$$N_A = N_B = 0.15N_E$$），它们分别代表着两个相反的运动方向，可以视作随机点要么向左，要么向右，没有第三个方向，网络的决策结果也必须在这两个子神经元群中产生。非选择性神经元的数目为$$N_{non} = (1-2*0.15)N_E$$。
+Decision making network needs to make a decision among the two choice, i.e., among the two subgroups A and B in this task. To achieve this, network must discriminate between these two groups. Excitatory neurons in the same subgroup should self-activate, and inhibit neurons in another selective subgroup.
 
-决策网络中共有四组突触——E2E，E2I，I2E和I2I突触连接，其中兴奋性突触实现为AMPA突触，抑制性突触实现为GABAa突触。
-
-由于网络需要在A群和B群之间作出决策，所以这两个子神经元群之间必须形成一种竞争关系。一个选择性子神经元群应当激活自身，并同时抑制另一个选择性子神经元群。
-
-因此，网络中的E2E连接被建模为有结构的连接。如表3-1所示，$$w+ > 1 > w-$$。这样，在A群或B群的内部，兴奋性突触连接更强，形成了一种相对的自激活；而在A、B两个选择性子神经元群之间或是A群、B群和非选择性子神经元群之间，兴奋性突触连接较弱，实际上形成了相对的抑制。A和B两个神经元因此产生竞争，迫使网络做出二选一的决策。
+Therefore, E2E connections are structured in the network. As shown in Sheet 3-1, $$w+ > 1 > w-$$. In this way, a relative activation is established within the subgroups by stronger excitatory synapse connections, and relative inhibition is established between two subgroups or between selective and non-selective subgroups by weaker excitatory synapse connections.
 
 **Sheet 3-1 Weight of synapse connections between E-neurons**
 
-决策网络接受的外部输入可分为两类：
+We give two types of external inputs to the decision making network:
 
-1）所有神经元都收到从其他脑区传来的非特定的背景输入，表示为AMPA突触介导的高频泊松输入（2400Hz）。
+1\) Background inputs from other brain areas without specific meaning. Represented as high frequency Poisson input mediated by AMPA synapse.
 
-2）仅选择性的A群和B群收到外部传来的刺激输入，表示为AMPA突触介导的较低频泊松输入（约100Hz内）。
+2\) Stimulus inputs from outside the brain, which are given only to the two selective subgroup A and B. Represented as lower frequency Poisson input mediated by AMPA synapse.
 
-给予A和B神经元群的泊松输入的频率均值（$$\mu_A$$、$$\mu_B$$）有一定差别，对应到生理实验上，代表猕猴看到的随机点朝两个相反方向运动的比例（用coherence表示）不同。这种输入上的差别引导着网络在两个子神经元群中做出决策。
+The frequency of Poisson input given to A and B subgroup have a certain difference, simulate the difference in the number of dots moving to left and right in physiological experiments, induce the network to make a decision among these two subgroups.
 
 $$
 \rho_A = \rho_B = \mu_0/100
 $$
 
 $$
-\mu_A = \mu_0 + \rho_A * coherence
+\mu_A = \mu_0 + \rho_A * c
 $$
 
 $$
-\mu_B = \mu_0 + \rho_B * coherence
+\mu_B = \mu_0 + \rho_B * c
 $$
 
-每50毫秒，泊松输入的实际频率$$f_x$$遵循由均值$$\mu_x$$ 和方差$$\delta^2$$定义的高斯分布，重新进行一次采样。
+Every 50ms, the Poisson frequencies $$f_x$$ change once, follows a Gaussian distribution defined by mean $$\mu_x$$ and variance $$\delta^2$$.
 
 $$
 f_A \sim N(\mu_A, \delta^2)
@@ -84,5 +88,7 @@ $$
 f_B \sim N(\mu_B, \delta^2)
 $$
 
-下图中可以看到，在本次仿真中，子神经元群A收到的刺激输入平均大于B收到的刺激输入。经过一定的延迟时间，A群的活动水平明显高于B群，说明网络做出了正确的选择。
+During the simulation, subgroup A receives a larger stimulus input than B, after a definite delay period, the activity of group A is significantly higher than group B, which means, the network chooses the right direction.
+
+**Fig.3-6 decision making network**
 

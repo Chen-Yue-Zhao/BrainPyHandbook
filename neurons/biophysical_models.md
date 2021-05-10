@@ -1,20 +1,18 @@
-# biophysical\_models
+# 1.2 Biophysical models
 
-计算神经科学所希望建模的是真实生物的神经系统，因此，要了解神经元模型，可以先从和生理实际联系最紧密的模型入手。下面，本节将介绍受生理实验启发的最经典的模型：Hodgkin-Huxley模型。
+## 1.2.1 Hodgkin-Huxley model
 
-## 1.2.1 Hodgkin-Huxley模型
+Hodgkin and Huxley \(1952\) recorded the generation of action potential on squid giant axons with voltage clamp technique, and proposed the canonical neuron model called **Hodgin-Huxley model** \(**HH model**\).
 
-Hodgkin和Huxley（1952）在枪乌贼的巨轴突上用膜片钳技术记录了动作电位的产生，并提出了经典的神经元模型**Hodgkin-Huxley模型**（**HH模型**）。
-
-上一节我们已经介绍了神经元膜的一般结构，为了建模这样的结构，HH模型中将生物上的细胞膜转化为等效电路，如图1-4所示。
+In last section we have introduced a general template for neuron membrane. Computational neuroscientists always model neuron membrane as equivalent circuit like the following figure.
 
 **Fig. 1-4 Equivalent circuit diagram \| NeuroDynamics**
 
-上图是将图1-1中真实神经元膜转换为电子元件所得到的等效电路图，图中电容$$C$$表示低电导的疏水性磷脂双层膜，电流$$I$$表示外界输入。
+The equivalent circuit diagram of Fig.1-1 is shown in Fig. 1-4, in which the patch of neuron membrane is converted into electric components. In Fig.1-4, the capacitance $$C$$ refers to the hydrophobic phospholipid bilayer with low conductance, and current $$I$$ refers to the external stimulus.
 
-右侧三个并联的电阻中，Na+和K+通道被单独建模为两个可变电阻$$R_{Na}$$和$$R_K$$（这是由于Na+和K+在动作电位的形成中特别重要），电阻$$R$$则代表膜上除了Na+通道和K+通道之外所有未指明的离子通道，有时也表示为下标$$_L$$或者$$_{leak}$$。电源 $$E_{Na}$$, $$E_K$$ 和$$E_L$$对应着由相应离子在膜两侧的浓度差所引起的电位差。
+As Na+ ion channels and K+ ion channels are important in the generation of action potentials, these two ion channels are modeled as the two variable resistances $$R_{Na}$$ and $$R_K$$ in parallel on the right side of the circuit diagram, and the resistance $$R$$ refers to all the non-specific ion channels on the membrane. The batteries $$E_{Na}$$, $$E_K$$ and $$E_L$$ refer to the electric potential differences caused by the concentration differences of corresponding ions.
 
-考虑基尔霍夫第一定律，即对于电路中的任一点，流入该点的总电流和流出该点的总电流相等，图1-4可被建模为如下所示的微分方程：
+Consider the Kirchhoff’s first law, that is, for any node in an electrical circuit, the sum of currents flowing into that node is equal to the sum of currents flowing out of that node, Fig. 1-4 can be modeled as differential equations:
 
 $$
 C \frac{dV}{dt} = -(\bar{g}_{Na} m^3 h (V - E_{Na}) + \bar{g}_K n^4(V - E_K) + g_{leak}(V - E_{leak})) + I(t)
@@ -24,11 +22,9 @@ $$
 \frac{dx}{dt} = \alpha_x(1-x) - \beta_x , x \in \{ Na, K, leak \}
 $$
 
-现在，读者已得到了著名的Hodgkin-Huxley模型。注意在如上的$$\frac{dV}{dt}$$方程中，右侧的前三项分别代表穿过钠离子通道，钾离子通道和其他非特定离子通道的电流，同时$$I(t)$$表示外部输入。在方程左侧，$$C\frac{dV}{dt} = \frac{dQ}{dt} = I$$是穿过电容的电流。
+That is the HH model. Note that in the first equation above, the first three terms on the right hand are the current go through Na+ ion channels, K+ ion channels and other non-specific ion channels, respectively, while $$I(t)$$ is an external input. On the left hand, $$C\frac{dV}{dt} = \frac{dQ}{dt} = I$$ is the current go through the capacitance.
 
-在计算通过离子通道的电流时，除了欧姆定律$$I = U/R = gU$$之外，HH模型还引入了三个**门控变量**m、n和h来控制离子通道的打开/关闭状态。准确地说，变量m和h控制着钠离子通道的状态，变量n控制着钾离子通道的状态。一个离子通道的真实电导是其最大电导$$\bar{g}$$和通道门控变量状态的乘积，比如通过Na+通道的电流$$I=U/R_{Na} = g_{Na}*U_{Na} = \bar{g} * m^3 h * (V-E_{Na})$$。
-
-门控变量的动力学可以被表示为一种类马尔可夫的形式，其中$$\alpha_x$$代表门控变量$$x$$的激活速率，而$$\beta_x$$代表$$x$$的失活速率。下述$$\alpha_x$$和$$\beta_x$$的公式由实验数据拟合得到。
+In the computing of ion channel currents, other than the Ohm's law $$I = U/R = gU$$, HH model introduces three **gating variables** m, n and h to control the open/close state of ion channels. To be precise, variables m and h control the state of Na+ ion channel, variable n controls the state of K+ ion channel, and the real conductance of an ion channel is the product of maximal conductance $$\bar{g}$$ and the state of gating variables. Gating variables' dynamics can be expressed in a Markov-like form, in which $$\alpha_x$$ refers to the activation rate of gating variable x, and $$\beta_x$$ refers to the de-activation rate of x. The expressions of $$\alpha_x$$ and $$\beta_x$$ \(as shown in equations below\) are fitted by experimental data.
 
 $$
 \alpha_m(V) = \frac{0.1(V+40)}{1 - exp(\frac{-(V+40)}{10})}
@@ -54,7 +50,13 @@ $$
 \beta_n(V) = 0.125 exp(\frac{-(V+65)}{80})
 $$
 
-_在我们的github仓库中运行代码：_[https://github.com/PKU-NIP-Lab/BrainModels（如无特殊说明，下同）](https://github.com/PKU-NIP-Lab/BrainModels（如无特殊说明，下同）)
+![png](../.gitbook/assets/HH1.png)
 
-BrainPy仿真的HH模型的V-t图如下所示。我们在上一节中曾经提到，真实的动作电位可以分为去极化、复极化和不应期三个阶段，这三个阶段可以与下图一一对应。另外，在去极化时，可以看到膜电位先是累积外部输入缓慢上升，一旦越过某个特定值（图中约在-55mV左右）就转为快速增长，这也复现了真实动作电位的形状。
+![png](../.gitbook/assets/HH2%20%281%29.png)
+
+_Run codes in our github repository:_ [https://github.com/PKU-NIP-Lab/BrainModels](https://github.com/PKU-NIP-Lab/BrainModels)
+
+The V-t plot of HH model simulated by BrainPy is shown below. The three periods, depolarization, repolarization and refractory period of a real action potential can be seen in the V-t plot. In addition, during the depolarization period, the membrane integrates external inputs slowly at first, and increases rapidly once it grows beyond some point, which also reproduces the "shape" of action potentials.
+
+![png](../.gitbook/assets/output_27_0%20%281%29.png)
 
