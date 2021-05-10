@@ -50,7 +50,7 @@ $$
 \beta_n(V) = 0.125 exp(\frac{-(V+65)}{80})
 $$
 
-![png](../.gitbook/assets/HH1%20%281%29.png)
+![png](../.gitbook/assets/HH1.png)
 
 ![png](../.gitbook/assets/HH2%20%281%29.png)
 
