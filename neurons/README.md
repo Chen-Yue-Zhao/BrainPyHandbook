@@ -1,12 +1,12 @@
-# neurons
+# 1. Neuron models
 
-按照从繁到简的顺序，我们可以将神经元模型主要分为三类：生理模型、简化模型和发放率模型。
+Neuron models can be classified into three types from complex to simple: biophysical models, reduced models and firing rate models.
 
-## 1.1 [生物背景](biological_background.md)
+## 1.1 [Biological Background](biological_background.md)
 
-## 1.2 [生理模型](biophysical_models.md)
+## 1.2 [Biophysical models](biophysical_models.md)
 
-## 1.3 [简化模型](reduced_models.md)
+## 1.3 [Reduced models](reduced_models.md)
 
-## 1.4 [发放率模型](firing_rate_models.md)
+## 1.4 [Firing rate models](firing_rate_models.md)
 
