@@ -1,14 +1,15 @@
-# 0. Introduction
+# BrainPy介绍
 
-In this chapter, we will briefly introduce how to implement computational neuroscience models with BrainPy. For more detailed documents and tutorials, please check our Github repository [BrainPy](https://github.com/PKU-NIP-Lab/BrainPy) and [BrainModels](https://github.com/PKU-NIP-Lab/BrainModels).
+本章将介绍计算神经科学中的一系列神经元模型、突触模型和网络模型。在正式开始之前，我们希望先为读者简单介绍如何使用BrainPy实现计算神经科学模型，以方便读者理解附在每个模型之后的BrainPy实现代码。
 
-`BrainPy` is a Python platform for computational neuroscience and brain-inspired computation. To model with BrainPy, users should follow 3 steps:
+`BrainPy`是一个用于计算神经科学和类脑计算的Python平台。要使用BrainPy进行建模，用户通常需要完成以下三个步骤：
 
-1\) Define Python classes for neuron and synapse models. BrainPy provides base classes for different kinds of models, users only need to inherit from those base classes, and define specific methods to tell BrainPy what operations they want the models to take during the simulation. In this process, BrainPy will assist users in the numerical integration of differential equations \(ODE, SDE, etc.\), adaptation of various backends \(`Numpy`, `PyTorch`, etc.\), and other functions to simplify code logic.
+1）为神经元和突触模型定义Python类。BrainPy预先定义了数种基类，用户在实现特定模型时，只需继承相应的基类，并在模型的Python类中定义特定的方法来告知BrainPy该模型在仿真的每个时刻所需的操作。在此过程中，BrainPy在微分方程（如ODE、SDE等）的数值积分、多种后端（如`Numpy`、`PyTorch`等）适配等功能上辅助用户，简化实现的代码逻辑。
 
-2\) Instantiate Python classes as objects of neuron group and synapse connection groups, pass the instantiated objects to BrainPy class `Network`, and call method `run` to simulate the network.
+2）将模型的Python类实例化为代表神经元群或突触群的对象，将这些对象传入到BrainPy的`Network`类的构造函数中，初始化一个网络，并调用`run`方法进行仿真。
 
-3\) Call BrainPy modules like the `measure` module and the `visualize` module to display the simulation results.
+3）调用BrainPy的测度模块`measure`或可视化模块`visualize`等，展示仿真结果。
 
-With this overall concept of BrainPy, we will go into more detail about implementations in the following sections. In neural systems, neurons are connected by synapses to build networks, so we will introduce [neuron models](neurons/), [synapse models](https://github.com/PKU-NIP-Lab/BrainPyHandbook/tree/d05ecb69120a8d92103a1ae1b6961e9c8faf81b8/synapses.md), and [network models](networks/) in order.
+带着上述对BrainPy的粗略理解，我们希望下述各节中的代码实例能够帮助读者更好地理解计算神经科学模型和其中蕴含的思想。下面，我们将按照[神经元模型](neurons.md), [突触模型](synapses.md), and [网络模型](networks.md)的顺序进行介绍。
 
+*BrainPy的文档及更多细节请参考我们的Github仓库：https://github.com/PKU-NIP-Lab/BrainPy和https://github.com/PKU-NIP-Lab/BrainModels。*

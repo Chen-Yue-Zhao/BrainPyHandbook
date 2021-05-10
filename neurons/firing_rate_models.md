@@ -1,11 +1,11 @@
-# 1.4 Firing rate models
 
-Firing Rate models are simpler than reduced models. In these models, each compute unit represents a neuron group, the membrane potential variable $$V$$ in single neuron models is replaced by firing rate variable $$a$$ \(or $$r$$ or $$\nu$$\). Here we introduce a canonical firing rate unit.
+## 1.4 发放率模型
 
-## 1.4.1 Firing Rate Unit
+发放率模型比简化模型更加简单。在这些模型中，每个计算单元代表一个神经元群，而单神经元模型中的膜电位变量$$V$$也被发放率变量$$a$$（或$$r$$或$$\nu$$）所取代。本节将介绍一个经典的发放率单元。
 
-Wilson and Cowan \(1972\) proposed this unit to represent the activities in excitatory and inhibitory cortical neuron columns. Each element of variables $$a_e$$ and $$a_i$$ refers to the average activity of a neuron column group contains multiple neurons.
+### 1.4.1 发放率单元
 
+Wilson和Cowan（1972）来表示在兴奋性和抑制性皮层神经元微柱中的活动。变量$$a_e$$和$$a_i$$中的每个元素都表示一个包含复数神经元的皮层微柱中神经元群的平均活动水平。
 $$
 \tau_e \frac{d a_e(t)}{d t} = - a_e(t) + (k_e - r_e * a_e(t)) * \mathcal{S}(c_1 a_e(t) - c_2 a_i(t) + I_{ext_e}(t))
 $$
@@ -15,8 +15,12 @@ $$
 $$
 
 $$
-\mathcal{S}(x) = \frac{1}{1 + exp(- a(x - \theta))} - \frac{1}{1 + exp(a\theta)}
+\mathcal{S}(input) = \frac{1}{1 + exp(- a(input - \theta))} - \frac{1}{1 + exp(a\theta)}
 $$
 
-The subscript $$x\in\{e, i\}$$ points out whether this parameter or variable corresponds to excitatory or inhibitory neuron group. In the differential equations, $$\tau_x$$ refers to the time constant of neuron columns, parameters $$k_x$$ and $$r_x$$ control the refractory periods, $$a_x$$ and $$\theta_x$$ refer to the slope factors and phase parameters of sigmoid functions, and external inputs $$I_{ext_{x}}$$ are given separately to excitatory and inhibitory neuron groups.
+下标$$x\in\{e, i\}$$表示该参数或变量对应兴奋性或抑制性的神经元群。在微分方程中，$$\tau_x$$表示神经元群的时间常数，参数$$k_x$$和$$r_x$$共同控制不应期，$$a_x$$和$$\theta_x$$分别是Sigmoid函数$$\mathcal{S}(input)$$的斜率和相位，且兴奋性和抑制性的神经元群分别收到外界输入$$I_{ext_{x}}$$。
+
+<center><img src="../../figs/neus/codes/frunit1.PNG">	</center>
+
+<center><img src="../../figs/neus/codes/frunit2.PNG">	</center>
 

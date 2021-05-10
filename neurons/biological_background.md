@@ -1,28 +1,35 @@
-# 1.1 Biological background
+## 1.1 生物背景
 
-As the basic unit of neural systems, neurons maintain mystique to researchers for a long while. In recent centuries, however, along with the development of experimental techniques, researchers have painted a general figure of those little things working ceaselessly in our neural system.
+作为神经系统的基本单位，神经元曾经在很长的一段时间内对研究者保持着神秘。直到18世纪，人们还普遍认为神经通过液体的流动与脑相联系。但到了19世纪，神经生物学取得了长足的进步，当时提出的“神经纤维”这一概念在过去的两个世纪中几经修正，终于演化成为今天我们所说的神经元。
 
-To achieve our final goal of modeling neurons with computational neuroscience methods, we may start with a patch of real neuron membrane.
+与此同时，随着实验技术的进步，学界已为这些在我们神经系统中无休无止地工作的小东西画出了一张基本的肖像。要想用计算神经科学的方法建模神经元，我们必须先从这张真实细胞膜的肖像入手。
 
- **Fig. 1-1 神经元细胞膜示意图 \| what-when-how.com**
+<center><img src="../../figs/neus/neuron_membrane.png" width="584" height="300">	</center>
 
-The figure above is a general diagram of neuron membrane with phospholipid bilayer and ion channels. The membrane divides the ions and fluid into intracellular and extracellular, partially prevent them from exchanging, thus generates **membrane potential**---- the difference in electric potential across the membrane.
+<center><b> Fig. 1-1 Neuron membrane diagram | what-when-how.com </b></center>
 
-An ion in the fluid is subjected to two forces. The force of diffusion is caused by the ion concentration difference across the membrane, while the force of electric field is caused by the electric potential difference. When these two forces reach balance, the total forces on ions are 0, and each type of ion meets an equilibrium potential, while the neuron holds a membrane potential lower than 0.
+上图是一张带有离子通道和磷脂双层膜的神经元膜一般性示意图。细胞膜将离子和液体划分为胞内和胞外两侧，部分地限制了胞内和胞外的物质交换，两侧离子不能自由交换达到电中性，于是产生了**膜电位**，即细胞膜两侧的电位差。
 
-This membrane potential integrated by all those ion equilibrium potentials is the **resting potential**, and the neuron is, in a so-called **resting state**. If the neuron is not disturbed, it will just come to the balanced resting state, and rest.
+细胞膜内外环境状态的改变会引发膜电位的变化。存在在细胞膜附近（不管是膜内还是膜外）的一个离子主要受两种力的支配：细胞内外离子浓度差产生的扩散力和细胞内外电位差产生的电场力。当这两种力达到平衡时，离子的总受力为零，每种离子都达到其自身的离子平衡电位。与此同时，神经元的膜电位维持在一个小于零的值。
 
-However, our neural system receives countless inputs every millisecond, from external inputs to recurrent inputs, from specific stimulus inputs to non-specific background inputs. Receiving all these inputs, neurons generate **action potentials** \(or **spikes**\) to transfer and process information all across the neural system.
+这个由所有离子平衡电位整合而成的膜电位称为**静息电位**，神经元则在此时进入所谓的**静息状态**。若不受外部干扰，神经元将自发寻找到平衡的静息状态，并维持在这一状态。
 
- **Fig. 1-2 动作电位 \| Wikipedia**
+然而，从外部输入到循环输入，从刺激输入到噪声输入，每一毫秒，神经系统都接收到不计其数的外部扰动。面对这些输入，神经元发放**动作电位**（或**峰电位**）来在神经系统中处理、传递信息。
 
-Passing through the ion channels shown in Fig.1-1, ions on both sides of the hydrophobic phospholipid bilayer are exchanged. Due to changes in the environment caused by, for example, an external input, ion channels will switch between their open/close states, therefore allow/prohibit ion exchanges. During the switch, the ion concentrations \(mainly Na+ and K+\) change, induce a significant change on neuron's membrane potential: the membrane potential will raise to a peak value and then fall back in a short time period. Biologically, when such a series of potential changes happens, we say the neuron generates an **action potential** or a **spike**, or the neuron fires.
+<center><img src="../../figs/neus/action_potential.png" width="533" height="300">	</center>
 
-An action potential can be mainly divided into three periods: **depolarization**, **repolarization** and **refractory period**. During the depolarization period, Na+ flow into the neuron and K+ flow out of the neuron, however the inflow of Na+ is faster, so the membrane potential raises from a low value $$V_{rest}$$ to a value much higher called $$V_{th}$$, then the outflow of K+ becomes faster than Na+, and the membrane potential is reset to a value lower than resting potential during the repolarization period. After that, because of the relatively lower membrane potential, the neuron is unlikely to generate another spike immediately, until the refractory period passes.
+<center><b> Fig. 1-2 Action Potential | Wikipedia </b></center>
 
-A single action potential is complex enough, but in our neural system, one single neuron can generate several action potentials in less than a second. How, exactly, do the neurons fire? Different kinds of neurons may spike when facing different inputs, and the pattern of their spiking can be classified into several firing patterns, some of which are shown in the following figure.
+图1-2中画出了神经元膜电位在一个动作电位中随时间的变化。由于比如说，外部输入引起的环境变化，图1-1中疏水性磷脂双层膜上的离子通道会在打开和关闭的状态之间切换，调控着离子穿过离子通道进行交换的速率。
 
-**Figure 1-3 Some firing patterns**
+在受到外界兴奋性刺激时，特定的离子通道（主要是Na+通道和K+通道）状态发生改变，膜两侧相应离子的浓度变化，引发膜电位的剧变：它先上升到一个峰值，随后在短时间内迅速跌回一个小于静息电位的值。生物上，当膜电位发生这样的一系列变化时，我们说神经元产生了**动作电位**，或**峰电位**，或说神经元**发放**。
 
-Those firing patterns, together with the shape of action potentials, are what computational neuroscience wants to model at the cellular level.
+一个动作电位基本可以被分为三个阶段，**去极化**、**复极化**和**不应期**。在去极化阶段，钠离子流入细胞，钾离子流出细胞，但钠离子的流入速度更快，因此膜电位从低的静息电位（约-70mV）开始缓慢升高，随后，当膜电位高于阈值电位（约-55mV）后，离子流入和流出速度之间的差值逐渐增大，膜电位快速增长到大于0的峰值（约+40mV）。到达峰值后，钾离子流出速度变得大于钠离子流入速度，膜电位开始降低，并最终复极化到一个可能低于静息电位的值。此后，由于相对更低的膜电位以及离子通道的失活，神经元在短时间内立刻产生另一个动作电位的概率极小，这种情况将一直维持到我们称作不应期的这段时间结束。
 
+单个动作电位的产生已经称得上复杂，但要知道，一个神经元可以在一秒之内产生多个动作电位。这些动作电位是以什么样的模式被产生的？不同类型的神经元可能在面对不同的输入时产生动作电位，而它们发放的特征可以被分为数种发放模式，下图画出了其中一部分。
+
+<center><img src="../../figs/neus/multiple_firing_pattern.png" width="600" height="300">	</center>
+
+<center><b>Figure 1-3 Some firing patterns</b></center>
+
+在单神经元层面上，动作电位的形状和上述的发放模式正是计算神经科学的建模目标。
