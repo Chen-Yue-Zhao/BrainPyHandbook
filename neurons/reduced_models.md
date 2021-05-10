@@ -44,7 +44,7 @@ $$
 
 In the equation above, $$a_0$$ is a parameter controls the slope of membrane potential before a spike, and $$V_c$$ is the critical potential for action potential initialization. Below $$V_C$$, membrane potential $$V$$ increases slowly, once it grows beyond $$V_C$$, $$V$$ turns to rapid increase.
 
-![png](../.gitbook/assets/output_41_0.png)
+![png](../.gitbook/assets/output_41_0%20%281%29.png)
 
 ## 1.3.3 Exponential Integrate-and-Fire model
 
@@ -140,5 +140,5 @@ However, in GIF model, variable amounts of internal currents are added to the eq
 
 The variable threshold potential $$V_{th}$$ is regulated by two parameters: $$a$$ describes the dependence of $$V_{th}$$ on the membrane potential $$V$$, and $$b$$ is the rate $$V_{th}$$ approaches the infinite value of threshold $$V_{th_{\infty}}$$. $$V_{th_{reset}}$$ is the reset value of threshold potential when neuron fires.
 
-![png](../.gitbook/assets/output_67_0.png)
+![png](../.gitbook/assets/output_67_0%20%281%29.png)
 

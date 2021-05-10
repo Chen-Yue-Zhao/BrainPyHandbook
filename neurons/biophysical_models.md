@@ -58,5 +58,5 @@ _Run codes in our github repository:_ [https://github.com/PKU-NIP-Lab/BrainModel
 
 The V-t plot of HH model simulated by BrainPy is shown below. The three periods, depolarization, repolarization and refractory period of a real action potential can be seen in the V-t plot. In addition, during the depolarization period, the membrane integrates external inputs slowly at first, and increases rapidly once it grows beyond some point, which also reproduces the "shape" of action potentials.
 
-![png](../.gitbook/assets/output_27_0.png)
+![png](../.gitbook/assets/output_27_0%20%281%29.png)
 
