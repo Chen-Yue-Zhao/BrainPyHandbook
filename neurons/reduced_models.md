@@ -100,7 +100,7 @@ The $$V$$ variable refers to membrane potential, and $$y$$, $$z$$ are two gating
 
 In the variable-t plot painted below, we may see that the slow variable $$z$$ changes much slower than $$V$$ and $$y$$. Also, $$V$$ and $$y$$ are changing periodically during the simulation.
 
-![png](../.gitbook/assets/output_60_1.png)
+![png](../.gitbook/assets/output_60_1%20%281%29.png)
 
 With the theoretical analysis module `analysis` of BrainPy, we may explain the existence of this periodicity through theoretical analysis. In Hindmarsh-Rose model, the trajectory of $$V$$ and $$y$$ approaches a limit cycle in phase plane, therefore their values change periodically along the limit cycle.
 
