@@ -56,15 +56,15 @@ $$
 
 The code implementation is as follows: we can create a neuron group class, and use $$S_1$$ and $$S_2$$ to store the two states of the neuron group. The dynamics of the model can be implemented by a ``derivative`` function for dynamics analysis.
 
-![decision01](../../figs/nets/codes/zh//decision01.png)
+![decision01](../../figs/nets/codes/en/decision01.png)
 
-![decision02](../../figs/nets/codes/zh//decision02.png)
+![decision02](../../figs/nets/codes/en/decision02.png)
 
 
 
 Then we can define a function to perform phase plane analysis.
 
-![decision_run](../../figs/nets/codes/zh//decision_run.png)
+![decision_run](../../figs/nets/codes/en/decision_run.png)
 
 Let's first look at the case when there is no external input. At this time, $$\mu_0 = 0$$.
 
@@ -184,11 +184,11 @@ $$
 
 While implementing with BrainPy, we create a class of ``CANN1D`` by inheriting ``bp.NeuGroup``.
 
-![cann_init](../../figs/nets/codes/zh//cann_init.png)
+![cann_init](../../figs/nets/codes/en/cann_init.png)
 
 Then we define the functions.
 
-![cann_f](../../figs/nets/codes/zh//cann_f.png)
+![cann_f](../../figs/nets/codes/en/cann_f.png)
 
 
 
