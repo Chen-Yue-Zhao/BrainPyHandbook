@@ -65,12 +65,136 @@ Then we would expect to see the following result:
 
 ![png](../../figs/syns/out/output_9_0.png)
 
-
 As can be seen from the above figure, when the presynaptic neurons fire, the value of $$s$$ will first increase, and then decay.
 
-#### Alpha、Exponential Synapses
+#### NMDA Synapse
 
-Because many synaptic models have the same dynamic characteristics as AMPA synapses, sometimes we don't need to use models that specifically correspond to biological synapses. Therefore, some abstract synaptic models have been proposed. Here, we will introduce the implementation of four abstract models on BrainPy. These models can also be found in the ``Brain-Models`` package.
+As we mentioned before, the NMDA receptors are blocked by Mg$$^{2+}$$, which would move away as the change of membrane potentials. We denote the concentration of Mg$$^2+$$ as $$c_{Mg}$$, and its effect on membrane conductance $$g$$ is given by,
+$$
+g_{\infty} =(1+{e}^{-\alpha V} \cdot \frac{c_{Mg} } {\beta})^{-1}
+$$
+
+$$
+g = \bar{g} \cdot g_{\infty}  s
+$$
+
+where $$g_{\infty}$$ represents the effect of magnesium ion concentration, and its value decreases as the magnesium ion concentration increases. With the increase of the voltage $$V$$, the effect of $$c_{Mg}$$ on $$g_{\infty}$$ decreases. $$\alpha, \beta$$ and $$\bar{g}$$ are some constants。The dynamic of gating variable $$s$$ is similar with the AMPA synapse, which is given by,
+$$
+\frac{d s}{dt} =-\frac{s}{\tau_{\text{decay}}}+a x(1-s)
+$$
+
+$$
+\frac{d x}{dt} =-\frac{x}{\tau_{\text{rise}}}
+$$
+
+$$
+\text{if (pre fire), then} \ x \leftarrow x+ 1
+$$
+
+where $$\tau_{\text{decay}}$$ and $$\tau_{\text{rise}}$$ are time constants of $$s$$ decay and rise, respectively. $$a$$ is a parameter.
+
+Then let's implement the NMDA synapse with BrainPy. Here are the codes:
+
+<img src="../../figs/syns/codes/en/nmda_init.png" style="width:100%">
+
+<img src="../../figs/syns/codes/en/nmda_update.png" style="width:100%">
+
+As we've already defined the ``run_syn`` function while implementing the AMPA synapse, we can directly call it here.
+
+``` python
+run_syn(NMDA)
+```
+
+![png](../../figs/syns/out/output_nmda.png)
+
+The result shows that the decay of NMDA is very slow and we barely see the decay from this 30ms simulation.
+
+
+
+#### GABA<sub>B</sub> Synapse
+
+GABA<sub>B</sub> is a metabotropic receptor, so it would not directly open the ion channels after the neurotransmitter binds to the receptor, but act through G protein as a second messenger. We denote $$[R]$$ as the proportions of activated receptors, and $$[G]$$ represents the concentration of activated G proteins. $$s$$ is modulated by $$[G]$$, which is given by,
+$$
+\frac{d[R]}{dt} = k_3 [T](1-[R])- k_4 [R]
+$$
+
+$$
+\frac{d[G]}{dt} = k_1 [R]- k_2 [G]
+$$
+
+$$
+s =\frac{[G]^{4}} {[G]^{4}+K_{d}}
+$$
+
+The kinetics of $$[R]$$ is similar to that of $$s$$ in the AMPA model, which is affected by the neurotransmitter concentration $$[T]$$, and $$k_3, k_4$$ represent the transition probability. The dynamics of $$[G]$$ is affected by $$[R]$$ with parameters $$k_1, k_2$$. $$K_d$$ is a constant.
+
+Here are the codes of the BrainPy implementation.
+
+<img src="../../figs/syns/codes/en/gabab_init.png" style="width:100%">
+
+<img src="../../figs/syns/codes/en/gabab_update.png" style="width:100%">
+
+Since the dynamics of GABA<sub>B</sub> is very slow, we no longer use the ``run_syn`` function here, but use ``bp.inputs.constant_current`` to give stimulation for 20ms, and then look at the decay at the subsequent 1000ms without external inputs.
+
+``` python
+neu1 = bm.neurons.LIF(2, monitors=['V'])
+neu2 = bm.neurons.LIF(3, monitors=['V'])
+syn = GABAb(pre=neu1, post=neu2, conn=bp.connect.All2All(), monitors=['s'])
+net = bp.Network(neu1, syn, neu2)
+
+# input
+I, dur = bp.inputs.constant_current([(25, 20), (0, 1000)])
+net.run(dur, inputs=(neu1, 'input', I))
+
+bp.visualize.line_plot(net.ts, syn.mon.s, ylabel='s', show=True)
+```
+
+![png](../../figs/syns/out/output_gabab.png)
+
+The result shows that the decay of GABA<sub>B</sub> lasts for hundreds of milliseconds.
+
+
+
+#### Current-based and Conductance-based synapses
+
+You may have noticed that the modeling of the gating variable $$s$$ of the GABA<sub>B</sub> synapse did not show its property of inducing inhibitory potentials. To demonstrate the excitatory and inhibitory properties, we not only need to model the gating variable $$s$$, but also the current $$I$$ through the synapses (as input to the postsynaptic neurons). There are two different methods to model the relationships between $$s$$ and $$I$$: **current-based** and **conductance-based**. The main difference between them is whether the synaptic current is influenced by the membrane potential of postsynaptic neurons.
+
+##### (1) Current-based
+
+The formula of the current-based model is as follow:
+
+$$
+I \propto s
+$$
+
+While coding, we usually multiply $$s$$ by a weight $$w$$. We can implement excitatory and inhibitory synapses by adjusting the positive and negative values of the weight $$w$$.
+
+The delay of synapses is implemented by applying the delay time to the ``I_syn`` variable using the ``register_constant_delay`` function provided by BrainPy.
+
+![Ibase](../../figs/syns/codes/en/Ibase.png)
+
+##### (2) Conductance-based
+
+In the conductance-based model, the conductance is $$g=\bar{g} s$$. Therefore, according to Ohm's law, the formula is given by:
+$$
+I=\bar{g}s(V-E)
+$$
+
+Here $$E$$ is a reverse potential, which can determine whether the effect of $$I$$ is inhibition or excitation. For example, when the resting potential is about -65, subtracting a lower $$E$$, such as -75, will become positive, thus will change the direction of the current in the formula and produce the suppression current. The $$E$$ value of excitatory synapses is relatively high, such as 0.
+
+In terms of implementation, you can apply a synaptic delay to the variable ``g``.
+
+![gbase](../../figs/syns/codes/en/gbase.png)
+
+
+
+Now let's review the NMDA and GABA<sub>B</sub> synapses we just implemented. They are both conductance-based models. Excitatory currents are induced by $$E=0$$ in the NMDA synapse; while inhibitory currents are produced by $$E=-95$$ in the GABA<sub>B</sub> synapse. You can find the complete code to the above models from our [BrainModels](https://github.com/PKU-NIP-Lab/BrainModels/tree/main/brainmodels/numba_backend/synapses) GitHub repository.
+
+
+
+#### Abstract reduced models
+
+The dynamics of the gating variables $$s$$ of the above chemical synapses sharing the same characteristic of rising first and then decay. Sometimes we don't need to use models that specifically correspond to biological synapses. Therefore, some abstract synaptic models have been proposed. Here, we will introduce the implementation of four abstract models on BrainPy, they can be either current-based or conductance-based. These models can also be found in the [BrainModels](https://brainmodels.readthedocs.io/en/latest/apis/synapses.html) repository.
 
 ##### (1) Differences of two exponentials
 
@@ -174,38 +298,6 @@ Then we expect to see the following result:
 
 
 ![png](../../figs/syns/out/output_28_0.png)
-
-
-#### Current-based and Conductance-based synapses
-
-So far, we have modeled the gating variable $$s$$, now let's see how to model the effect of the gating variables on the synaptic current. The current that passes through a synaptic channel is denoted as $$I$$. There are two different methods to model the relationships between $$s$$ and $$I$$: **current-based** and **conductance-based**. The main difference between them is whether the synaptic current is influenced by the membrane potential of postsynaptic neurons.
-
-##### (1) Current-based
-
-The formula of the current-based model is as follow:
-
-$$
-I \propto s
-$$
-
-While coding, we usually multiply $$s$$ by a weight $$w$$. We can implement excitatory and inhibitory synapses by adjusting the positive and negative values of the weight $$w$$.
-
-The delay of synapses is implemented by applying the delay time to the ``I_syn`` variable using the ``register_constant_delay`` function provided by BrainPy.
-
-![Ibase](../../figs/syns/codes/en/Ibase.png)
-
-##### (2) Conductance-based
-
-In the conductance-based model, the conductance is $$g=\bar{g} s$$. Therefore, according to Ohm's law, the formula is given by:
-$$
-I=\bar{g}s(V-E)
-$$
-
-Here $$E$$ is a reverse potential, which can determine whether the effect of $$I$$ is inhibition or excitation. For example, when the resting potential is about -65, subtracting a lower $$E$$, such as -75, will become positive, thus will change the direction of the current in the formula and produce the suppression current. The $$E$$ value of excitatory synapses is relatively high, such as 0.
-
-In terms of implementation, you can apply a synaptic delay to the variable ``g``.
-
-![gbase](../../figs/syns/codes/en/gbase.png)
 
 
 
