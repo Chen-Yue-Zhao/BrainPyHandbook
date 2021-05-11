@@ -13,16 +13,12 @@
 在本节中，我们将介绍如何使用BrainPy来实现一些常见的突触模型，主要有：
 
 - **AMPA**和**NMDA**：它们都是谷氨酸的离子型受体，被结合后都可以直接打开离子通道。但是NMDA通常会被镁离子（Mg$$^{2+}$$）堵住，无法对谷氨酸做出反应。由于镁离子对电压敏感，当AMPA导致突触后电位改变到超过镁离子的阈值以后，镁离子就会离开NMDA通道，让NMDA可以对谷氨酸做出反应。因此，NMDA的反应是比较慢的。
-- **GABA<sub>A</sub>**和**GABA<sub>B</sub>**：它们是GABA的两类受体，其中GABA<sub>A</sub>是离子型受体，通常可以产生快速的抑制性电位；而GABA<sub>B</sub>则为代谢型受体，通常会产生缓慢的抑制性电位。
+- **GABA$$_A$$**和**GABA$$_B$$**：它们是GABA的两类受体，其中GABA$$_A$$是离子型受体，通常可以产生快速的抑制性电位；而GABA$$_B$$则为代谢型受体，通常会产生缓慢的抑制性电位。
 
 
 
-<div style="text-align:center">
-  <img src="../figs/bio_syn.png" width="450">
-  <br>
-    <strong> 图 2-1 生物突触 </strong> (引自 <cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
-</div>
-<div><br></div>
+<img src="../figs/bio_syn.png" width="450" title="图 2-1 生物突触 (引自Gerstner et al., 2014)">
+
 
 为了简便地建模从神经递质释放到引起突触后电位的这个过程，我们可以把神经递质释放、递质与受体结合、受体引起的变化这些过程概括为突触前神经元的动作电位变化如何引起突触后神经元膜上的离子通道变化，即用门控变量$$s$$来描述每当突触前神经元产生动作电位的时候，有多少比例的离子通道会被打开。我们首先来看看AMPA的例子。
 
@@ -34,12 +30,7 @@
 
 我们可以用马尔可夫过程来描述离子通道的开关。如图2-2所示，$$s$$代表通道打开的概率，$$1-s$$代表离子通道关闭的概率，$$\alpha$$和$$\beta$$是转移概率（transition probability）。由于神经递质能让离子通道打开，所以从$$1-s$$到$$s$$的转移概率受神经递质浓度（以[T]表示）影响。
 
-<div style="text-align:center">
-  <img src="../figs/markov.png" width="170"> 
-  <br>	
-  <strong> 图2-2 离子通道动力学的马尔可夫过程 </strong>
-</div>
-<div><br></div>
+<img src="../figs/markov.png" width="170" alt="图2-2 离子通道动力学的马尔可夫过程">
 
 把该过程用微分方程描述，得到以下式子。
 
@@ -76,22 +67,22 @@ $$
 
 $$
 g_{\infty} =(1+{e}^{-\alpha V} \cdot \frac{c_{Mg} } {\beta})^{-1}
-$$
 
-$$
+\\
+
 g = \bar{g} \cdot g_{\infty}  s
 $$
 
 在此公式中，$$g_{\infty}$$的值随着镁离子浓度增加而减小。而随着电压$$V$$增加，$$g_{\infty}$$越来越不受镁离子的影响，建模了镁离子随电压增加而离开的效应。$$\alpha, \beta$$和$$\bar{g}$$是一些常数。门控变量$$s$$和AMPA模型类似，其动力学由以下公式给出：
 $$
 \frac{d s}{dt} =-\frac{s}{\tau_{\text{decay}}}+a x(1-s)
-$$
 
-$$
+\\
+
 \frac{d x}{dt} =-\frac{x}{\tau_{\text{rise}}}
-$$
 
-$$
+\\
+
 \text{if (pre fire), then} \ x \leftarrow x+ 1
 $$
 
@@ -115,9 +106,9 @@ run_syn(NMDA)
 
 
 
-#### GABA<sub>B</sub>模型
+#### GABA$$_B$$模型
 
-GABA<sub>B</sub>是一种代谢型受体，神经递质和受体结合后不会直接打开离子通道，而是通过G蛋白作为第二信使来起作用。因此，这里我们用$$[R]$$表示多少比例的受体被激活，并用$$[G]$$表示激活的G蛋白的浓度，$$s$$由$$[G]$$调节，公式如下：
+GABA$$_B$$是一种代谢型受体，神经递质和受体结合后不会直接打开离子通道，而是通过G蛋白作为第二信使来起作用。因此，这里我们用$$[R]$$表示多少比例的受体被激活，并用$$[G]$$表示激活的G蛋白的浓度，$$s$$由$$[G]$$调节，公式如下：
 $$
 \frac{d[R]}{dt} = k_3 [T](1-[R])- k_4 [R]
 $$
@@ -138,7 +129,7 @@ $$[R]$$的动力学类似于AMPA模型中$$s$$，受神经递质浓度$$[T]$$影
 
 <img src="../figs/codes/gabab_update.png" style="width:100%">
 
-由于GABA<sub>B</sub>也是非常缓慢的模型，这里我们不再用前面写的只有30ms模拟的``run_syn``函数，而是先给20ms的输入，接着看剩余1000ms在没有外界输入情况下的衰减。
+由于GABA$$_B$$也是非常缓慢的模型，这里我们不再用前面写的只有30ms模拟的``run_syn``函数，而是先给20ms的输入，接着看剩余1000ms在没有外界输入情况下的衰减。
 
 ``` python
 neu1 = bm.neurons.LIF(2, monitors=['V'])
@@ -155,7 +146,7 @@ bp.visualize.line_plot(net.ts, syn.mon.s, ylabel='s', show=True)
 
 ![png](../figs/out/output_gabab.png)
 
-从结果可以看到，GABA<sub>B</sub>的衰减确实非常慢，在移除外界输入之后几百ms内都还在衰减。
+从结果可以看到，GABA$$_B$$的衰减确实非常慢，在移除外界输入之后几百ms内都还在衰减。
 
 <!--（抑制性 -> E, I）-->
 
