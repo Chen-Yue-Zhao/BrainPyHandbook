@@ -55,7 +55,7 @@ $$
 
 
 
-接下来，我们将继承``bp.NeuGroup``类，并用BrainPy提供的相平面分析方法``bp.analysis.PhasePlane``进行动力学分析。首先，我们把上面的动力学公式写到一个``derivative``函数中，定义一个Decision类。
+接下来，我们将继承``bp.NeuGroup``类，并用BrainPy提供的相平面分析方法``bp.analysis.PhasePlane``进行动力学分析。首先，我们把上面的动力学公式写到一个``derivative``函数中，定义一个Decision类（本章代码请查看[附录](../appendix/networks.md)，或[点此](../appendix/networks.ipynb)下载jupyter notebook）。
 
 ![decision01](../../figs/nets/codes/zh/decision01.png)
 
