@@ -21,7 +21,7 @@ The introduction is as follows:
 Let's first look at short-term plasticity. We will start with the results of the experiment. Fig. 2-1 shows the changes of the membrane potential of postsynaptic neurons as the firing of presynaptic neurons. We can see that when the presynaptic neurons repeatedly firing with short intervals, the response of the postsynaptic neurons becomes weaker and weaker, showing a short term depression. But the response recovers after a short period of time, so this plasticity is short-term.
 
 <div style="text-align:center">
-  <img src="../../figs/stp.png" width="400">
+  <img src="../../figs/syns/stp.png" width="400">
   <br>
   <strong>Fig. 2-1 Short-term plasticity.</strong> (Adapted from <cite  id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
@@ -55,9 +55,9 @@ In this model, $$u$$ contributes to the short-term facilitation (STF) by increas
 
 Now let's see how to implement the STP model with BrainPy. We can see that the plasticity also occurs in synapses, so we will define the class by inheriting from the ``bp.TwoEndConn`` class like synaptic models. The code is as follows:
 
-![stp_init](../../figs/codes/stp_init.png)
+![stp_init](../../figs/syns/codes/en/stp_init.png)
 
-![stp_update](../../figs/codes/stp_update.png)
+![stp_update](../../figs/syns/codes/en/stp_update.png)
 
 
 
@@ -97,7 +97,7 @@ run_stp(U=0.2, tau_d=150., tau_f=2.)
 ```
 
 
-![png](../../figs/out/output_43_0.png)
+![png](../../figs/syns/out/output_43_0.png)
 
 The plots show that when we set the parameters $$\tau_d > \tau_f$$, $$x$$ recovers very slowly, and $$u$$ decays very quickly, so in the end, the transmitter is not enough to open the receptors, showing STD dominants.
 
@@ -108,7 +108,7 @@ run_stp(U=0.1, tau_d=10, tau_f=100.)
 ```
 
 
-![png](../../figs/out/output_44_0.png)
+![png](../../figs/syns/out/output_44_0.png)
 
 We can see from the figure that when we set $$\tau_f > \tau_d$$, on the contrary, every time $$x$$ is used, it will be added back quickly. There are always enough transmitters available. At the same time, the decay of $$u$$ is very slow, so the probability of releasing transmitters is getting higher and higher, showing STF dominants.
 
@@ -121,7 +121,7 @@ We can see from the figure that when we set $$\tau_f > \tau_d$$, on the contrary
 Fig. 2-2 shows the spiking timing dependent plasticity (STDP) of experimental results. The x-axis is the time difference between the spike of the presynaptic neuron and the postsynaptic neuron. The left part of the zero represents the spike timing of the presynaptic neuron earlier than that of the postsynaptic neuron, which shows long term potentiation (LTP); and the right side of the zero represents the postsynaptic neuron fires before the presynaptic neuron does, showing long term depression (LTD).
 
 <div style="text-align:center">
-  <img src="../../figs/stdp.png" width="350" height="320">
+  <img src="../../figs/syns/stdp.png" width="350" height="320">
   <br>
   <strong>Fig. 2-2 Spike timing dependent plasticity.</strong> (Adapted from <cite  id="reffn_2">Bi & Poo, 2001 <sup><a href="#fn_2">2</a></sup></cite>)
 </div>
@@ -162,9 +162,9 @@ According to this model, when a presynaptic neuron fire before the postsynaptic 
 
 Now let's see how to use BrainPy to implement this model. Here we use the single exponential decay model to implement the dynamics of $$s$$.
 
-![stdp_init](../../figs/codes/stdp_init.png)
+![stdp_init](../../figs/syns/codes/en/stdp_init.png)
 
-![stdp_update](../../figs/codes/stdp_update.png)
+![stdp_update](../../figs/syns/codes/en/stdp_update.png)
 
 We control the spike timing by varying the input current of the presynaptic group and postsynaptic group. We apply the first input to the presynaptic group starting at $$t=5ms$$ (with amplitude of 30 $$\mu A$$, lasts for 15 ms to ensure to induce a spike with LIF neuron model), then start to stimulate the postsynaptic group at $$t=10ms$$. The intervals between each two inputs are $$15ms$$. We keep those $$t_{post}=t_{pre}+5$$ during the first 3 spike-pairs. Then we set a long interval before switching the stimulating order to be $$t_{post}=t_{pre}-3$$ since the 4th spike.
 
@@ -239,7 +239,7 @@ plt.show()
 ```
 
 
-![png](../../figs/out/output_51_0.png)
+![png](../../figs/syns/out/output_51_0.png)
 
 The simulation result shows that weights $$w$$ increase when the presynaptic neuron fire before the postsynaptic neuron (before 150ms); and decrease when the order switched (after 150ms).
 
@@ -269,16 +269,16 @@ $$\gamma$$ represents the learning rate.
 
 Now let's see how to use BrainPy to implement ``Oja's rule``.
 
-![oja_def](../../figs/codes/oja_def.png)
+![oja_def](../../figs/syns/codes/en/oja_def.png)
 
 Since Oja's rule is a rate-based model, we need a rate-based neuron model to see this learning rule of two groups of neurons.
 
-![oja_run_neu](../../figs/codes/oja_run_neu.png)
+![oja_run_neu](../../figs/syns/codes/en/oja_run_neu.png)
 
 
 
 <div style="text-align:center">
-  <img src="../../figs/conn.png" width="300">
+  <img src="../../figs/syns/conn.png" width="300">
   <br>
   <strong>Fig. 2-3 Connection of neuron groups.</strong>
 </div>
@@ -288,12 +288,12 @@ We aim to implement the connection as shown in Fig. 2-3. The purple neuron group
 
 The simulation code is as follows.
 
-![oja_run](../../figs/codes/oja_run.png)
+![oja_run](../../figs/syns/codes/en/oja_run.png)
 
 
 
 
-![png](../../figs/out/output_oja.png)
+![png](../../figs/syns/out/output_oja.png)
 
 It can be seen from the results that at the beginning, when the two groups of neurons were given input at the same time, their weights increased simultaneously, and the response of post became stronger and stronger, showing LTP. After 100ms, the blue group is no longer fire together, only the red group still fire together, and only the weights of the red group are increased. The results accord with the "fire together, wire together" of Hebbian learning.
 
@@ -312,7 +312,7 @@ where $$\eta$$ represents the learning rate, and $$r_\theta$$ represents the thr
 
 
 <div style="text-align:center">
-  <img src="../../figs/bcm.png" width="300">
+  <img src="../../figs/syns/bcm.png" width="300">
   <br>
     <strong> Fig. 2-4 BCM rule </strong> (From <cite>Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
@@ -320,7 +320,7 @@ where $$\eta$$ represents the learning rate, and $$r_\theta$$ represents the thr
 
 We will implement the same connections as the previous Oja's rule (Fig. 2-3), with different firing rates. Here the two groups of neurons are alternately firing. Among them, the blue group is always stronger than the red one. We adjust the threshold by setting it as the time average of $$r_i$$, that is $$r_\theta = f(r_i)$$. The code implemented by BrainPy is as follows.
 
-![bcm_def](../../figs/codes/bcm_def.png)
+![bcm_def](../../figs/syns/codes/en/bcm_def.png)
 
 Then we can run the simulation with the following code.
 
@@ -371,7 +371,7 @@ plt.show()
 ```
 
 
-![png](../../figs/out/output_bcm.png)
+![png](../../figs/syns/out/output_bcm.png)
 
 
 The results show that the blue group with stronger input demonstrating LTP, while the red group with weaker input showing LTD, so the blue group is being chosen.

@@ -19,7 +19,7 @@ In this section, we will introduce how to model some common synapses and their i
 
 
 <div style="text-align:center">
-  <img src="../../figs/bio_syn.png" width="450">
+  <img src="../../figs/syns/bio_syn.png" width="450">
   <br>
     <strong> Fig. 2-1 Biological Synapse </strong> (Adapted from <cite  id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
@@ -36,7 +36,7 @@ As we mentioned before, the AMPA receptor is an ionotropic receptor, that is, wh
 We can use Markov process to describe the opening and closing process of ion channels. As shown in Fig. 2-2,  $$s$$ represents the probability of channel opening, $$1-s$$ represents the probability of ion channel closing, and $$\alpha$$ and $$\beta$$ are the transition probability. Because neurotransmitters can open ion channels, the transfer probability from $$1-s$$ to $$s$$ is affected by the concentration of neurotransmitters. We denote the concentration of neurotransmitters as [T].
 
 <div style="text-align:center">
-  <img src="../../figs/markov.png" width="170"> 
+  <img src="../../figs/syns/markov.png" width="170"> 
   <br>	
   <strong> Fig. 2-2 Markov process of channel dynamics </strong>
 </div>
@@ -52,19 +52,19 @@ Where $$\alpha [T]$$ denotes the transition probability from state $$(1-s)$$ to 
 
 Now let's see how to implement such a model with BrainPy. First of all, we need to define a class that inherits from `` bp.TwoEndConn ``, because synapses connect two neurons. Within the class, we can define the differential equation with ``derivative`` function, this is the same as the definition of neuron models. Then we use the ``__ init__ `` Function to initialize the required parameters and variables.
 
-<img src="../../figs/codes/ampa_init.png" style="width:100%">
+<img src="../../figs/syns/codes/en/ampa_init.png" style="width:100%">
 
 We update $$s$$ by an ``update`` function.
 
-<img src="../../figs/codes/ampa_update.png" style="width:100%">
+<img src="../../figs/syns/codes/en/ampa_update.png" style="width:100%">
 
 After the implementation, we can plot the graph of $$s$$ changing with time. We would first write a ``run_syn`` function to run and plot the graph. To run a synapse, we need neuron groups, so we use the LIF neuron provided by ``brainmodels`` package.
 
-<img src="../../figs/codes/ampa_run.png" style="width:100%">
+<img src="../../figs/syns/codes/en/ampa_run.png" style="width:100%">
 
 Then we would expect to see the following result:
 
-![png](../../figs/out/output_9_0.png)
+![png](../../figs/syns/out/output_9_0.png)
 
 
 As can be seen from the above figure, when the presynaptic neurons fire, the value of $$s$$ will first increase, and then decay.
@@ -99,12 +99,12 @@ $$
 
 Here we specify the logic of increment of $$x$$ in the ``update`` function when the presynaptic neurons fire. The code is as follows:
 
-<img src="../../figs/codes/2exp.png" style="width:100%">
+<img src="../../figs/syns/codes/en/2exp.png" style="width:100%">
 
 Then we expect to see the following result:
 
 
-![png](../../figs/out/output_16_0.png)
+![png](../../figs/syns/out/output_16_0.png)
 
 
 ##### (2) Alpha synapse
@@ -130,11 +130,11 @@ $$
 
 Code implementation is similar:
 
-<img src="../../figs/codes/alpha.png" style="width:100%">
+<img src="../../figs/syns/codes/en/alpha.png" style="width:100%">
 
 Then we expect to see the following result:
 
-![png](../../figs/out/output_20_0.png)
+![png](../../figs/syns/out/output_20_0.png)
 
 
 ##### (3) Single exponential decay
@@ -151,12 +151,12 @@ $$
 
 The implementing code is given by:
 
-<img src="../../figs/codes/exp.png" style="width:100%">
+<img src="../../figs/syns/codes/en/exp.png" style="width:100%">
 
 Then we expect to see the following result:
 
 
-![png](../../figs/out/output_24_0.png)
+![png](../../figs/syns/out/output_24_0.png)
 
 
 ##### (4) Voltage jump
@@ -169,12 +169,12 @@ $$
 
 The code is as follows:
 
-<img src="../../figs/codes/vj.png" style="width:100%">
+<img src="../../figs/syns/codes/en/vj.png" style="width:100%">
 
 Then we expect to see the following result:
 
 
-![png](../../figs/out/output_28_0.png)
+![png](../../figs/syns/out/output_28_0.png)
 
 
 #### Current-based and Conductance-based synapses
@@ -193,7 +193,7 @@ While coding, we usually multiply $$s$$ by a weight $$w$$. We can implement exci
 
 The delay of synapses is implemented by applying the delay time to the ``I_syn`` variable using the ``register_constant_delay`` function provided by BrainPy.
 
-![Ibase](../../figs/codes/Ibase.png)
+![Ibase](../../figs/syns/codes/en/Ibase.png)
 
 ##### (2) Conductance-based
 
@@ -206,7 +206,7 @@ Here $$E$$ is a reverse potential, which can determine whether the effect of $$I
 
 In terms of implementation, you can apply a synaptic delay to the variable ``g``.
 
-![gbase](../../figs/codes/gbase.png)
+![gbase](../../figs/syns/codes/en/gbase.png)
 
 
 
@@ -220,13 +220,13 @@ In addition to the chemical synapses described earlier, electrical synapses are 
         <strong>(a)</strong>
       </div>
       <div style="grid-column:2;grid-row:2">
-        <img src="../../figs/bio_gap.png" width="200">
+        <img src="../../figs/syns/bio_gap.png" width="200">
       </div>
       <div style="grid-column:3;grid-row:1;align-self:end;justify-self:end">
         <strong>(b)</strong>
       </div>
       <div style="grid-column:4;grid-row:2">
-        <img style="width:200px" src="../../figs/gap_model.jpg">
+        <img style="width:200px" src="../../figs/syns/gap_model.jpg">
       </div>
     </div>
   <br>
@@ -248,7 +248,7 @@ where $$V_0$$ and $$V_1$$ are the membrane potentials of the two neurons, and th
 
 While implementing with BrainPy, you only need to specify the equation in the ``update`` function.
 
-![gap](../../figs/codes/gap.png)
+![gap](../../figs/syns/codes/en/gap.png)
 
 Then we can run a simulation.
 
@@ -280,7 +280,7 @@ plt.show()
 ```
 
 
-![png](../../figs/out/output_37_0.png)
+![png](../../figs/syns/out/output_37_0.png)
 
 
 

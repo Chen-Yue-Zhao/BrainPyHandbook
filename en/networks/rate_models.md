@@ -5,7 +5,7 @@
 In addition to spiking models, BrainPy can also implement Firing rate models. Let's first look at the implementation of a simplified version of the decision model. The model was simplified by the researcher (Wong & Wang, 2006)[^1] through a series of means such as mean field approach. In the end, there are only two variables, $$S_1$$ and $$S_2$$, which respectively represent the state of two neuron groups and correspond to two options.
 
 <div align="center">
-  <img src="../../figs/decision.png" width="300">
+  <img src="../../figs/nets/decision.png" width="300">
   <br>
   <strong>Fig. 3-1 Reduced decision model.</strong> (From <cite>Wong & Wang, 2006 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
@@ -56,15 +56,15 @@ $$
 
 The code implementation is as follows: we can create a neuron group class, and use $$S_1$$ and $$S_2$$ to store the two states of the neuron group. The dynamics of the model can be implemented by a ``derivative`` function for dynamics analysis.
 
-![decision01](../../figs/codes/decision01.png)
+![decision01](../../figs/nets/codes/zh//decision01.png)
 
-![decision02](../../figs/codes/decision02.png)
+![decision02](../../figs/nets/codes/zh//decision02.png)
 
 
 
 Then we can define a function to perform phase plane analysis.
 
-![decision_run](../../figs/codes/decision_run.png)
+![decision_run](../../figs/nets/codes/zh//decision_run.png)
 
 Let's first look at the case when there is no external input. At this time, $$\mu_0 = 0$$.
 
@@ -85,7 +85,7 @@ Output:
 
 
 
-![png](../../figs/out/output_77_1.png)
+![png](../../figs/nets/out/output_77_1.png)
 
 
 It can be seen that it is very convenient to use BrainPy for dynamics analysis. The vector field and fixed point indicate which option will fall in the end under different initial values.
@@ -121,7 +121,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](../../figs/out/output_79_1.png)
+![png](../../figs/nets/out/output_79_1.png)
 
 
     coherence = 51.2%
@@ -134,7 +134,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](../../figs/out/output_79_3.png)
+![png](../../figs/nets/out/output_79_3.png)
 
 
     coherence = 100%
@@ -145,7 +145,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-<img src="../../figs/out/output_79_5.png" alt="output: c'=100%" />
+<img src="../../figs/nets/out/output_79_5.png" alt="output: c'=100%" />
 
 
 ### 3.2.2 CANN
@@ -153,7 +153,7 @@ phase_analyze(I=30., coh=1.)
 Let's see another example of firing rate model, a continuous attractor neural network (CANN)[^2]. Fig. 3-2 demonstrates the structure of one-dimensional CANN.
 
 <div align="center">
-  <img src="../../figs/cann.png" width="300">
+  <img src="../../figs/nets/cann.png" width="300">
   <br>
   <strong>Fig. 3-2 Structure of CANN.</strong> (From <cite>Wu et al., 2008 <sup><a href="#fn_2">2</a></sup></cite>)
 </div>
@@ -184,11 +184,11 @@ $$
 
 While implementing with BrainPy, we create a class of ``CANN1D`` by inheriting ``bp.NeuGroup``.
 
-![cann_init](../../figs/codes/cann_init.png)
+![cann_init](../../figs/nets/codes/zh//cann_init.png)
 
 Then we define the functions.
 
-![cann_f](../../figs/codes/cann_f.png)
+![cann_f](../../figs/nets/codes/zh//cann_f.png)
 
 
 
@@ -221,9 +221,9 @@ def plot_animate(frame_step=5, frame_delay=50):
 plot_animate(frame_step=1, frame_delay=100)
 ```
 
-<img src="../../figs/CANN-encoding.gif">
+<img src="../../figs/nets/CANN-encoding.gif">
 
-We can see that the shape of $$u$$ encodes the shape of external input.
+We can see that the shape of $$u$$ encodes/zh/ the shape of external input.
 
 Now we add random noise to the external input to see how the shape of $$u$$ changes.
 
@@ -244,7 +244,7 @@ cann.run(duration=dur1 + dur2 + dur3, inputs=('input', Iext))
 plot_animate()
 ```
 
-<img src="../../figs/CANN-decoding.gif">
+<img src="../../figs/nets/CANN-decoding.gif">
 
 We can see that the shape of $$u$$ remains like a bell shape, which indicates that it can perform template matching based on the input.
 
@@ -268,7 +268,7 @@ cann.run(duration=dur1 + dur2 + dur3, inputs=('input', Iext))
 plot_animate()
 ```
 
-<img src="../../figs/CANN-tracking.gif">
+<img src="../../figs/nets/CANN-tracking.gif">
 
 
 

@@ -18,7 +18,7 @@
 
 
 <div style="text-align:center">
-  <img src="../../figs/bio_syn.png" width="450">
+  <img src="../../figs/syns/bio_syn.png" width="450">
   <br>
     <strong> 图 2-1 生物突触 </strong> (引自 <cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
@@ -35,7 +35,7 @@
 我们可以用马尔可夫过程来描述离子通道的开关。如图2-2所示，$$s$$代表通道打开的概率，$$1-s$$代表离子通道关闭的概率，$$\alpha$$和$$\beta$$是转移概率（transition probability）。由于神经递质能让离子通道打开，所以从$$1-s$$到$$s$$的转移概率受神经递质浓度（以[T]表示）影响。
 
 <div style="text-align:center">
-  <img src="../../figs/markov.png" width="170"> 
+  <img src="../../figs/syns/markov.png" width="170"> 
   <br>	
   <strong> 图2-2 离子通道动力学的马尔可夫过程 </strong>
 </div>
@@ -51,20 +51,20 @@ $$
 
 下面我们来看看如何用BrainPy去实现这样一个模型。首先，我们要定义一个类，因为突触是连接两个神经元的，所以这个类继承自``bp.TwoEndConn``。在这个类中，和神经元模型一样，我们用一个``derivative``函数来实现上述微分方程，并在后面的``__init__``函数中初始化这个函数，指定用``bp.odeint``来解这个方程，并指定数值积分方法。由于这微分方程是线性的，我们选用``exponential_euler``方法。
 
-<img src="../../figs/codes/ampa_init.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/ampa_init.png" style="width:100%">
 
 然后我们在``update``函数中更新$$s$$。
 
-<img src="../../figs/codes/ampa_update.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/ampa_update.png" style="width:100%">
 
 我们已经定义好了一个AMPA类，现在可以画出$$s$$随时间变化的图了。我们首先写一个``run_syn``函数来方便之后运行更多的突触模型，然后把AMPA类和需要自定义的变量传入这个函数来运行并画图。
 
-<img src="../../figs/codes/ampa_run.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/ampa_run.png" style="width:100%">
 
 运行以上代码，我们就会看到以下的结果：
 
 
-![png](../../figs/out/output_9_0.png)
+![png](../../figs/syns/out/output_9_0.png)
 
 由上图可以看出，当突触前神经元产生一个动作电位，$$s$$的值会先增加，然后衰减。
 
@@ -99,9 +99,9 @@ $$
 
 接下来我们用BrainPy来实现NMDA模型，代码如下。
 
-<img src="../../figs/codes/nmda_init.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/nmda_init.png" style="width:100%">
 
-<img src="../../figs/codes/nmda_update.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/nmda_update.png" style="width:100%">
 
 由于前面我们已经定义了``run_syn``函数，在这里我们可以直接调用：
 
@@ -109,7 +109,7 @@ $$
 run_syn(NMDA)
 ```
 
-![png](../../figs/out/output_nmda.png)
+![png](../../figs/syns/out/output_nmda.png)
 
 由图可以看出，NMDA的衰减过程非常缓慢，第一个突触前神经元的动作电位引起的$$s$$增加后还没怎么衰减，第二个的值就加上去了，由于我们这里只跑了30ms的模拟，还看不到NMDA衰退的过程。
 
@@ -134,9 +134,9 @@ $$[R]$$的动力学类似于AMPA模型中$$s$$，受神经递质浓度$$[T]$$影
 
 用BrainPy实现的代码如下。
 
-<img src="../../figs/codes/gabab_init.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/gabab_init.png" style="width:100%">
 
-<img src="../../figs/codes/gabab_update.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/gabab_update.png" style="width:100%">
 
 由于GABA<sub>B</sub>也是非常缓慢的模型，这里我们不再用前面写的只有30ms模拟的``run_syn``函数，而是先给20ms的输入，接着看剩余1000ms在没有外界输入情况下的衰减。
 
@@ -153,7 +153,7 @@ net.run(dur, inputs=(neu1, 'input', I))
 bp.visualize.line_plot(net.ts, syn.mon.s, ylabel='s', show=True)
 ```
 
-![png](../../figs/out/output_gabab.png)
+![png](../../figs/syns/out/output_gabab.png)
 
 从结果可以看到，GABA<sub>B</sub>的衰减确实非常慢，在移除外界输入之后几百ms内都还在衰减。
 
@@ -191,10 +191,10 @@ $$
 
 这里我们用``update``函数来控制$$x$$增加的逻辑。代码如下：
 
-<img src="../../figs/codes/2exp.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/2exp.png" style="width:100%">
 
 
-![png](../../figs/out/output_16_0.png)
+![png](../../figs/syns/out/output_16_0.png)
 
 
 ##### (2) Alpha突触
@@ -218,10 +218,10 @@ $$
 
 可以看出alpha模型和双指数差模型其实很相似，相当于是$$\tau=\tau_1 = \tau_2$$。因此，代码实现上也很接近：
 
-<img src="../../figs/codes/alpha.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/alpha.png" style="width:100%">
 
 
-![png](../../figs/out/output_20_0.png)
+![png](../../figs/syns/out/output_20_0.png)
 
 
 ##### (3) 单指数衰减（Single exponential decay）
@@ -237,10 +237,10 @@ $$
 
 代码实现如下：
 
-<img src="../../figs/codes/exp.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/exp.png" style="width:100%">
 
 
-![png](../../figs/out/output_24_0.png)
+![png](../../figs/syns/out/output_24_0.png)
 
 
 ##### (4) 电压跳变（Voltage jump）
@@ -252,10 +252,10 @@ $$
 
 在实现上，只需要在``update``函数中更新$$s$$即可。代码如下：
 
-<img src="../../figs/codes/vj.png" style="width:100%">
+<img src="../../figs/syns/codes/zh/vj.png" style="width:100%">
 
 
-![png](../../figs/out/output_28_0.png)
+![png](../../figs/syns/out/output_28_0.png)
 
 
 #### 基于电流的和基于电导的突触
@@ -274,7 +274,7 @@ $$
 
 在代码实现上，我们通常会乘上一个权重$$w$$。我们可以通过调整权重$$w$$的正负值来实现兴奋性和抑制性突触。另外，我们通过使用BrainPy提供的``register_constant_delay``函数给变量``I_ syn``加上延迟时间来实现突触的延迟。
 
-![Ibase](../../figs/codes/Ibase.png)
+![Ibase](../../figs/syns/codes/zh/Ibase.png)
 
 
 
@@ -289,7 +289,7 @@ $$
 
 代码实现上，可以把延迟时间应用到变量``g``上。
 
-![gbase](../../figs/codes/gbase.png)
+![gbase](../../figs/syns/codes/zh/gbase.png)
 
 
 
@@ -303,13 +303,13 @@ $$
         <strong>(a)</strong>
       </div>
       <div style="grid-column:2;grid-row:2">
-        <img src="../../figs/bio_gap.png" width="200">
+        <img src="../../figs/syns/bio_gap.png" width="200">
       </div>
       <div style="grid-column:3;grid-row:1;align-self:end;justify-self:end">
         <strong>(b)</strong>
       </div>
       <div style="grid-column:4;grid-row:2">
-        <img style="width:200px" src="../../figs/gap_model.jpg">
+        <img style="width:200px" src="../../figs/syns/gap_model.jpg">
       </div>
     </div>
   <br>
@@ -331,7 +331,7 @@ $$
 
 在BrainPy的实现中，只需要在``update``函数里更新即可。
 
-![gap](../../figs/codes/gap.png)
+![gap](../../figs/syns/codes/zh/gap.png)
 
 定义好了缝隙连接的类以后，我们跑模拟来看给0号神经元输入时，1号神经元的电位变化。我们首先实例化两个LIF神经元模型，并用缝隙连接把它们连接起来。然后仅给0号神经元``neu0``一个恒定的电流，``neu1``没有外界输入。
 
@@ -363,7 +363,7 @@ plt.show()
 ```
 
 
-![png](../../figs/out/output_37_0.png)
+![png](../../figs/syns/out/output_37_0.png)
 
 结果图中，下图$$V_0$$表示0号神经元的膜电位变化，而上图$$V_1$$为1号神经元的膜电位。可以看到，当$$V_0$$在阈值以下上升时，$$V_1$$也跟着上升；而当$$V_0$$达到阈值产生动作电位时，$$V_1$$有一个快速的上升（spikelet）以后马上降到一个更低的值。
 
