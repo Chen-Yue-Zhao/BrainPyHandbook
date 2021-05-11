@@ -1,20 +1,19 @@
 ## 2.1 Synaptic Models
 
-In the previous section, we learned how to model neurons and their action potentials. In this section, we will focus on how neurons communicate.
+We have learned how to model the action potential of neurons in the previous chapters, so how are the neurons connected? How are the action potentials of neurons transmitted between different neurons? Here, we will introduce how to use BrainPy to simulate the communication between neurons.
 
 ### 2.1.1 Chemical Synapses
 
 #### Biological Background
 
-Fig. 2-1 shows the biological process of information transmission between neurons. The action potential of the presynaptic neuron makes the axon terminal release **neurotransmitters** (also called transmitters) into the synaptic cleft, and then the membrane potential of the postsynaptic cell changes after a brief delay. These changes are called postsynaptic potentials (PSP), and they can be either excitatory or inhibitory depending on the type of transmitter. **Glutamate** is one of the important excitatory neurotransmitters, and Gamma-aminobutyric acid (**GABA**) is one of the important inhibitory neurotransmitters.
+Figure 2-1 describes the biological process of information transmission between neurons. When the action potential of a presynaptic neuron is transmitted to the terminal of the axon, the presynaptic neuron releases **neurotransmitters** (also called transmitters). Neurotransmitters bind to receptors on postsynaptic neurons to cause changes in the membrane potential of postsynaptic neurons. These changes are called post-synaptic potential (PSP). Depending on the type of neurotransmitter, postsynaptic potentials can be excitatory or inhibitory. For example, **Glutamate** is an important excitatory neurotransmitter, while **GABA** is an important inhibitory neurotransmitter.
 
-Neurotransmitters affect their targets by interacting with receptors on the postsynaptic membrane. When the transmitter binds to the receptor, it would either open an ion channel (**ionotropic** receptors) or alter chemical reactions within the target cell (**metabotropic** receptors).
+The binding of neurotransmitters and receptors may cause the opening of ion channels (**ionotype** receptors) or change the process of chemical reactions (**metabolic** receptors).
 
-In this section, we will introduce how to model some common synapses and their implementations with ``BrainPy``:
+In this section, we will introduce how to use BrainPy to implement some common synapse models, mainly:
 
-- **AMPA** and **NMDA** receptors are both ionotropic receptors of Glutamate, but the NMDA receptor are typically blocked by magnesium ions (Mg$$^{2+}$$) and cannot respond to the glutamate. With repeated activation of AMPA receptors, the change in postsynaptic potential drives Mg$$^{2+}$$ out of NMDA channel, then the NMDA receptors are able to respond to glutamate. Therefore, the dynamics of NMDA is much slower than that of AMPA.
-
-- **GABA<sub>A</sub>** and **GABA<sub>B</sub>** are two classes of GABA receptors. GABA<sub>A</sub> receptors are ionotropic, typically producing fast inhibitory postsynaptic potential; while GABA<sub>B</sub> receptors are metabotropic receptors, typically producing a slow-occurring inhibitory postsynaptic potential.
+- **AMPA** and **NMDA**: They are both ionotropic receptors of glutamate, which can open ion channels directly after being bound. But NMDA is usually blocked by magnesium ions (Mg$$^{2+}$$) and cannot respond to the glutamate. Since magnesium ions are sensitive to voltage, when the postsynaptic potential exceeds the threshold of magnesium ions, magnesium ions will leave the NMDA channel, allowing NMDA to respond to glutamate. Therefore, the dynamics of NMDA are much slower than that of AMPA.
+- **GABA<sub>A</sub>** and **GABA<sub>B</sub>**: They are two classes of GABA receptors, of which GABA<sub>A</sub> are ionotropic receptors that typically produce fast inhibitory potentials; while GABA<sub>B</sub> are metabotropic receptors that typically produce slow inhibitory potentials.
 
 
 
@@ -25,7 +24,7 @@ In this section, we will introduce how to model some common synapses and their i
 </div>
 <div><br></div>
 
-In order to keep things simple, we use gating variable ``s`` to describe how many portion of ion channels will open whenever a presynaptic spike arrives while modeling. We will first introduce AMPA receptor as an example to show how to develop synapse models and implement them with ``BrainPy``.
+In order to model the process from neurotransmitter release to the alter of the membrane potential of postsynaptic neurons, we use a gating variable $$s$$ to describe how many portion of ion channels will be opened whenever a presynaptic neuron generates an action potential. Let's start with an example of AMPA and see how to develop a synapse model and implement it with ``BrainPy``.
 
 
 
