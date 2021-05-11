@@ -51,9 +51,9 @@ $$
 \beta_n(V) = 0.125 exp(\frac{-(V+65)}{80})
 $$
 
-![png](../../figs/neus/codes/HH1.png)
+<center><img src="../../figs/neus/codes/en/HH1.png">	</center>
 
-![png](../../figs/neus/codes/HH2.png)
+<center><img src="../../figs/neus/codes/en/HH2.png">	</center>
 
 *Run codes in our github repository: https://github.com/PKU-NIP-Lab/BrainModels*
 

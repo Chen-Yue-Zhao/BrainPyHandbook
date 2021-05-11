@@ -10,12 +10,7 @@ Hodgkin和Huxley（1952）在枪乌贼的巨轴突上用膜片钳技术记录了
 
 <center><img src="../../figs/neus/1-2.png">	</center>
 
-<<<<<<< HEAD
-<center><b>Fig. 1-4 细胞膜的等效电路图 | NeuroDynamics </b></center>
-=======
 <center><b>Fig. 1-4 神经元细胞膜的等效电路图（<cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>） </b></center>
->>>>>>> 196e1122a0174f17895749dbc9602a261ef3be20
-
 上图是将图1-1中真实神经元膜转换为电子元件所得到的等效电路图，图中电容$$C$$表示低电导的疏水性磷脂双层膜，电流$$I$$表示外界输入。
 
 右侧三个并联的电阻中，Na+和K+通道被单独建模为两个可变电阻$$R_{Na}$$和$$R_K$$（这是由于Na+和K+在动作电位的形成中特别重要），电阻$$R$$则代表膜上除了Na+通道和K+通道之外所有未指明的离子通道，有时也表示为下标$$_L$$或者$$_{leak}$$。电源 $$E_{Na}$$, $$E_K$$ 和$$E_L$$对应着由相应离子在膜两侧的浓度差所引起的电位差。
@@ -58,9 +53,9 @@ $$
 \beta_n(V) = 0.125 exp(\frac{-(V+65)}{80})
 $$
 
-![png](../../figs/neus/codes/HH1.png)
+<center><img src="../../figs/neus/codes/zh/HH1.png">	</center>
 
-![png](../../figs/neus/codes/HH2.png)
+<center><img src="../../figs/neus/codes/zh/HH1.png">	</center>
 
 *在我们的github仓库中运行代码：https://github.com/PKU-NIP-Lab/BrainModels（如无特殊说明，下同）*
 

@@ -20,17 +20,12 @@ $$
 
 <center><img src="../../figs/neus/LIF_circuit.png" width="200" height="271"></center>
 
-<<<<<<< HEAD
 <center><b>Fig1-4 LIF模型对应的细胞膜等效电路图（简化后）</b></center>
-=======
-<center><b>Fig1-4 LIF神经元细胞膜等效电路图</b></center>
->>>>>>> 196e1122a0174f17895749dbc9602a261ef3be20
-
 尽管LIF模型可以产生动作电位，但没有建模动作电位的形状。在发放动作电位前，LIF神经元膜电位的增长速度将逐渐降低，而并非像真实神经元那样先缓慢增长，在跨过阈值电位之后转为迅速增长。
 
 原始LIF模型还忽略了不应期。要模拟不应期，必须再补充一个条件判断：如果当前时刻距离上次发放的时间小于不应期时长，则神经元处于不应期，膜电位$$V$$不再更新。
 
-<center><img src="../../figs/neus/codes/LIF.PNG"></center>
+<center><img src="../../figs/neus/codes/zh/LIF.PNG"></center>
 
 <center><img src="../../figs/neus/out/output_37_0.png"></center>
 
@@ -45,9 +40,9 @@ $$
 
 在上式中，$$a_0$$和$$V_C$$共同控制着动作电位的初始化，其中，$$a_0$$控制着发放前膜电位的增长速度，也即膜电位相对时间变化的斜率；$$V_c$$是动作电位初始化的临界值，当膜电位$$V$$低于 $$V_C$$时，$$V$$缓慢增长，一旦越过 $$V_C$$， $$V$$就转为迅速增长。
 
-<center><img src="../../figs/neus/codes/QuaIF1.PNG"></center>
+<center><img src="../../figs/neus/codes/zh/QuaIF1.PNG"></center>
 
-<center><img src="../../figs/neus/codes/QuaIF2.PNG"></center>
+<center><img src="../../figs/neus/codes/zh/QuaIF2.PNG"></center>
 
 
 ![png](../../figs/neus/out/output_41_0.png)
@@ -63,9 +58,9 @@ $$
 
 在指数项中$$V_T$$是动作电位初始化的临界值，在其下$$V$$缓慢增长，其上$$V$$迅速增长。$$\Delta_T$$是ExpIF模型中动作电位的斜率。当$$\Delta_T\to 0$$时，ExpIF模型中动作电位的形状将趋近于$$V_{th} = V_T$$的LIF模型（Fourcaud-Trocme et al.，2003）。
 
-<center><img src="../../figs/neus/codes/ExpIF1.PNG"></center>
+<center><img src="../../figs/neus/codes/zh/ExpIF1.PNG"></center>
 
-<center><img src="../../figs/neus/codes/ExpIF2.PNG"></center>
+<center><img src="../../figs/neus/codes/zh/ExpIF2.PNG"></center>
 
 
 ![png](../../figs/neus/out/output_45_0.png)
@@ -97,9 +92,9 @@ $$
 
 在这样的一个动力学系统中，给神经元一个恒定输入，在连续数次发放后，$$w$$的值将会上升到一个高点，减慢$$V$$的增长速度，从而降低神经元的发放率。
 
-<center><img src="../../figs/neus/codes/AdExIF1.PNG"></center>
+<center><img src="../../figs/neus/codes/zh/AdExIF1.PNG"></center>
 
-<center><img src="../../figs/neus/codes/AdExIF2.PNG"></center>
+<center><img src="../../figs/neus/codes/zh/AdExIF2.PNG"></center>
 
 <center><img src = "../../figs/neus/out/output_51_0.png"></center>
 
@@ -124,7 +119,7 @@ $$
 
 式中，变量$$V$$表示膜电位，$$y$$和$$z$$是两个门控变量。在$$dV/dt$$方程中的参数$$b$$允许模型在脉冲式发放和爆发式发放之间切换，并控制脉冲式发放的频率。$$dz/dt$$方程中，参数$$r$$控制慢变量$$z$$的变化速率，影响神经元爆发式发放时，每次爆发包含的动作电位个数，并和参数$$b$$共同控制脉冲式发放的频率；参数$$s$$控制着神经元的适应行为。其它参数根据发放模式拟合得到。
 
-<center><img src="../../figs/neus/codes/HindmarshRose.PNG">	</center>
+<center><img src="../../figs/neus/codes/zh/HindmarshRose.PNG">	</center>
 
 ![png](../../figs/neus/out/output_58_1.png)
 
@@ -136,7 +131,7 @@ $$
 
 利用BrainPy的理论分析模块`analysis`，我们可以找出这种周期性的产生原因。将慢变量$$z$$近似为常数，则Hindmarsh-Rose模型的二维相图中，变量$$V$$和$$y$$的轨迹趋近于一个极限环。因此，这两个变量的值会沿极限环周期性变化。
 
-<center><img src="../../figs/neus/codes/HindmarshRose2.PNG" ></center>
+<center><img src="../../figs/neus/codes/zh/HindmarshRose2.PNG" ></center>
 
 <center><img src="../../figs/neus/1-16.png"></center>
 
@@ -176,9 +171,9 @@ $$
 
 阈值电位$$V_{th}$$也是可变的，受两个参数的调控：$$a$$ 描述了$$V_{th}$$对膜电位$$V$$ 的依赖，$$b$$描述了$$V_{th}$$接近阈值电位在时间趋近于无穷大时的值$$V_{th_{\infty}}$$的速率。$$V_{th_{reset}}$$是当神经元发放时，阈值电位被重置到的值。
 
-<center><img src="../../figs/neus/codes/GIF1.PNG">	</center>
+<center><img src="../../figs/neus/codes/zh/GIF1.PNG">	</center>
 
-<center><img src="../../figs/neus/codes/GIF2.PNG">	</center>
+<center><img src="../../figs/neus/codes/zh/GIF2.PNG">	</center>
 
 
 ![png](../../figs/neus/out/output_67_0.png)

@@ -20,6 +20,7 @@ $$
 
 下标$$x\in\{e, i\}$$表示该参数或变量对应兴奋性或抑制性的神经元群。在微分方程中，$$\tau_x$$表示神经元群的时间常数，参数$$k_x$$和$$r_x$$共同控制不应期，$$a_x$$和$$\theta_x$$分别是Sigmoid函数$$\mathcal{S}(input)$$的斜率和相位，且兴奋性和抑制性的神经元群分别收到外界输入$$I_{ext_{x}}$$。
 
-<center><img src="../../figs/neus/codes/frunit1.PNG">	</center>
+<center><img src="../../figs/neus/codes/zh/frunit1.PNG">	</center>
 
-<center><img src="../../figs/neus/codes/frunit2.PNG">	</center>
+<center><img src="../../figs/neus/codes/zh/frunit2.PNG">	</center>
+
