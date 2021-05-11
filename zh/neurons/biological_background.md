@@ -6,7 +6,7 @@
 
 <center><img src="../../figs/neus/neuron_membrane.png" width="584" height="300">	</center>
 
-<center><b> Fig. 1-1 Neuron membrane diagram | what-when-how.com </b></center>
+<center><b> Fig. 1-1 神经元细胞膜示意图（<cite id="reffn_1">what-when-how.com <sup><a href="#fn_1">1</a></sup></cite>） </b></center>
 
 上图是一张带有离子通道和磷脂双层膜的神经元膜一般性示意图。细胞膜将离子和液体划分为胞内和胞外两侧，部分地限制了胞内和胞外的物质交换，两侧离子不能自由交换达到电中性，于是产生了**膜电位**，即细胞膜两侧的电位差。
 
@@ -18,7 +18,7 @@
 
 <center><img src="../../figs/neus/action_potential.png" width="533" height="300">	</center>
 
-<center><b> Fig. 1-2 Action Potential | Wikipedia </b></center>
+<center><b> Fig. 1-2 动作电位（<cite id="reffn_2">wikipedia <sup><a href="#fn_2">2</a></sup></cite>） </b></center>
 
 图1-2中画出了神经元膜电位在一个动作电位中随时间的变化。由于比如说，外部输入引起的环境变化，图1-1中疏水性磷脂双层膜上的离子通道会在打开和关闭的状态之间切换，调控着离子穿过离子通道进行交换的速率。
 
@@ -30,6 +30,11 @@
 
 <center><img src="../../figs/neus/multiple_firing_pattern.png" width="600" height="300">	</center>
 
-<center><b>Figure 1-3 Some firing patterns</b></center>
+<center><b>Figure 1-3 部分神经元发放模式</b></center>
 
 在单神经元层面上，动作电位的形状和上述的发放模式正是计算神经科学的建模目标。
+
+
+
+[^ 1]: TODO
+[^ 2 ]: TODO

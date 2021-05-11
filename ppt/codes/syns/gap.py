@@ -46,9 +46,9 @@ class Gap_junction(bp.TwoEndConn):
 
 import matplotlib.pyplot as plt
 
-neu0 = bm.neurons.LIF(2, monitors=['V'], t_refractory=0)
+neu0 = bm.neurons.LIF(1, monitors=['V'], t_refractory=0)
 neu0.V = bp.ops.ones(neu0.V.shape) * -10.
-neu1 = bm.neurons.LIF(3, monitors=['V'], t_refractory=0)
+neu1 = bm.neurons.LIF(1, monitors=['V'], t_refractory=0)
 neu1.V = bp.ops.ones(neu1.V.shape) * -10.
 syn = Gap_junction(pre=neu0, post=neu1, conn=bp.connect.All2All(),
                    k_spikelet=5.)

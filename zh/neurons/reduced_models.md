@@ -20,7 +20,7 @@ $$
 
 <center><img src="../../figs/neus/LIF_circuit.png" width="200" height="271"></center>
 
-<center><b>Fig1-4 Equivalent circuit of LIF model</b></center>
+<center><b>Fig1-4 LIF神经元细胞膜等效电路图</b></center>
 
 尽管LIF模型可以产生动作电位，但没有建模动作电位的形状。在发放动作电位前，LIF神经元膜电位的增长速度将逐渐降低，而并非像真实神经元那样先缓慢增长，在跨过阈值电位之后转为迅速增长。
 

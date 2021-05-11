@@ -10,7 +10,7 @@ Hodgkin和Huxley（1952）在枪乌贼的巨轴突上用膜片钳技术记录了
 
 <center><img src="../../figs/neus/1-2.png">	</center>
 
-<center><b>Fig. 1-4 Equivalent circuit diagram | NeuroDynamics </b></center>
+<center><b>Fig. 1-4 神经元细胞膜的等效电路图（<cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>） </b></center>
 
 上图是将图1-1中真实神经元膜转换为电子元件所得到的等效电路图，图中电容$$C$$表示低电导的疏水性磷脂双层膜，电流$$I$$表示外界输入。
 
@@ -63,3 +63,6 @@ $$
 BrainPy仿真的HH模型的V-t图如下所示。我们在上一节中曾经提到，真实的动作电位可以分为去极化、复极化和不应期三个阶段，这三个阶段可以与下图一一对应。另外，在去极化时，可以看到膜电位先是累积外部输入缓慢上升，一旦越过某个特定值（图中约在-55mV左右）就转为快速增长，这也复现了真实动作电位的形状。
 
 <center><img src="../../figs/neus/out/output_27_0.png">	</center>
+
+[^1]: Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+

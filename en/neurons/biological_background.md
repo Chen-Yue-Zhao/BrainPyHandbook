@@ -6,7 +6,7 @@ To achieve our final goal of modeling neurons with computational neuroscience me
 
 <center><img src="../../figs/neus/neuron_membrane.png" width="584" height="300">	</center>
 
-<center><b> Fig. 1-1 Neuron membrane diagram | what-when-how.com </b></center>
+<center><b> Fig. 1-1 Neuron membrane diagram (<cite id="reffn_1">what-when-how.com <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
 
 The figure above is a general diagram of neuron membrane with phospholipid bilayer and ion channels. The membrane divides the ions and fluid into intracellular and extracellular, partially prevent them from exchanging, thus generates **membrane potential**---- the difference in electric potential across the membrane.
 
@@ -18,7 +18,7 @@ However, our neural system receives countless inputs every millisecond, from ext
 
 <center><img src="../../figs/neus/action_potential.png" width="533" height="300">	</center>
 
-<center><b> Fig. 1-2 Action Potential | Wikipedia </b></center>
+<center><b> Fig. 1-2 Action Potential (<cite id="reffn_2">wikipedia <sup><a href="#fn_2">2</a></sup></cite>) </b></center>
 
 Passing through the ion channels shown in Fig.1-1, ions on both sides of the hydrophobic phospholipid bilayer are exchanged. Due to changes in the environment caused by, for example, an external input, ion channels will switch between their open/close states, therefore allow/prohibit ion exchanges. During the switch, the ion concentrations (mainly Na+ and K+) change, induce a significant change on neuron's membrane potential: the membrane potential will raise to a peak value and then fall back in a short time period. Biologically, when such a series of potential changes happens, we say the neuron generates an **action potential** or a **spike**, or the neuron fires.
 
@@ -31,3 +31,8 @@ A single action potential is complex enough, but in our neural system, one singl
 <center><b>Figure 1-3 Some firing patterns</b></center>
 
 Those firing patterns, together with the shape of action potentials, are what computational neuroscience wants to model at the cellular level.
+
+
+
+[^ 1]: TODO
+[^ 2 ]: TODO
