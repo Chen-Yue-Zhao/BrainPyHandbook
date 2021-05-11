@@ -45,9 +45,9 @@ $$
 
 用BrainPy实现的代码如下，由于突触可塑性也是发生在突触上的，这里和突触模型一样，继承自``bp.TwoEndConn``。
 
-![stp_init](../../figs/syns/codes/zhstp_init.png)
+![stp_init](../../figs/syns/codes/zh/stp_init.png)
 
-![stp_update](../../figs/syns/codes/zhstp_update.png)
+![stp_update](../../figs/syns/codes/zh/stp_update.png)
 
 定义好STP的类以后，接下来让我们来定义跑模拟的函数。跟突触模型一样，我们需要实例化两个神经元群并把它们连接在一起。结果画图方面，除了$$s$$的动力学以外，我们也希望看到$$u$$和$$x$$随时间的变化，因此我们制定``monitors=['s', 'u', 'x']``。
 
@@ -148,9 +148,9 @@ $$
 
 现在让我们看看如何使用BrainPy来实现这个模型。其中$$s$$动力学的实现部分，我们跟STP模型一样采用单指数衰减模型。
 
-![stdp_init](../../figs/syns/codes/zhstdp_init.png)
+![stdp_init](../../figs/syns/codes/zh/stdp_init.png)
 
-![stdp_update](../../figs/syns/codes/zhstdp_update.png)
+![stdp_update](../../figs/syns/codes/zh/stdp_update.png)
 
 我们通过给予突触前和突触后的两群神经元不同的电流输入来控制它们产生脉冲的时间。首先我们在$$t=5ms$$时刻给突触前神经元第一段电流（每一段强度为30 $$\mu A$$，并持续15ms，保证LIF模型会产生一个脉冲），然后在$$t=10ms$$才给突触后神经元一个输入。每段输入之间间隔$$15ms$$。以此在前三对脉冲中保持$$t_{post}=t_{pre}+5$$。接下来我们设置一个较长的间隔，然后把刺激顺序调整为$$t_{post}=t_{pre}-3$$。
 
@@ -256,11 +256,11 @@ $$
 
 下面我们用BrainPy来实现Oja法则。
 
-![oja_def](../../figs/syns/codes/zhoja_def.png)
+![oja_def](../../figs/syns/codes/zh/oja_def.png)
 
 由于Oja法则是发放率模型，它需要突触前后神经元具有变量$$r$$，因此我们定义一个简单的发放率神经元模型来观察两组神经元的学习规则。
 
-![oja_run_neu](../../figs/syns/codes/zhoja_run_neu.png)
+![oja_run_neu](../../figs/syns/codes/zh/oja_run_neu.png)
 
 
 
@@ -273,7 +273,7 @@ $$
 </div>
 <div><br></div>
 
-![oja_run](../../figs/syns/codes/zhoja_run.png)
+![oja_run](../../figs/syns/codes/zh/oja_run.png)
 
 
 
@@ -304,7 +304,7 @@ $$
 
 我们将实现和Oja法则相同的连接方式（图2-3），但给的刺激不同。在这里，我们让$$j_1$$（蓝色）和$$j_2$$（红色）交替发放，且$$j_1$$的发放率比$$j_2$$高。我们动态调整阈值为$$r_i$$的时间平均，即 $$r_\theta = f(r_i)=\frac {\int dt r_i}T$$。BrainPy实现的代码如下。
 
-![bcm_def](../../figs/syns/codes/zhbcm_def.png)
+![bcm_def](../../figs/syns/codes/zh/bcm_def.png)
 
 定义了BCM类以后，我们可以跑模拟了。
 
