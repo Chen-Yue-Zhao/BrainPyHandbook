@@ -10,7 +10,7 @@ The randomness and noise in E/I balanced network give  each neuron in the networ
 
 <center><img src="../../figs/snns/3-2.png" width="616" height="300"></center>
 
-<center><b>Fig.3-1 Structure of E/I balanced network | Vreeswijk and Sompolinsky, 1996</b></center>
+<center><b>Fig.3-1 Structure of E/I balanced network (<cite id="reffn_1">Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
 
 Vreeswijk and Sompolinsky also suggested a possible function of this irregular firing pattern: E/I balanced network can respond to the changes of external stimulus quickly.
 
@@ -18,7 +18,7 @@ As shown in Fig. 3-3, when there is no external input, the distribution of neuro
 
 <center><img src="../../figs/snns/EI_neuron_distribution.jpg" width="352" hight="300"></center>
 
-<center><b>Fig.3-2 Distribution of neuron membrane potentials in E/I balanced network | Tian et al., 2020</b></center>
+<center><b>Fig.3-2 Distribution of neuron membrane potentials in E/I balanced network (<cite id="reffn_2">Tian et al.，2020 <sup><a href="#fn_2">2</a></sup></cite>)</b></center>
 
 
 When we give the network a small constant external stimulus, those neurons whose membrane potentials fall near the threshold potential will soon meet the threshold, therefore spike rapidly. On the network scale, the firing rate of the network can adjust rapidly once the input changes.
@@ -55,7 +55,7 @@ For example, in the visual motion discrimination task (Roitman and Shadlen, 2002
 
 <center><img src="../../figs/snns/3-4.png" width="440" height="200"> </center>
 
-<center><b>Fig.3-4 Experimental Diagram</b></center>
+<center><b>Fig.3-4 Experimental Diagram (<cite id="reffn_3">Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>)</b></center>
 
 Wang (2002) proposed a decision making network to model the activity of rhesus LIP neurons during decision making period in the visual motion discrimination task. 
 
@@ -65,7 +65,7 @@ To accomplish the decision making task, among the excitatory neuron group, two s
 
 <center><img src="../../figs/snns/3-5.png" width="440" height="240"></center>
 
-<center><b>Fig.3-5 structure of decision makingnetwork</b></center>
+<center><b>Fig.3-5 structure of decision making network (<cite id="reffn_4">Wang，2002<sup><a href="#fn_4">4</a></sup></cite>)</b></center>
 
 <center><img src="../../figs/snns/codes/DMnet2.PNG">	</center>
 
@@ -122,3 +122,7 @@ During the simulation, subgroup A receives a larger stimulus input than B, after
 
 <center><b>Fig.3-6 decision making network</b></center>
 
+[^ 1]: Van Vreeswijk, Carl, and Haim Sompolinsky. "Chaos in neuronal networks with balanced excitatory and inhibitory activity." *Science* 274.5293 (1996): 1724-1726.
+[^ 2 ]: Tian, Gengshuo, et al. "Excitation-Inhibition Balanced Neural Networks for Fast Signal Detection." *Frontiers in Computational Neuroscience* 14 (2020): 79.
+[^ 3 ]: Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+[^ 4 ]: Wang, Xiao-Jing. "Probabilistic decision making by slow reverberation in cortical circuits." *Neuron* 36.5 (2002): 955-968.
