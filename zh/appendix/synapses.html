@@ -1,0 +1,1239 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>突触模型 · BrainPy手册</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="networks.html" />
+    
+    
+    <link rel="prev" href="neurons.md" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    0. 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../neurons.html">
+            
+                <a href="../neurons.html">
+            
+                    
+                    1. 神经元模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../neurons/biological_background.html">
+            
+                <a href="../neurons/biological_background.html">
+            
+                    
+                    1.1 生物背景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../neurons/biophysical_models.html">
+            
+                <a href="../neurons/biophysical_models.html">
+            
+                    
+                    1.2 生理模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../neurons/reduced_models.html">
+            
+                <a href="../neurons/reduced_models.html">
+            
+                    
+                    1.3 简化模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../neurons/firing_rate_models.html">
+            
+                <a href="../neurons/firing_rate_models.html">
+            
+                    
+                    1.4 发放率模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../synapses.html">
+            
+                <a href="../synapses.html">
+            
+                    
+                    2. 突触模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../synapses/dynamics.html">
+            
+                <a href="../synapses/dynamics.html">
+            
+                    
+                    2.1 突触动力学模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../synapses/plasticity.html">
+            
+                <a href="../synapses/plasticity.html">
+            
+                    
+                    2.2 突触可塑性模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../networks.html">
+            
+                <a href="../networks.html">
+            
+                    
+                    3. 网络模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../networks/spiking_neural_networks.html">
+            
+                <a href="../networks/spiking_neural_networks.html">
+            
+                    
+                    3.1 脉冲神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../networks/rate_models.html">
+            
+                <a href="../networks/rate_models.html">
+            
+                    
+                    3.2 发放率神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    附录
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="neurons.md">
+            
+                <span>
+            
+                    
+                    神经元模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.2" data-path="synapses.html">
+            
+                <a href="synapses.html">
+            
+                    
+                    突触模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="networks.html">
+            
+                <a href="networks.html">
+            
+                    
+                    网络模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >突触模型</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x9644;&#x5F55;&#xFF1A;&#x7A81;&#x89E6;&#x6A21;&#x578B;">&#x9644;&#x5F55;&#xFF1A;&#x7A81;&#x89E6;&#x6A21;&#x578B;</h1>
+<h2 id="&#x7A81;&#x89E6;&#x52A8;&#x529B;&#x5B66;&#x6A21;&#x578B;">&#x7A81;&#x89E6;&#x52A8;&#x529B;&#x5B66;&#x6A21;&#x578B;</h2>
+<h3 id="ampa&#x6A21;&#x578B;">AMPA&#x6A21;&#x578B;</h3>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> brainpy <span class="hljs-keyword">as</span> bp
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AMPA</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, t, TT, alpha, beta)</span>:</span>
+    ds = alpha * TT * (<span class="hljs-number">1</span> - s) - beta * s
+    <span class="hljs-keyword">return</span> ds
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, alpha=<span class="hljs-number">0.98</span>, beta=<span class="hljs-number">0.18</span>, T=<span class="hljs-number">0.5</span>,
+               T_duration=<span class="hljs-number">0.5</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.alpha = alpha
+    self.beta = beta
+    self.T = T
+    self.T_duration = T_duration
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># variables</span>
+    self.s = bp.ops.zeros(self.size)
+    self.t_last_pre_spike = <span class="hljs-number">-1e7</span> * bp.ops.ones(self.size)
+
+    self.int_s = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;exponential_euler&apos;</span>)
+    super(AMPA, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+      post_id = self.post_ids[i]
+
+      <span class="hljs-keyword">if</span> self.pre.spike[pre_id]:
+        self.t_last_pre_spike[pre_id] = _t
+      TT = ((_t - self.t_last_pre_spike[pre_id])
+            &lt; self.T_duration) * self.T
+      self.s[i] = self.int_s(self.s[i], _t, TT, self.alpha, self.beta)
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> brainmodels <span class="hljs-keyword">as</span> bm
+
+bp.backend.set(backend=<span class="hljs-string">&apos;numba&apos;</span>, dt=<span class="hljs-number">0.1</span>)
+bm.set_backend(backend=<span class="hljs-string">&apos;numba&apos;</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run_syn</span><span class="hljs-params">(syn_model, **kwargs)</span>:</span>
+  neu1 = bm.neurons.LIF(<span class="hljs-number">2</span>, monitors=[<span class="hljs-string">&apos;V&apos;</span>])
+  neu2 = bm.neurons.LIF(<span class="hljs-number">3</span>, monitors=[<span class="hljs-string">&apos;V&apos;</span>])
+
+  syn = syn_model(pre=neu1, post=neu2, conn=bp.connect.All2All(),
+                  monitors=[<span class="hljs-string">&apos;s&apos;</span>], **kwargs)
+
+  net = bp.Network(neu1, syn, neu2)
+  net.run(<span class="hljs-number">30.</span>, inputs=(neu1, <span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-number">35.</span>))
+  bp.visualize.line_plot(net.ts, syn.mon.s, ylabel=<span class="hljs-string">&apos;s&apos;</span>, show=<span class="hljs-keyword">True</span>)
+</code></pre>
+<pre><code class="lang-python">run_syn(AMPA, T_duration=<span class="hljs-number">3.</span>)
+</code></pre>
+<h3 id="nmda&#x6A21;&#x578B;">NMDA&#x6A21;&#x578B;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NMDA</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, x, t, tau_rise, tau_decay, a)</span>:</span>
+    dsdt = -s / tau_decay + a * x * (<span class="hljs-number">1</span> - s)
+    dxdt = -x / tau_rise
+    <span class="hljs-keyword">return</span> dsdt, dxdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, delay=<span class="hljs-number">0.</span>, g_max=<span class="hljs-number">0.15</span>, E=<span class="hljs-number">0.</span>, cc_Mg=<span class="hljs-number">1.2</span>,
+               alpha=<span class="hljs-number">0.062</span>, beta=<span class="hljs-number">3.57</span>, tau=<span class="hljs-number">100</span>, a=<span class="hljs-number">0.5</span>, tau_rise=<span class="hljs-number">2.</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.g_max = g_max
+    self.E = E
+    self.alpha = alpha
+    self.beta = beta
+    self.cc_Mg = cc_Mg
+    self.tau = tau
+    self.tau_rise = tau_rise
+    self.a = a
+    self.delay = delay
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># variables</span>
+    self.s = bp.ops.zeros(self.size)
+    self.x = bp.ops.zeros(self.size)
+    self.g = self.register_constant_delay(<span class="hljs-string">&apos;g&apos;</span>, size=self.size,
+                                          delay_time=delay)
+
+    self.integral = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;rk4&apos;</span>)
+
+    super(NMDA, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+      post_id = self.post_ids[i]
+
+      self.x[i] += self.pre.spike[pre_id]
+      self.s[i], self.x[i] = self.integral(self.s[i], self.x[i], _t,
+                                           self.tau_rise, self.tau,
+                                           self.a)
+
+      <span class="hljs-comment"># output</span>
+      g_inf_exp = bp.ops.exp(-self.alpha * self.post.V[post_id])
+      g_inf = <span class="hljs-number">1</span> + g_inf_exp * self.cc_Mg / self.beta
+
+      self.g.push(i, self.g_max * self.s[i] / g_inf)
+
+      I_syn = self.g.pull(i) * (self.post.V[post_id] - self.E)
+      self.post.input[post_id] -= I_syn
+</code></pre>
+<pre><code class="lang-python">run_syn(NMDA)
+</code></pre>
+<h3 id="gabab&#x6A21;&#x578B;">GABA<sub>B</sub>&#x6A21;&#x578B;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GABAb</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(R, G, t, k3, TT, k4, k1, k2)</span>:</span>
+    dRdt = k3 * TT * (<span class="hljs-number">1</span> - R) - k4 * R
+    dGdt = k1 * R - k2 * G
+    <span class="hljs-keyword">return</span> dRdt, dGdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, delay=<span class="hljs-number">0.</span>, g_max=<span class="hljs-number">0.02</span>, E=<span class="hljs-number">-95.</span>,
+               k1=<span class="hljs-number">0.18</span>, k2=<span class="hljs-number">0.034</span>, k3=<span class="hljs-number">0.09</span>, k4=<span class="hljs-number">0.0012</span>, kd=<span class="hljs-number">100.</span>, T=<span class="hljs-number">0.5</span>,
+               T_duration=<span class="hljs-number">0.3</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># params</span>
+    self.g_max = g_max
+    self.E = E
+    self.k1 = k1
+    self.k2 = k2
+    self.k3 = k3
+    self.k4 = k4
+    self.kd = kd
+    self.T = T
+    self.T_duration = T_duration
+
+    <span class="hljs-comment"># conns</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># data</span>
+    self.R = bp.ops.zeros(self.size)
+    self.G = bp.ops.zeros(self.size)
+    self.t_last_pre_spike = bp.ops.ones(self.size) * <span class="hljs-number">-1e7</span>
+    self.s = bp.ops.zeros(self.size)
+    self.g = self.register_constant_delay(<span class="hljs-string">&apos;g&apos;</span>, size=self.size,
+                                          delay_time=delay)
+
+    self.integral = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;rk4&apos;</span>)
+    super(GABAb, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+      post_id = self.post_ids[i]
+
+      <span class="hljs-keyword">if</span> self.pre.spike[pre_id]:
+        self.t_last_pre_spike[i] = _t
+      TT = ((_t - self.t_last_pre_spike[i]) &lt; self.T_duration) * self.T
+
+      self.R[i], G = self.integral(self.R[i], self.G[i], _t, self.k3,
+                                   TT, self.k4, self.k1, self.k2)
+      self.s[i] = G ** <span class="hljs-number">4</span> / (G ** <span class="hljs-number">4</span> + self.kd)
+      self.G[i] = G
+
+      self.g.push(i, self.g_max * self.s[i])
+      I_syn = self.g.pull(i) * (self.post.V[post_id] - self.E)
+      self.post.input[post_id] -= I_syn
+</code></pre>
+<pre><code class="lang-python">neu1 = bm.neurons.LIF(<span class="hljs-number">2</span>, monitors=[<span class="hljs-string">&apos;V&apos;</span>])
+neu2 = bm.neurons.LIF(<span class="hljs-number">3</span>, monitors=[<span class="hljs-string">&apos;V&apos;</span>])
+syn = GABAb(pre=neu1, post=neu2, conn=bp.connect.All2All(), monitors=[<span class="hljs-string">&apos;s&apos;</span>])
+net = bp.Network(neu1, syn, neu2)
+
+<span class="hljs-comment"># input</span>
+I, dur = bp.inputs.constant_current([(<span class="hljs-number">25</span>, <span class="hljs-number">20</span>), (<span class="hljs-number">0</span>, <span class="hljs-number">1000</span>)])
+net.run(dur, inputs=(neu1, <span class="hljs-string">&apos;input&apos;</span>, I))
+
+bp.visualize.line_plot(net.ts, syn.mon.s, ylabel=<span class="hljs-string">&apos;s&apos;</span>, show=<span class="hljs-keyword">True</span>)
+</code></pre>
+<h3 id="&#x53CC;&#x6307;&#x6570;&#x5DEE;&#xFF08;differences-of-two-exponentials&#xFF09;">&#x53CC;&#x6307;&#x6570;&#x5DEE;&#xFF08;Differences of two exponentials&#xFF09;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Two_exponentials</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, x, t, tau1, tau2)</span>:</span>
+    dxdt = (-(tau1 + tau2) * x - s) / (tau1 * tau2)
+    dsdt = x
+    <span class="hljs-keyword">return</span> dsdt, dxdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, tau1=<span class="hljs-number">1.0</span>, tau2=<span class="hljs-number">3.0</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.tau1 = tau1
+    self.tau2 = tau2
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># variables</span>
+    self.s = bp.ops.zeros(self.size)
+    self.x = bp.ops.zeros(self.size)
+
+    self.integral = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;rk4&apos;</span>)
+
+    super(Two_exponentials, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+
+      self.s[i], self.x[i] = self.integral(self.s[i], self.x[i], _t,
+                                           self.tau1, self.tau2)
+      self.x[i] += self.pre.spike[pre_id]
+</code></pre>
+<pre><code class="lang-python">run_syn(Two_exponentials, tau1=<span class="hljs-number">2.</span>)
+</code></pre>
+<h3 id="alpha&#x7A81;&#x89E6;">Alpha&#x7A81;&#x89E6;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Alpha</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, x, t, tau)</span>:</span>
+    dxdt = (<span class="hljs-number">-2</span> * tau * x - s) / (tau ** <span class="hljs-number">2</span>)
+    dsdt = x
+    <span class="hljs-keyword">return</span> dsdt, dxdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, tau=<span class="hljs-number">3.0</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.tau = tau
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># variables</span>
+    self.s = bp.ops.zeros(self.size)
+    self.x = bp.ops.zeros(self.size)
+
+    self.integral = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;rk4&apos;</span>)
+
+    super(Alpha, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+
+      self.s[i], self.x[i] = self.integral(self.s[i], self.x[i], _t,
+                                           self.tau)
+      self.x[i] += self.pre.spike[pre_id]
+</code></pre>
+<pre><code class="lang-python">run_syn(Alpha)
+</code></pre>
+<h3 id="&#x5355;&#x6307;&#x6570;&#x8870;&#x51CF;&#xFF08;single-exponential-decay&#xFF09;">&#x5355;&#x6307;&#x6570;&#x8870;&#x51CF;&#xFF08;Single exponential decay&#xFF09;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Exponential</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, t, tau)</span>:</span>
+    ds = -s / tau
+    <span class="hljs-keyword">return</span> ds
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, tau=<span class="hljs-number">8.0</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.tau = tau
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># variables</span>
+    self.s = bp.ops.zeros(self.size)
+
+    self.integral = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;exponential_euler&apos;</span>)
+
+    super(Exponential, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+
+      self.s[i] = self.integral(self.s[i], _t, self.tau)
+      self.s[i] += self.pre.spike[pre_id]
+</code></pre>
+<pre><code class="lang-python">run_syn(Exponential)
+</code></pre>
+<h3 id="&#x7535;&#x538B;&#x8DF3;&#x53D8;&#xFF08;voltage-jump&#xFF09;">&#x7535;&#x538B;&#x8DF3;&#x53D8;&#xFF08;Voltage jump&#xFF09;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Voltage_jump</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, **kwargs)</span>:</span>
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># variables</span>
+    self.s = bp.ops.zeros(self.size)
+
+    super(Voltage_jump, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+      self.s[i] = self.pre.spike[pre_id]
+</code></pre>
+<pre><code class="lang-python">run_syn(Voltage_jump)
+</code></pre>
+<h3 id="&#x7F1D;&#x9699;&#x8FDE;&#x63A5;&#xFF08;gap-junction&#xFF09;">&#x7F1D;&#x9699;&#x8FDE;&#x63A5;&#xFF08;Gap junction&#xFF09;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Gap_junction</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, delay=<span class="hljs-number">0.</span>, k_spikelet=<span class="hljs-number">0.1</span>,
+               post_refractory=False, **kwargs)</span>:</span>
+    self.delay = delay
+    self.k_spikelet = k_spikelet
+    self.post_has_refractory = post_refractory
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># variables</span>
+    self.w = bp.ops.ones(self.size)
+    self.spikelet = self.register_constant_delay(<span class="hljs-string">&apos;spikelet&apos;</span>, size=self.size,
+                                                 delay_time=self.delay)
+
+    super(Gap_junction, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+      post_id = self.post_ids[i]
+
+      self.post.input[post_id] += self.w[i] * (self.pre.V[pre_id] -
+                                               self.post.V[post_id])
+
+      self.spikelet.push(i, self.w[i] * self.k_spikelet *
+                         self.pre.spike[pre_id])
+
+      out = self.spikelet.pull(i)
+      <span class="hljs-keyword">if</span> self.post_has_refractory:
+        self.post.V[post_id] += out * (<span class="hljs-number">1.</span> - self.post.refractory[post_id])
+      <span class="hljs-keyword">else</span>:
+        self.post.V[post_id] += out
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+neu0 = bm.neurons.LIF(<span class="hljs-number">1</span>, monitors=[<span class="hljs-string">&apos;V&apos;</span>], t_refractory=<span class="hljs-number">0</span>)
+neu0.V = bp.ops.ones(neu0.V.shape) * <span class="hljs-number">-10.</span>
+neu1 = bm.neurons.LIF(<span class="hljs-number">1</span>, monitors=[<span class="hljs-string">&apos;V&apos;</span>], t_refractory=<span class="hljs-number">0</span>)
+neu1.V = bp.ops.ones(neu1.V.shape) * <span class="hljs-number">-10.</span>
+syn = Gap_junction(pre=neu0, post=neu1, conn=bp.connect.All2All(),
+                   k_spikelet=<span class="hljs-number">5.</span>)
+syn.w = bp.ops.ones(syn.w.shape) * <span class="hljs-number">.5</span>
+
+net = bp.Network(neu0, neu1, syn)
+net.run(<span class="hljs-number">100.</span>, inputs=(neu0, <span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-number">30.</span>))
+
+fig, gs = bp.visualize.get_figure(row_num=<span class="hljs-number">2</span>, col_num=<span class="hljs-number">1</span>, )
+
+fig.add_subplot(gs[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, neu0.mon.V[:, <span class="hljs-number">0</span>], label=<span class="hljs-string">&apos;V0&apos;</span>)
+plt.legend()
+
+fig.add_subplot(gs[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, neu1.mon.V[:, <span class="hljs-number">0</span>], label=<span class="hljs-string">&apos;V1&apos;</span>)
+plt.legend()
+plt.show()
+</code></pre>
+<h2 id="&#x7A81;&#x89E6;&#x53EF;&#x5851;&#x6027;&#x6A21;&#x578B;">&#x7A81;&#x89E6;&#x53EF;&#x5851;&#x6027;&#x6A21;&#x578B;</h2>
+<h3 id="&#x7A81;&#x89E6;&#x77ED;&#x65F6;&#x7A0B;&#x53EF;&#x5851;&#x6027;&#xFF08;stp&#xFF09;">&#x7A81;&#x89E6;&#x77ED;&#x65F6;&#x7A0B;&#x53EF;&#x5851;&#x6027;&#xFF08;STP&#xFF09;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">STP</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, u, x, t, tau, tau_d, tau_f)</span>:</span>
+    dsdt = -s / tau
+    dudt = - u / tau_f
+    dxdt = (<span class="hljs-number">1</span> - x) / tau_d
+    <span class="hljs-keyword">return</span> dsdt, dudt, dxdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, delay=<span class="hljs-number">0.</span>, U=<span class="hljs-number">0.15</span>, tau_f=<span class="hljs-number">1500.</span>,
+               tau_d=<span class="hljs-number">200.</span>, tau=<span class="hljs-number">8.</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.tau_d = tau_d
+    self.tau_f = tau_f
+    self.tau = tau
+    self.U = U
+    self.delay = delay
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># variables</span>
+    self.s = bp.ops.zeros(self.size)
+    self.x = bp.ops.ones(self.size)
+    self.u = bp.ops.zeros(self.size)
+    self.w = bp.ops.ones(self.size)
+    self.I_syn = self.register_constant_delay(<span class="hljs-string">&apos;I_syn&apos;</span>, size=self.size,
+                                              delay_time=delay)
+
+    self.integral = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;exponential_euler&apos;</span>)
+
+    super(STP, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+
+      self.s[i], u, x = self.integral(self.s[i], self.u[i], self.x[i], _t,
+                                      self.tau, self.tau_d, self.tau_f)
+
+      <span class="hljs-keyword">if</span> self.pre.spike[pre_id] &gt; <span class="hljs-number">0</span>:
+        u += self.U * (<span class="hljs-number">1</span> - self.u[i])
+        self.s[i] += self.w[i] * u * self.x[i]
+        x -= u * self.x[i]
+      self.u[i] = u
+      self.x[i] = x
+
+      <span class="hljs-comment"># output</span>
+      post_id = self.post_ids[i]
+      self.I_syn.push(i, self.s[i])
+      self.post.input[post_id] += self.I_syn.pull(i)
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run_stp</span><span class="hljs-params">(**kwargs)</span>:</span>
+    neu1 = bm.neurons.LIF(<span class="hljs-number">1</span>, monitors=[<span class="hljs-string">&apos;V&apos;</span>])
+    neu2 = bm.neurons.LIF(<span class="hljs-number">1</span>, monitors=[<span class="hljs-string">&apos;V&apos;</span>])
+
+    syn = STP(pre=neu1, post=neu2, conn=bp.connect.All2All(),
+              monitors=[<span class="hljs-string">&apos;s&apos;</span>, <span class="hljs-string">&apos;u&apos;</span>, <span class="hljs-string">&apos;x&apos;</span>], **kwargs)
+    net = bp.Network(neu1, syn, neu2)
+    net.run(<span class="hljs-number">100.</span>, inputs=(neu1, <span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-number">28.</span>))
+
+    <span class="hljs-comment"># plot</span>
+    fig, gs = bp.visualize.get_figure(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>)
+
+    fig.add_subplot(gs[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+    plt.plot(net.ts, syn.mon.u[:, <span class="hljs-number">0</span>], label=<span class="hljs-string">&apos;u&apos;</span>)
+    plt.plot(net.ts, syn.mon.x[:, <span class="hljs-number">0</span>], label=<span class="hljs-string">&apos;x&apos;</span>)
+    plt.legend()
+
+    fig.add_subplot(gs[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])
+    plt.plot(net.ts, syn.mon.s[:, <span class="hljs-number">0</span>], label=<span class="hljs-string">&apos;s&apos;</span>)
+    plt.legend()
+
+    plt.xlabel(<span class="hljs-string">&apos;Time (ms)&apos;</span>)
+    plt.show()
+</code></pre>
+<pre><code class="lang-python">run_stp(U=<span class="hljs-number">0.2</span>, tau_d=<span class="hljs-number">150.</span>, tau_f=<span class="hljs-number">2.</span>)
+</code></pre>
+<pre><code class="lang-python">run_stp(U=<span class="hljs-number">0.1</span>, tau_d=<span class="hljs-number">10</span>, tau_f=<span class="hljs-number">100.</span>)
+</code></pre>
+<h3 id="&#x8109;&#x51B2;&#x65F6;&#x95F4;&#x4F9D;&#x8D56;&#x53EF;&#x5851;&#x6027;&#xFF08;stdp&#xFF09;">&#x8109;&#x51B2;&#x65F6;&#x95F4;&#x4F9D;&#x8D56;&#x53EF;&#x5851;&#x6027;&#xFF08;STDP&#xFF09;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">STDP</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, A_s, A_t, t, tau, tau_s, tau_t)</span>:</span>
+    dsdt = -s / tau
+    dAsdt = - A_s / tau_s
+    dAtdt = - A_t / tau_t
+    <span class="hljs-keyword">return</span> dsdt, dAsdt, dAtdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, delay=<span class="hljs-number">0.</span>, delta_A_s=<span class="hljs-number">0.5</span>,
+               delta_A_t=<span class="hljs-number">0.5</span>, w_min=<span class="hljs-number">0.</span>, w_max=<span class="hljs-number">20.</span>, tau_s=<span class="hljs-number">10.</span>, tau_t=<span class="hljs-number">10.</span>,
+               tau=<span class="hljs-number">10.</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.tau_s = tau_s
+    self.tau_t = tau_t
+    self.tau = tau
+    self.delta_A_s = delta_A_s
+    self.delta_A_t = delta_A_t
+    self.w_min = w_min
+    self.w_max = w_max
+    self.delay = delay
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.pre_ids, self.post_ids = self.conn.requires(<span class="hljs-string">&apos;pre_ids&apos;</span>, <span class="hljs-string">&apos;post_ids&apos;</span>)
+    self.size = len(self.pre_ids)
+
+    <span class="hljs-comment"># variables</span>
+    self.s = bp.ops.zeros(self.size)
+    self.A_s = bp.ops.zeros(self.size)
+    self.A_t = bp.ops.zeros(self.size)
+    self.w = bp.ops.ones(self.size) * <span class="hljs-number">1.</span>
+    self.I_syn = self.register_constant_delay(<span class="hljs-string">&apos;I_syn&apos;</span>, size=self.size,
+                                              delay_time=delay)
+    self.integral = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;exponential_euler&apos;</span>)
+
+    super(STDP, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.size):
+      pre_id = self.pre_ids[i]
+      post_id = self.post_ids[i]
+
+      self.s[i], A_s, A_t = self.integral(self.s[i], self.A_s[i],
+                                          self.A_t[i], _t, self.tau,
+                                          self.tau_s, self.tau_t)
+
+      w = self.w[i]
+      <span class="hljs-keyword">if</span> self.pre.spike[pre_id] &gt; <span class="hljs-number">0</span>:
+        self.s[i] += w
+        A_s += self.delta_A_s
+        w -= A_t
+
+      <span class="hljs-keyword">if</span> self.post.spike[post_id] &gt; <span class="hljs-number">0</span>:
+        A_t += self.delta_A_t
+        w += A_s
+
+      self.A_s[i] = A_s
+      self.A_t[i] = A_t
+
+      self.w[i] = bp.ops.clip(w, self.w_min, self.w_max)
+
+      <span class="hljs-comment"># output</span>
+      self.I_syn.push(i, self.s[i])
+      self.post.input[post_id] += self.I_syn.pull(i)
+</code></pre>
+<pre><code class="lang-python">duration = <span class="hljs-number">300.</span>
+(I_pre, _) = bp.inputs.constant_current([(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),   <span class="hljs-comment"># pre at 5ms</span>
+                 (<span class="hljs-number">0</span>, <span class="hljs-number">15</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),  
+                 (<span class="hljs-number">0</span>, <span class="hljs-number">15</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),
+                 (<span class="hljs-number">0</span>, <span class="hljs-number">98</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),  <span class="hljs-comment"># switch order: t_interval=98ms</span>
+                 (<span class="hljs-number">0</span>, <span class="hljs-number">15</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),
+                 (<span class="hljs-number">0</span>, <span class="hljs-number">15</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),
+                 (<span class="hljs-number">0</span>, duration<span class="hljs-number">-155</span><span class="hljs-number">-98</span>)])
+(I_post, _) = bp.inputs.constant_current([(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>), <span class="hljs-comment"># post at 10 </span>
+                  (<span class="hljs-number">0</span>, <span class="hljs-number">15</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),
+                  (<span class="hljs-number">0</span>, <span class="hljs-number">15</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),
+                  (<span class="hljs-number">0</span>, <span class="hljs-number">90</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>), <span class="hljs-comment"># switch order: t_interval=98-8=90(ms)</span>
+                  (<span class="hljs-number">0</span>, <span class="hljs-number">15</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),
+                  (<span class="hljs-number">0</span>, <span class="hljs-number">15</span>), (<span class="hljs-number">30</span>, <span class="hljs-number">15</span>),
+                  (<span class="hljs-number">0</span>, duration<span class="hljs-number">-160</span><span class="hljs-number">-90</span>)])
+</code></pre>
+<pre><code class="lang-python">pre = bm.neurons.LIF(<span class="hljs-number">1</span>, monitors=[<span class="hljs-string">&apos;spike&apos;</span>])
+post = bm.neurons.LIF(<span class="hljs-number">1</span>, monitors=[<span class="hljs-string">&apos;spike&apos;</span>])
+
+syn = STDP(pre=pre, post=post, conn=bp.connect.All2All(),
+           monitors=[<span class="hljs-string">&apos;s&apos;</span>, <span class="hljs-string">&apos;w&apos;</span>])
+net = bp.Network(pre, syn, post)
+net.run(duration, inputs=[(pre, <span class="hljs-string">&apos;input&apos;</span>, I_pre), (post, <span class="hljs-string">&apos;input&apos;</span>, I_post)])
+
+<span class="hljs-comment"># plot</span>
+fig, gs = bp.visualize.get_figure(<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hide_spines</span><span class="hljs-params">(my_ax)</span>:</span>
+    plt.legend()
+    plt.xticks([])
+    plt.yticks([])
+    my_ax.spines[<span class="hljs-string">&apos;left&apos;</span>].set_visible(<span class="hljs-keyword">False</span>)
+    my_ax.spines[<span class="hljs-string">&apos;right&apos;</span>].set_visible(<span class="hljs-keyword">False</span>)
+    my_ax.spines[<span class="hljs-string">&apos;bottom&apos;</span>].set_visible(<span class="hljs-keyword">False</span>)
+    my_ax.spines[<span class="hljs-string">&apos;top&apos;</span>].set_visible(<span class="hljs-keyword">False</span>)
+
+ax=fig.add_subplot(gs[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, syn.mon.s[:, <span class="hljs-number">0</span>], label=<span class="hljs-string">&quot;s&quot;</span>)
+hide_spines(ax)
+
+ax1=fig.add_subplot(gs[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, pre.mon.spike[:, <span class="hljs-number">0</span>], label=<span class="hljs-string">&quot;pre spike&quot;</span>)
+plt.ylim(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>)
+hide_spines(ax1)
+plt.legend(loc = <span class="hljs-string">&apos;center right&apos;</span>)
+
+ax2=fig.add_subplot(gs[<span class="hljs-number">2</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, post.mon.spike[:, <span class="hljs-number">0</span>], label=<span class="hljs-string">&quot;post spike&quot;</span>)
+plt.ylim(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>)
+hide_spines(ax2)
+
+ax3=fig.add_subplot(gs[<span class="hljs-number">3</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, syn.mon.w[:, <span class="hljs-number">0</span>], label=<span class="hljs-string">&quot;w&quot;</span>)
+plt.legend()
+<span class="hljs-comment"># hide spines</span>
+plt.yticks([])
+ax3.spines[<span class="hljs-string">&apos;left&apos;</span>].set_visible(<span class="hljs-keyword">False</span>)
+ax3.spines[<span class="hljs-string">&apos;right&apos;</span>].set_visible(<span class="hljs-keyword">False</span>)
+ax3.spines[<span class="hljs-string">&apos;top&apos;</span>].set_visible(<span class="hljs-keyword">False</span>)
+
+plt.xlabel(<span class="hljs-string">&apos;Time (ms)&apos;</span>)
+plt.show()
+</code></pre>
+<h3 id="oja&#x6CD5;&#x5219;">Oja&#x6CD5;&#x5219;</h3>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+bp.backend.set(backend=<span class="hljs-string">&apos;numpy&apos;</span>, dt=<span class="hljs-number">0.1</span>)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Oja</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = <span class="hljs-string">&apos;numpy&apos;</span>
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(w, t, gamma, r_pre, r_post)</span>:</span>
+    dwdt = gamma * (r_post * r_pre - r_post * r_post * w)
+    <span class="hljs-keyword">return</span> dwdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, gamma=<span class="hljs-number">.005</span>, w_max=<span class="hljs-number">1.</span>, w_min=<span class="hljs-number">0.</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># params</span>
+    self.gamma = gamma
+    self.w_max = w_max
+    self.w_min = w_min
+    <span class="hljs-comment"># no delay in firing rate models</span>
+
+    <span class="hljs-comment"># conns</span>
+    self.conn = conn(pre.size, post.size)
+    self.conn_mat = conn.requires(<span class="hljs-string">&apos;conn_mat&apos;</span>)
+    self.size = bp.ops.shape(self.conn_mat)
+
+    <span class="hljs-comment"># data</span>
+    self.w = bp.ops.ones(self.size) * <span class="hljs-number">0.05</span>
+
+    self.integral = bp.odeint(f=self.derivative)
+    super(Oja, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    w = self.conn_mat * self.w
+    self.post.r = np.sum(w.T * self.pre.r, axis=<span class="hljs-number">1</span>)
+
+    <span class="hljs-comment"># resize to matrix</span>
+    dim = self.size
+    r_post = np.vstack((self.post.r,) * dim[<span class="hljs-number">0</span>])
+    r_pre = np.vstack((self.pre.r,) * dim[<span class="hljs-number">1</span>]).T
+
+    self.w = self.integral(w, _t, self.gamma, r_pre, r_post)
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">neu</span><span class="hljs-params">(bp.NeuGroup)</span>:</span>
+  target_backend = <span class="hljs-string">&apos;numpy&apos;</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, size, **kwargs)</span>:</span>
+    self.r = bp.ops.zeros(size)
+    super(neu, self).__init__(size=size, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    self.r = self.r
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment"># create input</span>
+current1, _ = bp.inputs.constant_current([(<span class="hljs-number">2.</span>, <span class="hljs-number">20.</span>), (<span class="hljs-number">0.</span>, <span class="hljs-number">20.</span>)] * <span class="hljs-number">3</span> +
+                                         [(<span class="hljs-number">0.</span>, <span class="hljs-number">20.</span>), (<span class="hljs-number">0.</span>, <span class="hljs-number">20.</span>)] * <span class="hljs-number">2</span>)
+current2, _ = bp.inputs.constant_current([(<span class="hljs-number">2.</span>, <span class="hljs-number">20.</span>), (<span class="hljs-number">0.</span>, <span class="hljs-number">20.</span>)] * <span class="hljs-number">5</span>)
+current3, _ = bp.inputs.constant_current([(<span class="hljs-number">2.</span>, <span class="hljs-number">20.</span>), (<span class="hljs-number">0.</span>, <span class="hljs-number">20.</span>)] * <span class="hljs-number">5</span>)
+current_pre = np.vstack((current1, current2))
+current_post = np.vstack((current3, current3))
+
+<span class="hljs-comment"># simulate</span>
+neu_pre = neu(<span class="hljs-number">2</span>, monitors=[<span class="hljs-string">&apos;r&apos;</span>])
+neu_post = neu(<span class="hljs-number">2</span>, monitors=[<span class="hljs-string">&apos;r&apos;</span>])
+syn = Oja(pre=neu_pre, post=neu_post, conn=bp.connect.All2All(), monitors=[<span class="hljs-string">&apos;w&apos;</span>])
+net = bp.Network(neu_pre, syn, neu_post)
+net.run(duration=<span class="hljs-number">200.</span>, inputs=[(neu_pre, <span class="hljs-string">&apos;r&apos;</span>, current_pre.T, <span class="hljs-string">&apos;=&apos;</span>),
+                               (neu_post, <span class="hljs-string">&apos;r&apos;</span>, current_post.T)])
+
+<span class="hljs-comment"># plot</span>
+fig, gs = bp.visualize.get_figure(<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>)
+
+fig.add_subplot(gs[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, neu_pre.mon.r[:, <span class="hljs-number">0</span>], <span class="hljs-string">&apos;b&apos;</span>, label=<span class="hljs-string">&apos;pre r1&apos;</span>)
+plt.legend()
+
+fig.add_subplot(gs[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, neu_pre.mon.r[:, <span class="hljs-number">1</span>], <span class="hljs-string">&apos;r&apos;</span>, label=<span class="hljs-string">&apos;pre r2&apos;</span>)
+plt.legend()
+
+fig.add_subplot(gs[<span class="hljs-number">2</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, neu_post.mon.r[:, <span class="hljs-number">0</span>], color=<span class="hljs-string">&apos;purple&apos;</span>, label=<span class="hljs-string">&apos;post r&apos;</span>)
+plt.ylim([<span class="hljs-number">0</span>, <span class="hljs-number">4</span>])
+plt.legend()
+
+fig.add_subplot(gs[<span class="hljs-number">3</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, syn.mon.w[:, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], <span class="hljs-string">&apos;b&apos;</span>, label=<span class="hljs-string">&apos;syn.w1&apos;</span>)
+plt.plot(net.ts, syn.mon.w[:, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>], <span class="hljs-string">&apos;r&apos;</span>, label=<span class="hljs-string">&apos;syn.w2&apos;</span>)
+plt.legend()
+plt.show()
+</code></pre>
+<h3 id="bcm&#x6CD5;&#x5219;">BCM&#x6CD5;&#x5219;</h3>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BCM</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = [<span class="hljs-string">&apos;numpy&apos;</span>, <span class="hljs-string">&apos;numba&apos;</span>]
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(w, t, lr, r_pre, r_post, r_th)</span>:</span>
+    dwdt = lr * r_post * (r_post - r_th) * r_pre
+    <span class="hljs-keyword">return</span> dwdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, lr=<span class="hljs-number">0.005</span>, w_max=<span class="hljs-number">1.</span>, w_min=<span class="hljs-number">0.</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.lr = lr
+    self.w_max = w_max
+    self.w_min = w_min
+    self.dt = bp.backend.get_dt()
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.conn_mat = conn.requires(<span class="hljs-string">&apos;conn_mat&apos;</span>)
+    self.size = bp.ops.shape(self.conn_mat)
+
+    <span class="hljs-comment"># variables</span>
+    self.w = bp.ops.ones(self.size) * <span class="hljs-number">.5</span>
+    self.sum_post_r = bp.ops.zeros(post.size[<span class="hljs-number">0</span>])
+    self.r_th = bp.ops.zeros(post.size[<span class="hljs-number">0</span>])
+
+    self.int_w = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;rk4&apos;</span>)
+
+    super(BCM, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-comment"># update threshold</span>
+    self.sum_post_r += self.post.r
+    r_th = self.sum_post_r / (_t / self.dt + <span class="hljs-number">1</span>)
+    self.r_th = r_th
+
+    <span class="hljs-comment"># resize to matrix</span>
+    w = self.w * self.conn_mat
+    dim = self.size
+    r_th = np.vstack((r_th,) * dim[<span class="hljs-number">0</span>])
+    r_post = np.vstack((self.post.r,) * dim[<span class="hljs-number">0</span>])
+    r_pre = np.vstack((self.pre.r,) * dim[<span class="hljs-number">1</span>]).T
+
+    <span class="hljs-comment"># update w</span>
+    w = self.int_w(w, _t, self.lr, r_pre, r_post, r_th)
+    self.w = np.clip(w, self.w_min, self.w_max)
+
+    <span class="hljs-comment"># output</span>
+    self.post.r = np.sum(w.T * self.pre.r, axis=<span class="hljs-number">1</span>)
+</code></pre>
+<pre><code class="lang-python"><span class="hljs-comment"># create input</span>
+group1, _ = bp.inputs.constant_current(([<span class="hljs-number">1.5</span>, <span class="hljs-number">1</span>],
+                                        [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]) * <span class="hljs-number">10</span>)
+group2, duration = bp.inputs.constant_current(([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>],
+                                               [<span class="hljs-number">1.</span>, <span class="hljs-number">1</span>]) * <span class="hljs-number">10</span>)
+group1 = np.vstack(((group1,) * <span class="hljs-number">10</span>))
+group2 = np.vstack(((group2,) * <span class="hljs-number">10</span>))
+input_r = np.vstack((group1, group2))
+
+<span class="hljs-comment"># simulate</span>
+pre = neu(<span class="hljs-number">20</span>, monitors=[<span class="hljs-string">&apos;r&apos;</span>])
+post = neu(<span class="hljs-number">1</span>, monitors=[<span class="hljs-string">&apos;r&apos;</span>])
+bcm = BCM(pre=pre, post=post, conn=bp.connect.All2All(),
+          monitors=[<span class="hljs-string">&apos;w&apos;</span>])
+net = bp.Network(pre, bcm, post)
+net.run(duration, inputs=(pre, <span class="hljs-string">&apos;r&apos;</span>, input_r.T, <span class="hljs-string">&quot;=&quot;</span>))
+
+<span class="hljs-comment"># plot</span>
+fig, gs = bp.visualize.get_figure(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>)
+fig.add_subplot(gs[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>], xlim=(<span class="hljs-number">0</span>, duration), ylim=(<span class="hljs-number">0</span>, bcm.w_max))
+plt.plot(net.ts, bcm.mon.w[:, <span class="hljs-number">0</span>], <span class="hljs-string">&apos;b&apos;</span>, label=<span class="hljs-string">&apos;w1&apos;</span>)
+plt.plot(net.ts, bcm.mon.w[:, <span class="hljs-number">11</span>], <span class="hljs-string">&apos;r&apos;</span>, label=<span class="hljs-string">&apos;w2&apos;</span>)
+plt.title(<span class="hljs-string">&quot;weights&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;weights&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;t&quot;</span>)
+plt.legend()
+
+fig.add_subplot(gs[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>], xlim=(<span class="hljs-number">0</span>, duration))
+plt.plot(net.ts, pre.mon.r[:, <span class="hljs-number">0</span>], <span class="hljs-string">&apos;b&apos;</span>, label=<span class="hljs-string">&apos;r1&apos;</span>)
+plt.plot(net.ts, pre.mon.r[:, <span class="hljs-number">11</span>], <span class="hljs-string">&apos;r&apos;</span>, label=<span class="hljs-string">&apos;r2&apos;</span>)
+plt.title(<span class="hljs-string">&quot;inputs&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;firing rate&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;t&quot;</span>)
+plt.legend()
+
+plt.show()
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="neurons.md" class="navigation navigation-prev " aria-label="Previous page: 神经元模型">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="networks.html" class="navigation navigation-next " aria-label="Next page: 网络模型">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"突触模型","level":"1.5.2","depth":2,"next":{"title":"网络模型","level":"1.5.3","depth":2,"path":"appendix/networks.md","ref":"appendix/networks.md","articles":[]},"previous":{"title":"神经元模型","level":"1.5.1","depth":2,"path":"appendix/neurons.md","ref":"appendix/neurons.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"code":{"copyButtons":true},"splitter":{},"search-pro":{},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy手册","language":"zh-hans","gitbook":"*","description":"介绍计算神经科学常见的模型，以及如何使用BrainPy进行计算模拟。"},"file":{"path":"appendix/synapses.md","mtime":"2021-05-11T09:03:28.963Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-11T09:07:29.437Z"},"basePath":"..","book":{"language":"zh"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

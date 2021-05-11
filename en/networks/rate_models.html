@@ -197,9 +197,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../synapse/dynamics.html">
+        <li class="chapter " data-level="1.3.1" data-path="../synapses/dynamics.html">
             
-                <a href="../synapse/dynamics.html">
+                <a href="../synapses/dynamics.html">
             
                     
                     2.1 Synaptic models
@@ -210,9 +210,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../synapse/plasticity.html">
+        <li class="chapter " data-level="1.3.2" data-path="../synapses/plasticity.html">
             
-                <a href="../synapse/plasticity.html">
+                <a href="../synapses/plasticity.html">
             
                     
                     2.2 Plasticity models
@@ -261,6 +261,64 @@
             
                     
                     3.2 Firing rate networks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Appendix
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../appendix/neurons.md">
+            
+                <span>
+            
+                    
+                    Neuron models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../appendix/synapses.html">
+            
+                <a href="../appendix/synapses.html">
+            
+                    
+                    Synapse models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../appendix/networks.html">
+            
+                <a href="../appendix/networks.html">
+            
+                    
+                    Network models
             
                 </a>
             
@@ -322,7 +380,7 @@
 <h3 id="321-decision-model">3.2.1 Decision model</h3>
 <p>In addition to spiking models, BrainPy can also implement Firing rate models. Let&apos;s first look at the implementation of a simplified version of the decision model. The model was simplified by the researcher (Wong &amp; Wang, 2006)<sup><a href="#fn_1" id="reffn_1">1</a></sup> through a series of means such as mean field approach. In the end, there are only two variables, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">S_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05764em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">S_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05764em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>, which respectively represent the state of two neuron groups and correspond to two options.</p>
 <div align="center">
-  <img src="../../figs/decision.png" width="300">
+  <img src="../../figs/nets/decision.png" width="300">
   <br>
   <strong>Fig. 3-1 Reduced decision model.</strong> (From <cite>Wong &amp; Wang, 2006 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
@@ -357,10 +415,10 @@ I_1 = J_{\text{A, ext}} \mu_0 (1+\frac {c&apos;}{100\%})
 I_2 = J_{\text{A, ext}} \mu_0 (1-\frac {c&apos;}{100\%})
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.428892em;"></span><span class="strut bottom" style="height:2.170452em;vertical-align:-0.74156em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07847em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.09618em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord text scriptstyle cramped mtight"><span class="mord mathrm mtight">A,&#xA0;ext</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mord"><span class="mord mathit">&#x3BC;</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">&#x2212;</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.6859999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">%</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord"><span class="mord mathit">c</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathrm mtight">&#x2032;</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span></p>
 <p>The code implementation is as follows: we can create a neuron group class, and use <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">S_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05764em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">S_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05764em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> to store the two states of the neuron group. The dynamics of the model can be implemented by a <code>derivative</code> function for dynamics analysis.</p>
-<p><img src="../../figs/codes/decision01.png" alt="decision01"></p>
-<p><img src="../../figs/codes/decision02.png" alt="decision02"></p>
+<p><img src="../../figs/nets/codes/en/decision01.png" alt="decision01"></p>
+<p><img src="../../figs/nets/codes/en/decision02.png" alt="decision02"></p>
 <p>Then we can define a function to perform phase plane analysis.</p>
-<p><img src="../../figs/codes/decision_run.png" alt="decision_run"></p>
+<p><img src="../../figs/nets/codes/en/decision_run.png" alt="decision_run"></p>
 <p>Let&apos;s first look at the case when there is no external input. At this time, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>&#x3BC;</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mu_0 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">&#x3BC;</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span>.</p>
 <pre><code class="lang-python">phase_analyze(I=<span class="hljs-number">0.</span>, coh=<span class="hljs-number">0.</span>)
 </code></pre>
@@ -373,7 +431,7 @@ Fixed point #3 at s2=0.0042468423702408655, s1=0.6303045696241589 is a stable no
 Fixed point #4 at s2=0.6303045696241589, s1=0.004246842370235128 is a stable node.
 Fixed point #5 at s2=0.18815439944520335, s1=0.029354240536530615 is a saddle node.
 plot vector field ...
-</code></pre><p><img src="../../figs/out/output_77_1.png" alt="png"></p>
+</code></pre><p><img src="../../figs/nets/out/output_77_1.png" alt="png"></p>
 <p>It can be seen that it is very convenient to use BrainPy for dynamics analysis. The vector field and fixed point indicate which option will fall in the end under different initial values.</p>
 <p>Here, the x-axis is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">S_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05764em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> which represents choice 2, and the y-axis is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>S</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">S_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.05764em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>, which represents choice 1. As you can see, the upper-left fixed point represents choice 1, the lower-right fixed point represents choice 2, and the lower-left fixed point represents no choice.</p>
 <p>Now let&apos;s see which option will eventually fall under different initial values with different coherence, and we fix the external input strength to 30.</p>
@@ -397,7 +455,7 @@ Fixed point #1 at s2=0.6993504413889349, s1=0.011622049526766405 is a stable nod
 Fixed point #2 at s2=0.49867489858358865, s1=0.49867489858358865 is a saddle node.
 Fixed point #3 at s2=0.011622051540013889, s1=0.6993504355529329 is a stable node.
 plot vector field ...
-</code></pre><p><img src="../../figs/out/output_79_1.png" alt="png"></p>
+</code></pre><p><img src="../../figs/nets/out/output_79_1.png" alt="png"></p>
 <pre><code>coherence = 51.2%
 plot nullcline ...
 plot fixed point ...
@@ -405,17 +463,17 @@ Fixed point #1 at s2=0.5673124813731691, s1=0.2864701069327971 is a saddle node.
 Fixed point #2 at s2=0.6655747347157656, s1=0.027835279565912054 is a stable node.
 Fixed point #3 at s2=0.005397687847426814, s1=0.7231453520305031 is a stable node.
 plot vector field ...
-</code></pre><p><img src="../../figs/out/output_79_3.png" alt="png"></p>
+</code></pre><p><img src="../../figs/nets/out/output_79_3.png" alt="png"></p>
 <pre><code>coherence = 100%
 plot nullcline ...
 plot fixed point ...
 Fixed point #1 at s2=0.0026865954387078755, s1=0.7410985604497689 is a stable node.
 plot vector field ...
-</code></pre><p><img src="../../figs/out/output_79_5.png" alt="output: c&apos;=100%"></p>
+</code></pre><p><img src="../../figs/nets/out/output_79_5.png" alt="output: c&apos;=100%"></p>
 <h3 id="322-cann">3.2.2 CANN</h3>
 <p>Let&apos;s see another example of firing rate model, a continuous attractor neural network (CANN)<sup><a href="#fn_2" id="reffn_2">2</a></sup>. Fig. 3-2 demonstrates the structure of one-dimensional CANN.</p>
 <div align="center">
-  <img src="../../figs/cann.png" width="300">
+  <img src="../../figs/nets/cann.png" width="300">
   <br>
   <strong>Fig. 3-2 Structure of CANN.</strong> (From <cite>Wu et al., 2008 <sup><a href="#fn_2">2</a></sup></cite>)
 </div>
@@ -438,9 +496,9 @@ J(x,x&apos;) = \frac{1}{\sqrt{2\pi}a}\exp(-\frac{|x-x&apos;|^2}{2a^2})
 I_{ext} = A\exp\left[-\frac{|x-z(t)|^2}{4a^2}\right]
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.491108em;"></span><span class="strut bottom" style="height:2.441138em;vertical-align:-0.95003em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.07847em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">e</span><span class="mord mathit mtight">x</span><span class="mord mathit mtight">t</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mop">exp</span><span class="minner displaystyle textstyle uncramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord">&#x2212;</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">4</span><span class="mord"><span class="mord mathit">a</span><span class="msupsub"><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">&#x2223;</span><span class="mord mathit">x</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mopen">(</span><span class="mord mathit">t</span><span class="mclose">)</span><span class="mord"><span class="mord mathrm">&#x2223;</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></span></p>
 <p>While implementing with BrainPy, we create a class of <code>CANN1D</code> by inheriting <code>bp.NeuGroup</code>.</p>
-<p><img src="../../figs/codes/cann_init.png" alt="cann_init"></p>
+<p><img src="../../figs/nets/codes/en/cann_init.png" alt="cann_init"></p>
 <p>Then we define the functions.</p>
-<p><img src="../../figs/codes/cann_f.png" alt="cann_f"></p>
+<p><img src="../../figs/nets/codes/en/cann_f.png" alt="cann_f"></p>
 <p>Where the functions <code>dist</code> and <code>make_conn</code> are designed to get the connection strength <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">J</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.09618em;">J</span></span></span></span> between each of the two neuron groups. In the <code>make_conn</code> function, we first calculate the distance matrix between each of the two <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>. Because neurons are arranged in rings, the value of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span> is between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&#x2212;</mo><mi>&#x3C0;</mi></mrow><annotation encoding="application/x-tex">-\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord">&#x2212;</span><span class="mord mathit" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3C0;</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span>, so the range of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">&#x2223;</mi><mi>x</mi><mo>&#x2212;</mo><msup><mi>x</mi><mrow><mi mathvariant="normal">&#x2032;</mi></mrow></msup><mi mathvariant="normal">&#x2223;</mi></mrow><annotation encoding="application/x-tex">|x-x&apos;|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.751892em;"></span><span class="strut bottom" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">&#x2223;</span><span class="mord mathit">x</span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathrm mtight">&#x2032;</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mord mathrm">&#x2223;</span></span></span></span> is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>&#x3C0;</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span>, and -<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3C0;</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3C0;</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span> are the same points (the actual maximum value is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3C0;</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span>, that is, half of <code>z_range</code>, the distance exceeded needs to be subtracted from a <code>z_range</code>). We use the <code>dist</code> function to handle the distance on the ring.</p>
 <p><!--modify this???-->The <code>get_stimulus_by_pos</code> function processes external inputs based on position <code>pos</code>, which allows users to get input current by setting target positions. For example, in a simple population coding, we give an external input of <code>pos=0</code>, and we run in this way:</p>
 <pre><code class="lang-python">cann = CANN1D(num=<span class="hljs-number">512</span>, k=<span class="hljs-number">0.1</span>, monitors=[<span class="hljs-string">&apos;u&apos;</span>])
@@ -462,8 +520,8 @@ cann.run(duration=duration, inputs=(<span class="hljs-string">&apos;input&apos;<
 <span class="hljs-comment"># call the function</span>
 plot_animate(frame_step=<span class="hljs-number">1</span>, frame_delay=<span class="hljs-number">100</span>)
 </code></pre>
-<p><img src="../../figs/CANN-encoding.gif"></p>
-<p>We can see that the shape of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">u</span></span></span></span> encodes the shape of external input.</p>
+<p><img src="../../figs/nets/CANN-encoding.gif"></p>
+<p>We can see that the shape of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">u</span></span></span></span> encodes/zh/ the shape of external input.</p>
 <p>Now we add random noise to the external input to see how the shape of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">u</span></span></span></span> changes.</p>
 <pre><code class="lang-python">cann = CANN1D(num=<span class="hljs-number">512</span>, k=<span class="hljs-number">8.1</span>, monitors=[<span class="hljs-string">&apos;u&apos;</span>])
 
@@ -479,7 +537,7 @@ cann.run(duration=dur1 + dur2 + dur3, inputs=(<span class="hljs-string">&apos;in
 
 plot_animate()
 </code></pre>
-<p><img src="../../figs/CANN-decoding.gif"></p>
+<p><img src="../../figs/nets/CANN-decoding.gif"></p>
 <p>We can see that the shape of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">u</span></span></span></span> remains like a bell shape, which indicates that it can perform template matching based on the input.</p>
 <p>Now let&apos;s give a moving input, we vary the position of the input with <code>np.linspace</code>, we will see that the <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">u</span></span></span></span> will follow the input, i.e., smooth tracking.</p>
 <pre><code class="lang-python">cann = CANN1D(num=<span class="hljs-number">512</span>, k=<span class="hljs-number">8.1</span>, monitors=[<span class="hljs-string">&apos;u&apos;</span>])
@@ -497,7 +555,7 @@ cann.run(duration=dur1 + dur2 + dur3, inputs=(<span class="hljs-string">&apos;in
 
 plot_animate()
 </code></pre>
-<p><img src="../../figs/CANN-tracking.gif"></p>
+<p><img src="../../figs/nets/CANN-tracking.gif"></p>
 <h3 id="reference">Reference</h3>
 <blockquote id="fn_1">
 <sup>1</sup>. Wong, K.-F. &amp; Wang, X.-J. A Recurrent Network Mechanism of Time Integration in Perceptual Decisions.  J. Neurosci. 26, 1314&#x2013;1328 (2006).<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
@@ -544,7 +602,7 @@ plot_animate()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3.2 Firing rate networks","level":"1.4.2","depth":2,"previous":{"title":"3.1 Spiking neural networks","level":"1.4.1","depth":2,"path":"networks/spiking_neural_networks.md","ref":"networks/spiking_neural_networks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy Handbook","language":"en","gitbook":"*","description":"A Handbook introducing how to implement brain models by BrainPy for computational neuroscience."},"file":{"path":"networks/rate_models.md","mtime":"2021-05-11T03:53:21.703Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-11T03:53:51.119Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"3.2 Firing rate networks","level":"1.4.2","depth":2,"next":{"title":"Appendix","level":"1.5","depth":1,"ref":"","articles":[{"title":"Neuron models","level":"1.5.1","depth":2,"path":"appendix/neurons.md","ref":"appendix/neurons.md","articles":[]},{"title":"Synapse models","level":"1.5.2","depth":2,"path":"appendix/synapses.md","ref":"appendix/synapses.md","articles":[]},{"title":"Network models","level":"1.5.3","depth":2,"path":"appendix/networks.md","ref":"appendix/networks.md","articles":[]}]},"previous":{"title":"3.1 Spiking neural networks","level":"1.4.1","depth":2,"path":"networks/spiking_neural_networks.md","ref":"networks/spiking_neural_networks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"code":{"copyButtons":true},"splitter":{},"search-pro":{},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy Handbook","language":"en","gitbook":"*","description":"A Handbook introducing how to implement brain models by BrainPy for computational neuroscience."},"file":{"path":"networks/rate_models.md","mtime":"2021-05-11T06:29:57.061Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-11T09:07:29.437Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
@@ -567,10 +625,6 @@ plot_animate()
     
         
         <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

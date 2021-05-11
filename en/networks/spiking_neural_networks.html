@@ -199,9 +199,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../synapse/dynamics.html">
+        <li class="chapter " data-level="1.3.1" data-path="../synapses/dynamics.html">
             
-                <a href="../synapse/dynamics.html">
+                <a href="../synapses/dynamics.html">
             
                     
                     2.1 Synaptic models
@@ -212,9 +212,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../synapse/plasticity.html">
+        <li class="chapter " data-level="1.3.2" data-path="../synapses/plasticity.html">
             
-                <a href="../synapse/plasticity.html">
+                <a href="../synapses/plasticity.html">
             
                     
                     2.2 Plasticity models
@@ -263,6 +263,64 @@
             
                     
                     3.2 Firing rate networks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Appendix
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../appendix/neurons.md">
+            
+                <span>
+            
+                    
+                    Neuron models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../appendix/synapses.html">
+            
+                <a href="../appendix/synapses.html">
+            
+                    
+                    Synapse models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../appendix/networks.html">
+            
+                <a href="../appendix/networks.html">
+            
+                    
+                    Network models
             
                 </a>
             
@@ -325,13 +383,13 @@
 <p>In 1990s, biologists found in experiments that neuron activities in brain cortex show a temporal irregular spiking pattern. This pattern exists widely in brain areas, but researchers knew few about its mechanism or function.</p>
 <p>Vreeswijk and Sompolinsky (1996) proposed <strong>E/I balanced network</strong> to explain this irregular spiking pattern. The feature of this network is the strong, random and sparse synapse connections between neurons. Because of this feature and corresponding parameter settings, each neuron in the network will receive great excitatory and inhibitory input from within the network. However, these two types of inputs will cancel each other, and maintain the total internal input at a relatively small order of magnitude, which is only enough to generate action potentials.</p>
 <p>The randomness and noise in E/I balanced network give  each neuron in the network an internal input which varies with time and space at the order of threshold potential. Therefore, the firing of neurons also has randomness, ensures that E/I balanced network can generate temporal irregular firing pattern spontaneously.</p>
-<center><img src="../../figs/snns/3-2.png" width="616" height="300"></center>
+<center><img src="../../figs/nets/3-2.png" width="616" height="300"></center>
 
 <center><b>Fig.3-1 Structure of E/I balanced network (<cite id="reffn_1">Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
 
 <p>Vreeswijk and Sompolinsky also suggested a possible function of this irregular firing pattern: E/I balanced network can respond to the changes of external stimulus quickly.</p>
 <p>As shown in Fig. 3-3, when there is no external input, the distribution of neurons&#x2019; membrane potentials in E/I balanced network follows a relatively uniform random distribution between resting potential <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">V_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>and threshold potential <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3B8;</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">&#x3B8;</span></span></span></span>.</p>
-<center><img src="../../figs/snns/EI_neuron_distribution.jpg" width="352" hight="300"></center>
+<center><img src="../../figs/nets/EI_neuron_distribution.jpg" width="352" hight="300"></center>
 
 <center><b>Fig.3-2 Distribution of neuron membrane potentials in E/I balanced network (<cite id="reffn_2">Tian et al.&#xFF0C;2020 <sup><a href="#fn_2">2</a></sup></cite>)</b></center>
 
@@ -341,46 +399,46 @@
 <p>Fig. 3-1 shows the structure of E/I balanced network:</p>
 <p>1)    Neurons: Neurons are realized with LIF neuron model. The neurons can be divided into excitatory neurons and inhibitory neurons, the ratio of the two types of neurons is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>N</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">N_E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.05764em;">E</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>N</mi><mi>I</mi></msub></mrow><annotation encoding="application/x-tex">N_I</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.07847em;">I</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> = 4:1.</p>
 <p>2)    Synapses: Synapses are realized with exponential synapse model. 4 groups of synapse connections are generated between the two groups of neurons, that is, excitatory-excitatory connection (E2E conn), excitatory-inhibitory connection (E2I conn), inhibitory-excitatory connection (I2E conn) and inhibitory-inhibitory connection (I2I conn). For excitatory or inhibitory synapse connections, we define synapse weights with different signal.</p>
-<center><img src="../../figs/snns/codes/EInet1.PNG">    </center>
+<center><img src="../../figs/nets/codes/en/EInet1.PNG">    </center>
 
 <p>3)    Inputs: All neurons in the network receive a constant external input current.</p>
-<center><img src="../../figs/snns/codes/EInet2.PNG">    </center>
+<center><img src="../../figs/nets/codes/en/EInet2.PNG">    </center>
 
 <p>See above section 1 and 2 for definition of LIF neuron and exponential synapse. After simulation, we visualize the raster plot and firing rate-t plot of E/I balanced network. the network firing rate changes from strong synchronization to irregular fluctuation.</p>
-<center><img src="../../figs/snns/codes/EInet3.PNG">    </center>
+<center><img src="../../figs/nets/codes/en/EInet3.PNG">    </center>
 
 
-<p><img src="../../figs/snns/out/output_8_0.png" alt="png"></p>
+<p><img src="../../figs/nets/out/output_8_0.png" alt="png"></p>
 <center><b>Fig.3-3 E/I balanced net raster plot</b></center>
 
 <h3 id="312-decision-making-network">3.1.2 Decision Making Network</h3>
 <p>The modeling of computational neuroscience networks can correspond to specific physiological tasks. </p>
 <p>For example, in the visual motion discrimination task (Roitman and Shadlen, 2002), rhesus watch a video in which random dots move towards left or right with definite coherence. Rhesus are required to choose the direction that most dots move to and give their answer by saccade. At the meantime, researchers record the activity of their LIP neurons by implanted electrode.</p>
-<center><img src="../../figs/snns/3-4.png" width="440" height="200"> </center>
+<center><img src="../../figs/nets/3-4.png" width="440" height="200"> </center>
 
 <center><b>Fig.3-4 Experimental Diagram (<cite id="reffn_3">Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>)</b></center>
 
 <p>Wang (2002) proposed a decision making network to model the activity of rhesus LIP neurons during decision making period in the visual motion discrimination task. </p>
 <p>As shown in Fig. 3-5, this network is based on E/I balanced network. The ratio of excitatory neurons and inhibitory neurons is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>N</mi><mi>E</mi></msub><mo>:</mo><msub><mi>N</mi><mi>I</mi></msub><mo>=</mo><mn>4</mn><mo>:</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N_E:N_I = 4:1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.05764em;">E</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">:</span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.07847em;">I</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span><span class="mord mathrm">4</span><span class="mrel">:</span><span class="mord mathrm">1</span></span></span></span>, and parameters are adjusted to maintain the balanced state.</p>
 <p>To accomplish the decision making task, among the excitatory neuron group, two selective subgroup A and B are chosen, both with a size of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>N</mi><mi>A</mi></msub><mo>=</mo><msub><mi>N</mi><mi>B</mi></msub><mo>=</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>1</mn><mn>5</mn><msub><mi>N</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">N_A = N_B = 0.15N_E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">A</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.05017em;">B</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">1</span><span class="mord mathrm">5</span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.05764em;">E</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>. These two subgroups are marked as A and B in Fig. 3-5, and we call other excitatory neurons as non-selective neurons, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>N</mi><mrow><mi>n</mi><mi>o</mi><mi>n</mi></mrow></msub><mo>=</mo><mo>(</mo><mn>1</mn><mo>&#x2212;</mo><mn>2</mn><mo>&#x2217;</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>1</mn><mn>5</mn><mo>)</mo><msub><mi>N</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">N_{non} = (1-2*0.15)N_E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">n</span><span class="mord mathit mtight">o</span><span class="mord mathit mtight">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">&#x2212;</span><span class="mord mathrm">2</span><span class="mbin">&#x2217;</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">1</span><span class="mord mathrm">5</span><span class="mclose">)</span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.05764em;">E</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>.</p>
-<center><img src="../../figs/snns/3-5.png" width="440" height="240"></center>
+<center><img src="../../figs/nets/3-5.png" width="440" height="240"></center>
 
 <center><b>Fig.3-5 structure of decision making network (<cite id="reffn_4">Wang&#xFF0C;2002<sup><a href="#fn_4">4</a></sup></cite>)</b></center>
 
-<center><img src="../../figs/snns/codes/DMnet2.PNG">    </center>
+<center><img src="../../figs/nets/codes/en/DMnet2.PNG">    </center>
 
 <p>As it is in E/I balanced network, 4 groups of synapses ---- E2E connection, E2I connection, I2E connection and I2I connection ---- are built in decision making network. Excitatory connections are realized with AMPA synapse, inhibitory connections are realized with GABAa synapse.</p>
 <p>Decision making network needs to make a decision among the two choice, i.e., among the two subgroups A and B in this task. To achieve this, network must discriminate between these two groups. Excitatory neurons in the same subgroup should self-activate, and inhibit neurons in another selective subgroup. </p>
 <p>Therefore, E2E connections are structured in the network. As shown in Sheet 3-1, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi><mo>+</mo><mo>&gt;</mo><mn>1</mn><mo>&gt;</mo><mi>w</mi><mo>&#x2212;</mo></mrow><annotation encoding="application/x-tex">w+ &gt; 1 &gt; w-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="mord">+</span><span class="mrel">&gt;</span><span class="mord mathrm">1</span><span class="mrel">&gt;</span><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="mord">&#x2212;</span></span></span></span>. In this way, a relative activation is established within the subgroups by stronger excitatory synapse connections, and relative inhibition is established between two subgroups or between selective and non-selective subgroups by weaker excitatory synapse connections.</p>
 <center><b>Sheet 3-1 Weight of synapse connections between E-neurons</b></center>
 
-<center><img src="../../figs/snns/3-6.png"></center>
+<center><img src="../../figs/nets/3-6.png"></center>
 
-<center><img src="../../figs/snns/codes/DMnet1.PNG">    </center>
+<center><img src="../../figs/nets/codes/en/DMnet1.PNG">    </center>
 
 <p>We give two types of external inputs to the decision making network:</p>
 <p>1) Background inputs from other brain areas without specific meaning. Represented as high frequency Poisson input mediated by AMPA synapse.</p>
-<center><img src="../../figs/snns/codes/DMnet3.PNG">    </center>
+<center><img src="../../figs/nets/codes/en/DMnet3.PNG">    </center>
 
 <p>2) Stimulus inputs from outside the brain, which are given only to the two selective subgroup A and B. Represented as lower frequency Poisson input mediated by AMPA synapse. </p>
 <p>The frequency of Poisson input given to A and B subgroup have a certain difference, simulate the difference in the number of dots moving to left and right in physiological experiments, induce the network to make a decision among these two subgroups.
@@ -400,15 +458,14 @@ f_A \sim N(\mu_A, \delta^2)
 <p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>B</mi></msub><mo>&#x223C;</mo><mi>N</mi><mo>(</mo><msub><mi>&#x3BC;</mi><mi>B</mi></msub><mo separator="true">,</mo><msup><mi>&#x3B4;</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">
 f_B \sim N(\mu_B, \delta^2)
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8641079999999999em;"></span><span class="strut bottom" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10764em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.05017em;">B</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x223C;</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">&#x3BC;</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.05017em;">B</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mpunct">,</span><span class="mord"><span class="mord mathit" style="margin-right:0.03785em;">&#x3B4;</span><span class="msupsub"><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
-<center><img src="../../figs/snns/codes/DMnet4.PNG">    </center>
+<center><img src="../../figs/nets/codes/en/DMnet4.PNG">    </center>
 
-<center><img src="../../figs/snns/codes/DMnet5.PNG">    </center>
+<center><img src="../../figs/nets/codes/en/DMnet5.PNG">    </center>
 
 <p>During the simulation, subgroup A receives a larger stimulus input than B, after a definite delay period, the activity of group A is significantly higher than group B, which means, the network chooses the right direction.</p>
-<center><img src="../../figs/snns/out/output_18_1.png" width="400" height="796"></center>
+<center><img src="../../figs/nets/out/output_18_1.png" width="400" height="796"></center>
 
 
-<center><b>Fig.3-6 decision making network</b></center>
 
 <blockquote id="fn_ 1">
 <sup> 1</sup>. Van Vreeswijk, Carl, and Haim Sompolinsky. &quot;Chaos in neuronal networks with balanced excitatory and inhibitory activity.&quot; <em>Science</em> 274.5293 (1996): 1724-1726.<a href="#reffn_%201" title="Jump back to footnote [ 1] in the text."> &#x21A9;</a>
@@ -465,7 +522,7 @@ f_B \sim N(\mu_B, \delta^2)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3.1 Spiking neural networks","level":"1.4.1","depth":2,"next":{"title":"3.2 Firing rate networks","level":"1.4.2","depth":2,"path":"networks/rate_models.md","ref":"networks/rate_models.md","articles":[]},"previous":{"title":"3. Network models","level":"1.4","depth":1,"path":"networks.md","ref":"networks.md","articles":[{"title":"3.1 Spiking neural networks","level":"1.4.1","depth":2,"path":"networks/spiking_neural_networks.md","ref":"networks/spiking_neural_networks.md","articles":[]},{"title":"3.2 Firing rate networks","level":"1.4.2","depth":2,"path":"networks/rate_models.md","ref":"networks/rate_models.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy Handbook","language":"en","gitbook":"*","description":"A Handbook introducing how to implement brain models by BrainPy for computational neuroscience."},"file":{"path":"networks/spiking_neural_networks.md","mtime":"2021-05-11T03:53:21.703Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-11T03:53:51.119Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"3.1 Spiking neural networks","level":"1.4.1","depth":2,"next":{"title":"3.2 Firing rate networks","level":"1.4.2","depth":2,"path":"networks/rate_models.md","ref":"networks/rate_models.md","articles":[]},"previous":{"title":"3. Network models","level":"1.4","depth":1,"path":"networks.md","ref":"networks.md","articles":[{"title":"3.1 Spiking neural networks","level":"1.4.1","depth":2,"path":"networks/spiking_neural_networks.md","ref":"networks/spiking_neural_networks.md","articles":[]},{"title":"3.2 Firing rate networks","level":"1.4.2","depth":2,"path":"networks/rate_models.md","ref":"networks/rate_models.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"code":{"copyButtons":true},"splitter":{},"search-pro":{},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy Handbook","language":"en","gitbook":"*","description":"A Handbook introducing how to implement brain models by BrainPy for computational neuroscience."},"file":{"path":"networks/spiking_neural_networks.md","mtime":"2021-05-11T08:03:43.384Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-11T09:07:29.437Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
@@ -488,10 +545,6 @@ f_B \sim N(\mu_B, \delta^2)
     
         
         <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
