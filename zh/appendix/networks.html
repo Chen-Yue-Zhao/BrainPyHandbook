@@ -287,9 +287,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="neurons.md">
+        <li class="chapter " data-level="1.5.1" data-path="neurons.html">
             
-                <span>
+                <a href="neurons.html">
             
                     
                     神经元模型
@@ -376,8 +376,751 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x53D1;&#x653E;&#x7387;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;">&#x53D1;&#x653E;&#x7387;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</h2>
-<h3 id="&#x51B3;&#x62E9;&#x6A21;&#x578B;">&#x51B3;&#x62E9;&#x6A21;&#x578B;</h3>
+                                <h2 id="&#x8109;&#x51B2;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;">&#x8109;&#x51B2;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</h2>
+<h3 id="&#x5174;&#x594B;-&#x6291;&#x5236;&#x5E73;&#x8861;&#x7F51;&#x7EDC;">&#x5174;&#x594B;-&#x6291;&#x5236;&#x5E73;&#x8861;&#x7F51;&#x7EDC;</h3>
+<pre><code class="lang-python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">import</span> brainpy <span class="hljs-keyword">as</span> bp
+<span class="hljs-keyword">import</span> brainmodels
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+bp.backend.set(<span class="hljs-string">&apos;numba&apos;</span>)
+
+N_E = <span class="hljs-number">500</span>
+N_I = <span class="hljs-number">500</span>
+prob = <span class="hljs-number">0.1</span>
+
+tau = <span class="hljs-number">10.</span>
+V_rest = <span class="hljs-number">-52.</span>
+V_reset = <span class="hljs-number">-60.</span>
+V_th = <span class="hljs-number">-50.</span>
+
+tau_decay = <span class="hljs-number">2.</span>
+
+neu_E = brainmodels.neurons.LIF(N_E, monitors=[<span class="hljs-string">&apos;spike&apos;</span>])
+neu_I = brainmodels.neurons.LIF(N_I, monitors=[<span class="hljs-string">&apos;spike&apos;</span>])
+neu_E.V = V_rest + np.random.random(N_E) * (V_th - V_rest)
+neu_I.V = V_rest + np.random.random(N_I) * (V_th - V_rest)
+
+syn_E2E = brainmodels.synapses.Exponential(pre=neu_E, post=neu_E,
+                                           conn=bp.connect.FixedProb(prob=prob))
+syn_E2I = brainmodels.synapses.Exponential(pre=neu_E, post=neu_I,
+                                           conn=bp.connect.FixedProb(prob=prob))
+syn_I2E = brainmodels.synapses.Exponential(pre=neu_I, post=neu_E,
+                                           conn=bp.connect.FixedProb(prob=prob))
+syn_I2I = brainmodels.synapses.Exponential(pre=neu_I, post=neu_I,
+                                           conn=bp.connect.FixedProb(prob=prob))
+
+JE = <span class="hljs-number">1</span> / np.sqrt(prob * N_E)
+JI = <span class="hljs-number">1</span> / np.sqrt(prob * N_I)
+syn_E2E.w = JE
+syn_E2I.w = JE
+syn_I2E.w = -JI
+syn_I2I.w = -JI
+
+net = bp.Network(neu_E, neu_I,
+                 syn_E2E, syn_E2I,
+                 syn_I2E, syn_I2I)
+net.run(<span class="hljs-number">500.</span>, inputs=[(neu_E, <span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-number">3.</span>), (neu_I, <span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-number">3.</span>)], report=<span class="hljs-keyword">True</span>)
+
+fig, gs = bp.visualize.get_figure(<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">10</span>)
+fig.add_subplot(gs[:<span class="hljs-number">3</span>, <span class="hljs-number">0</span>])
+bp.visualization.raster_plot(net.ts, neu_E.mon.spike)
+
+fig.add_subplot(gs[<span class="hljs-number">3</span>, <span class="hljs-number">0</span>])
+rate = bp.measure.firing_rate(neu_E.mon.spike, <span class="hljs-number">5.</span>)
+plt.plot(net.ts, rate)
+plt.show()
+</code></pre>
+<hr>
+<h3 id="&#x6289;&#x62E9;&#x7F51;&#x7EDC;">&#x6289;&#x62E9;&#x7F51;&#x7EDC;</h3>
+<pre><code class="lang-python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-string">&quot;&quot;&quot;
+Implementation of the paper:
+
+Wang, Xiao-Jing. &quot;Probabilistic decision making by slow 
+reverberation in cortical circuits.&quot; Neuron 36.5 (2002): 955-968.
+&quot;&quot;&quot;</span>
+<span class="hljs-keyword">import</span> brainpy <span class="hljs-keyword">as</span> bp
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-comment"># set params</span>
+<span class="hljs-comment"># set global params</span>
+dt = <span class="hljs-number">0.05</span>  <span class="hljs-comment"># ms</span>
+method = <span class="hljs-string">&apos;exponential&apos;</span>
+bp.backend.set(<span class="hljs-string">&apos;numpy&apos;</span>, dt=dt)
+
+<span class="hljs-comment"># set network params</span>
+base_N_E = <span class="hljs-number">1600</span>
+base_N_I = <span class="hljs-number">400</span>
+net_scale = <span class="hljs-number">5.</span>
+N_E = int(base_N_E // net_scale)
+N_I = int(base_N_I // net_scale)
+
+f = <span class="hljs-number">0.15</span>  <span class="hljs-comment"># Note: proportion of neurons activated by one of the two stimulus</span>
+N_A = int(f * N_E)
+N_B = int(f * N_E)
+N_non = N_E - N_A - N_B  <span class="hljs-comment"># Note: N_E = N_A + N_B + N_non</span>
+print(f<span class="hljs-string">&quot;N_E = {N_E} = {N_A} + {N_B} + {N_non}, N_I = {N_I}&quot;</span>)
+<span class="hljs-comment"># Note: N_E[0:N_A]: A_group</span>
+<span class="hljs-comment">#       N_E[N_A : N_A+N_B]: B_group</span>
+<span class="hljs-comment">#       N_E[N_A + N_B: N_E]: non of A or B</span>
+
+time_scale = <span class="hljs-number">1.</span>
+pre_period = <span class="hljs-number">100.</span> / time_scale
+stim_period = <span class="hljs-number">1000.</span>
+delay_period = <span class="hljs-number">500.</span> / time_scale
+total_period = pre_period + stim_period + delay_period
+
+<span class="hljs-comment"># set LIF neu params</span>
+V_rest_E = <span class="hljs-number">-70.</span>  <span class="hljs-comment"># mV</span>
+V_reset_E = <span class="hljs-number">-55.</span>  <span class="hljs-comment"># mV</span>
+V_th_E = <span class="hljs-number">-50.</span>  <span class="hljs-comment"># mV</span>
+g_E = <span class="hljs-number">25.</span> * <span class="hljs-number">1e-3</span>  <span class="hljs-comment"># uS</span>
+R_E = <span class="hljs-number">1</span> / g_E  <span class="hljs-comment"># MOhm</span>
+C_E = <span class="hljs-number">0.5</span>  <span class="hljs-comment"># nF</span>
+tau_E = <span class="hljs-number">20.</span>  <span class="hljs-comment"># ms</span>
+t_refractory_E = <span class="hljs-number">2.</span>  <span class="hljs-comment"># ms</span>
+print(f<span class="hljs-string">&quot;R_E * C_E = {R_E * C_E} should be equal to tau_E = {tau_E}&quot;</span>)
+
+V_rest_I = <span class="hljs-number">-70.</span>  <span class="hljs-comment"># mV</span>
+V_reset_I = <span class="hljs-number">-55.</span>  <span class="hljs-comment"># mV</span>
+V_th_I = <span class="hljs-number">-50.</span>  <span class="hljs-comment"># mV</span>
+g_I = <span class="hljs-number">20.</span> * <span class="hljs-number">1e-3</span>  <span class="hljs-comment"># uS</span>
+R_I = <span class="hljs-number">1</span> / g_I  <span class="hljs-comment"># Mohm</span>
+C_I = <span class="hljs-number">0.2</span>  <span class="hljs-comment"># nF</span>
+tau_I = <span class="hljs-number">10.</span>  <span class="hljs-comment"># ms</span>
+t_refractory_I = <span class="hljs-number">1.</span>  <span class="hljs-comment"># ms</span>
+print(f<span class="hljs-string">&quot;R_I * C_I = {R_I * C_I} should be equal to tau_I = {tau_I}&quot;</span>)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LIF</span><span class="hljs-params">(bp.NeuGroup)</span>:</span>
+  target_backend = <span class="hljs-string">&apos;general&apos;</span>
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(V, t, I_ext, V_rest, R, tau)</span>:</span>
+    dvdt = (- (V - V_rest) + R * I_ext) / tau
+    <span class="hljs-keyword">return</span> dvdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, size, V_rest=<span class="hljs-number">0.</span>, V_reset=<span class="hljs-number">0.</span>,
+               V_th=<span class="hljs-number">0.</span>, R=<span class="hljs-number">0.</span>, tau=<span class="hljs-number">0.</span>, t_refractory=<span class="hljs-number">0.</span>,
+               **kwargs)</span>:</span>
+    self.V_rest = V_rest
+    self.V_reset = V_reset
+    self.V_th = V_th
+    self.R = R
+    self.tau = tau
+    self.t_refractory = t_refractory
+
+    self.V = bp.ops.zeros(size)
+    self.input = bp.ops.zeros(size)
+    self.spike = bp.ops.zeros(size, dtype=bool)
+    self.refractory = bp.ops.zeros(size, dtype=bool)
+    self.t_last_spike = bp.ops.ones(size) * <span class="hljs-number">-1e7</span>
+
+    self.integral = bp.odeint(self.derivative)
+    super(LIF, self).__init__(size=size, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-comment"># update variables</span>
+    not_ref = (_t - self.t_last_spike &gt; self.t_refractory)
+    self.V[not_ref] = self.integral(
+      self.V[not_ref], _t, self.input[not_ref],
+      self.V_rest, self.R, self.tau)
+    sp = (self.V &gt; self.V_th)
+    self.V[sp] = self.V_reset
+    self.t_last_spike[sp] = _t
+    self.spike = sp
+    self.refractory = ~not_ref
+    self.input[:] = <span class="hljs-number">0.</span>
+
+
+<span class="hljs-comment"># set syn params</span>
+E_AMPA = <span class="hljs-number">0.</span>  <span class="hljs-comment"># mV</span>
+tau_decay_AMPA = <span class="hljs-number">2</span>  <span class="hljs-comment"># ms</span>
+
+E_NMDA = <span class="hljs-number">0.</span>  <span class="hljs-comment"># mV</span>
+alpha_NMDA = <span class="hljs-number">0.062</span>  <span class="hljs-comment"># \</span>
+beta_NMDA = <span class="hljs-number">3.57</span>  <span class="hljs-comment"># \</span>
+cc_Mg_NMDA = <span class="hljs-number">1.</span>  <span class="hljs-comment"># mM</span>
+a_NMDA = <span class="hljs-number">0.5</span>  <span class="hljs-comment"># kHz/ms^-1</span>
+tau_rise_NMDA = <span class="hljs-number">2.</span>  <span class="hljs-comment"># ms</span>
+tau_decay_NMDA = <span class="hljs-number">100.</span>  <span class="hljs-comment"># ms</span>
+
+E_GABAa = <span class="hljs-number">-70.</span>  <span class="hljs-comment"># mV</span>
+tau_decay_GABAa = <span class="hljs-number">5.</span>  <span class="hljs-comment"># ms</span>
+
+delay_syn = <span class="hljs-number">0.5</span>  <span class="hljs-comment"># ms</span>
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NMDA</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = <span class="hljs-string">&apos;general&apos;</span>
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, x, t, tau_rise, tau_decay, a)</span>:</span>
+    dxdt = -x / tau_rise
+    dsdt = -s / tau_decay + a * x * (<span class="hljs-number">1</span> - s)
+    <span class="hljs-keyword">return</span> dsdt, dxdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, delay=<span class="hljs-number">0.</span>,
+               g_max=<span class="hljs-number">0.15</span>, E=<span class="hljs-number">0.</span>, cc_Mg=<span class="hljs-number">1.2</span>,
+               alpha=<span class="hljs-number">0.062</span>, beta=<span class="hljs-number">3.57</span>, tau=<span class="hljs-number">100</span>,
+               a=<span class="hljs-number">0.5</span>, tau_rise=<span class="hljs-number">2.</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.g_max = g_max
+    self.E = E
+    self.alpha = alpha
+    self.beta = beta
+    self.cc_Mg = cc_Mg
+    self.tau = tau
+    self.tau_rise = tau_rise
+    self.a = a
+    self.delay = delay
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.conn_mat = conn.requires(<span class="hljs-string">&apos;conn_mat&apos;</span>)
+    self.size = bp.ops.shape(self.conn_mat)
+
+    <span class="hljs-comment"># variables</span>
+    self.s = bp.ops.zeros(self.size)
+    self.x = bp.ops.zeros(self.size)
+    self.g = self.register_constant_delay(<span class="hljs-string">&apos;g&apos;</span>, size=self.size,
+                                          delay_time=delay)
+
+    self.integral = bp.odeint(self.derivative)
+    super(NMDA, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    self.x += bp.ops.unsqueeze(self.pre.spike, <span class="hljs-number">1</span>) * self.conn_mat
+    self.s, self.x = self.integral(self.s, self.x, _t,
+                                   self.tau_rise, self.tau, self.a)
+
+    self.g.push(self.g_max * self.s)
+    g_inf = <span class="hljs-number">1</span> + self.cc_Mg / self.beta * \
+            bp.ops.exp(-self.alpha * self.post.V)
+    g_inf = <span class="hljs-number">1</span> / g_inf
+    self.post.input -= bp.ops.sum(self.g.pull(), axis=<span class="hljs-number">0</span>) * \
+                       (self.post.V - self.E) * g_inf
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AMPA</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = <span class="hljs-string">&apos;general&apos;</span>
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, t, tau)</span>:</span>
+    ds = - s / tau
+    <span class="hljs-keyword">return</span> ds
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, delay=<span class="hljs-number">0.</span>,
+               g_max=<span class="hljs-number">0.10</span>, E=<span class="hljs-number">0.</span>, tau=<span class="hljs-number">2.0</span>, **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.g_max = g_max
+    self.E = E
+    self.tau = tau
+    self.delay = delay
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.conn_mat = conn.requires(<span class="hljs-string">&apos;conn_mat&apos;</span>)
+    self.size = bp.ops.shape(self.conn_mat)
+
+    <span class="hljs-comment"># data</span>
+    self.s = bp.ops.zeros(self.size)
+    self.g = self.register_constant_delay(<span class="hljs-string">&apos;g&apos;</span>, size=self.size,
+                                          delay_time=delay)
+
+    self.int_s = bp.odeint(f=self.derivative, method=<span class="hljs-string">&apos;euler&apos;</span>)
+    super(AMPA, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    self.s = self.int_s(self.s, _t, self.tau)
+    self.s += bp.ops.unsqueeze(self.pre.spike, <span class="hljs-number">1</span>) * self.conn_mat
+    self.g.push(self.g_max * self.s)
+    self.post.input -= bp.ops.sum(self.g.pull(), <span class="hljs-number">0</span>) * (self.post.V - self.E)
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GABAa</span><span class="hljs-params">(bp.TwoEndConn)</span>:</span>
+  target_backend = <span class="hljs-string">&apos;general&apos;</span>
+
+<span class="hljs-meta">  @staticmethod</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">derivative</span><span class="hljs-params">(s, t, tau_decay)</span>:</span>
+    dsdt = - s / tau_decay
+    <span class="hljs-keyword">return</span> dsdt
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pre, post, conn, delay=<span class="hljs-number">0.</span>,
+               g_max=<span class="hljs-number">0.4</span>, E=<span class="hljs-number">-80.</span>, tau_decay=<span class="hljs-number">6.</span>,
+               **kwargs)</span>:</span>
+    <span class="hljs-comment"># parameters</span>
+    self.g_max = g_max
+    self.E = E
+    self.tau_decay = tau_decay
+    self.delay = delay
+
+    <span class="hljs-comment"># connections</span>
+    self.conn = conn(pre.size, post.size)
+    self.conn_mat = conn.requires(<span class="hljs-string">&apos;conn_mat&apos;</span>)
+    self.size = bp.ops.shape(self.conn_mat)
+
+    <span class="hljs-comment"># data</span>
+    self.s = bp.ops.zeros(self.size)
+    self.g = self.register_constant_delay(<span class="hljs-string">&apos;g&apos;</span>, size=self.size,
+                                          delay_time=delay)
+
+    self.integral = bp.odeint(self.derivative)
+    super(GABAa, self).__init__(pre=pre, post=post, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    self.s = self.integral(self.s, _t, self.tau_decay)
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(self.pre.size[<span class="hljs-number">0</span>]):
+      <span class="hljs-keyword">if</span> self.pre.spike[i] &gt; <span class="hljs-number">0</span>:
+        self.s[i] += self.conn_mat[i]
+    self.g.push(self.g_max * self.s)
+    g = self.g.pull()
+    self.post.input -= bp.ops.sum(g, axis=<span class="hljs-number">0</span>) * (self.post.V - self.E)
+
+
+<span class="hljs-comment"># set syn weights (only used in recurrent E connections)</span>
+w_pos = <span class="hljs-number">1.7</span>
+w_neg = <span class="hljs-number">1.</span> - f * (w_pos - <span class="hljs-number">1.</span>) / (<span class="hljs-number">1.</span> - f)
+print(f<span class="hljs-string">&quot;the structured weight is: w_pos = {w_pos}, w_neg = {w_neg}&quot;</span>)
+<span class="hljs-comment"># inside select group: w = w+</span>
+<span class="hljs-comment"># between group / from non-select group to select group: w = w-</span>
+<span class="hljs-comment"># A2A B2B w+, A2B B2A w-, non2A non2B w-</span>
+weight = np.ones((N_E, N_E), dtype=np.float)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(N_A):
+  weight[i, <span class="hljs-number">0</span>: N_A] = w_pos
+  weight[i, N_A: N_A + N_B] = w_neg
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(N_A, N_A + N_B):
+  weight[i, N_A: N_A + N_B] = w_pos
+  weight[i, <span class="hljs-number">0</span>: N_A] = w_neg
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(N_A + N_B, N_E):
+  weight[i, <span class="hljs-number">0</span>: N_A + N_B] = w_neg
+print(f<span class="hljs-string">&quot;Check constraints: Weight sum {weight.sum(axis=0)[0]} \
+        should be equal to N_E = {N_E}&quot;</span>)
+
+<span class="hljs-comment"># set background params</span>
+poisson_freq = <span class="hljs-number">2400.</span>  <span class="hljs-comment"># Hz</span>
+g_max_ext2E_AMPA = <span class="hljs-number">2.1</span> * <span class="hljs-number">1e-3</span>  <span class="hljs-comment"># uS</span>
+g_max_ext2I_AMPA = <span class="hljs-number">1.62</span> * <span class="hljs-number">1e-3</span>  <span class="hljs-comment"># uS</span>
+
+g_max_E2E_AMPA = <span class="hljs-number">0.05</span> * <span class="hljs-number">1e-3</span> * net_scale
+g_max_E2E_NMDA = <span class="hljs-number">0.165</span> * <span class="hljs-number">1e-3</span> * net_scale
+g_max_E2I_AMPA = <span class="hljs-number">0.04</span> * <span class="hljs-number">1e-3</span> * net_scale
+g_max_E2I_NMDA = <span class="hljs-number">0.13</span> * <span class="hljs-number">1e-3</span> * net_scale
+g_max_I2E_GABAa = <span class="hljs-number">1.3</span> * <span class="hljs-number">1e-3</span> * net_scale
+g_max_I2I_GABAa = <span class="hljs-number">1.0</span> * <span class="hljs-number">1e-3</span> * net_scale
+
+<span class="hljs-comment"># def neurons</span>
+<span class="hljs-comment"># def E neurons/pyramid neurons</span>
+neu_A = LIF(N_A, monitors=[<span class="hljs-string">&apos;spike&apos;</span>, <span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-string">&apos;V&apos;</span>])
+neu_A.V_rest = V_rest_E
+neu_A.V_reset = V_reset_E
+neu_A.V_th = V_th_E
+neu_A.R = R_E
+neu_A.tau = tau_E
+neu_A.t_refractory = t_refractory_E
+neu_A.V = bp.ops.ones(N_A) * V_rest_E
+
+neu_B = LIF(N_B, monitors=[<span class="hljs-string">&apos;spike&apos;</span>, <span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-string">&apos;V&apos;</span>])
+neu_B.V_rest = V_rest_E
+neu_B.V_reset = V_reset_E
+neu_B.V_th = V_th_E
+neu_B.R = R_E
+neu_B.tau = tau_E
+neu_B.t_refractory = t_refractory_E
+neu_B.V = bp.ops.ones(N_B) * V_rest_E
+
+neu_non = LIF(N_non, monitors=[<span class="hljs-string">&apos;spike&apos;</span>, <span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-string">&apos;V&apos;</span>])
+neu_non.V_rest = V_rest_E
+neu_non.V_reset = V_reset_E
+neu_non.V_th = V_th_E
+neu_non.R = R_E
+neu_non.tau = tau_E
+neu_non.t_refractory = t_refractory_E
+neu_non.V = bp.ops.ones(N_non) * V_rest_E
+
+<span class="hljs-comment"># def I neurons/interneurons</span>
+neu_I = LIF(N_I, monitors=[<span class="hljs-string">&apos;input&apos;</span>, <span class="hljs-string">&apos;V&apos;</span>])
+neu_I.V_rest = V_rest_I
+neu_I.V_reset = V_reset_I
+neu_I.V_th = V_th_I
+neu_I.R = R_I
+neu_I.tau = tau_I
+neu_I.t_refractory = t_refractory_I
+neu_I.V = bp.ops.ones(N_I) * V_rest_I
+
+<span class="hljs-comment"># def synapse connections</span>
+<span class="hljs-comment">## define E2E conn</span>
+syn_A2A_AMPA = AMPA(pre=neu_A, post=neu_A,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+syn_A2A_NMDA = NMDA(pre=neu_A, post=neu_A,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+
+syn_A2B_AMPA = AMPA(pre=neu_A, post=neu_B,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+syn_A2B_NMDA = NMDA(pre=neu_A, post=neu_B,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+
+syn_A2non_AMPA = AMPA(pre=neu_A, post=neu_non,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+syn_A2non_NMDA = NMDA(pre=neu_A, post=neu_non,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+
+syn_B2A_AMPA = AMPA(pre=neu_B, post=neu_A,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+syn_B2A_NMDA = NMDA(pre=neu_B, post=neu_A,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+
+syn_B2B_AMPA = AMPA(pre=neu_B, post=neu_B,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+syn_B2B_NMDA = NMDA(pre=neu_B, post=neu_B,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+
+syn_B2non_AMPA = AMPA(pre=neu_B, post=neu_non,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+syn_B2non_NMDA = NMDA(pre=neu_B, post=neu_non,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+
+syn_non2A_AMPA = AMPA(pre=neu_non, post=neu_A,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+syn_non2A_NMDA = NMDA(pre=neu_non, post=neu_A,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+
+syn_non2B_AMPA = AMPA(pre=neu_non, post=neu_B,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+syn_non2B_NMDA = NMDA(pre=neu_non, post=neu_B,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+
+syn_non2non_AMPA = AMPA(pre=neu_non, post=neu_non,
+                        conn=bp.connect.All2All(),
+                        delay=delay_syn)
+syn_non2non_NMDA = NMDA(pre=neu_non, post=neu_non,
+                        conn=bp.connect.All2All(),
+                        delay=delay_syn)
+
+syn_A2A_AMPA.g_max = g_max_E2E_AMPA * w_pos
+syn_A2A_NMDA.g_max = g_max_E2E_NMDA * w_pos
+
+syn_A2B_AMPA.g_max = g_max_E2E_AMPA * w_neg
+syn_A2B_NMDA.g_max = g_max_E2E_NMDA * w_neg
+
+syn_A2non_AMPA.g_max = g_max_E2E_AMPA
+syn_A2non_NMDA.g_max = g_max_E2E_NMDA
+
+syn_B2A_AMPA.g_max = g_max_E2E_AMPA * w_neg
+syn_B2A_NMDA.g_max = g_max_E2E_NMDA * w_neg
+
+syn_B2B_AMPA.g_max = g_max_E2E_AMPA * w_pos
+syn_B2B_NMDA.g_max = g_max_E2E_NMDA * w_pos
+
+syn_B2non_AMPA.g_max = g_max_E2E_AMPA
+syn_B2non_NMDA.g_max = g_max_E2E_NMDA
+
+syn_non2A_AMPA.g_max = g_max_E2E_AMPA * w_neg
+syn_non2A_NMDA.g_max = g_max_E2E_NMDA * w_neg
+
+syn_non2B_AMPA.g_max = g_max_E2E_AMPA * w_neg
+syn_non2B_NMDA.g_max = g_max_E2E_NMDA * w_neg
+
+syn_non2non_AMPA.g_max = g_max_E2E_AMPA
+syn_non2non_NMDA.g_max = g_max_E2E_NMDA
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [syn_A2A_AMPA, syn_A2B_AMPA, syn_A2non_AMPA,
+          syn_B2A_AMPA, syn_B2B_AMPA, syn_B2non_AMPA,
+          syn_non2A_AMPA, syn_non2B_AMPA, syn_non2non_AMPA]:
+  i.E = E_AMPA
+  i.tau_decay = tau_decay_AMPA
+  i.E = E_NMDA
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [syn_A2A_NMDA, syn_A2B_NMDA, syn_A2non_NMDA,
+          syn_B2A_NMDA, syn_B2B_NMDA, syn_B2non_NMDA,
+          syn_non2A_NMDA, syn_non2B_NMDA, syn_non2non_NMDA]:
+  i.alpha = alpha_NMDA
+  i.beta = beta_NMDA
+  i.cc_Mg = cc_Mg_NMDA
+  i.a = a_NMDA
+  i.tau_decay = tau_decay_NMDA
+  i.tau_rise = tau_rise_NMDA
+
+<span class="hljs-comment">## define E2I conn</span>
+syn_A2I_AMPA = AMPA(pre=neu_A, post=neu_I,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+syn_A2I_NMDA = NMDA(pre=neu_A, post=neu_I,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+
+syn_B2I_AMPA = AMPA(pre=neu_B, post=neu_I,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+syn_B2I_NMDA = NMDA(pre=neu_B, post=neu_I,
+                    conn=bp.connect.All2All(),
+                    delay=delay_syn)
+
+syn_non2I_AMPA = AMPA(pre=neu_non, post=neu_I,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+syn_non2I_NMDA = NMDA(pre=neu_non, post=neu_I,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [syn_A2I_AMPA, syn_B2I_AMPA, syn_non2I_AMPA]:
+  i.g_max = g_max_E2I_AMPA
+  i.E = E_AMPA
+  i.tau_decay = tau_decay_AMPA
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [syn_A2I_NMDA, syn_B2I_NMDA, syn_non2I_NMDA]:
+  i.g_max = g_max_E2I_NMDA
+  i.E = E_NMDA
+  i.alpha = alpha_NMDA
+  i.beta = beta_NMDA
+  i.cc_Mg = cc_Mg_NMDA
+  i.a = a_NMDA
+  i.tau_decay = tau_decay_NMDA
+  i.tau_rise = tau_rise_NMDA
+
+<span class="hljs-comment">## define I2E conn</span>
+syn_I2A_GABAa = GABAa(pre=neu_I, post=neu_A,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+syn_I2B_GABAa = GABAa(pre=neu_I, post=neu_B,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+syn_I2non_GABAa = GABAa(pre=neu_I, post=neu_non,
+                        conn=bp.connect.All2All(),
+                        delay=delay_syn)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [syn_I2A_GABAa, syn_I2B_GABAa, syn_I2non_GABAa]:
+  i.g_max = g_max_I2E_GABAa
+  i.E = E_GABAa
+  i.tau_decay = tau_decay_GABAa
+
+<span class="hljs-comment">## define I2I conn</span>
+syn_I2I_GABAa = GABAa(pre=neu_I, post=neu_I,
+                      conn=bp.connect.All2All(),
+                      delay=delay_syn)
+syn_I2I_GABAa.g_max = g_max_I2I_GABAa
+syn_I2I_GABAa.E = E_GABAa
+syn_I2I_GABAa.tau_decay = tau_decay_GABAa
+
+
+<span class="hljs-comment"># def background poisson input</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PoissonInput</span><span class="hljs-params">(bp.NeuGroup)</span>:</span>
+  target_backend = <span class="hljs-string">&apos;general&apos;</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, size, freqs, dt, **kwargs)</span>:</span>
+    self.freqs = freqs
+    self.dt = dt
+
+    self.spike = bp.ops.zeros(size, dtype=bool)
+
+    super(PoissonInput, self).__init__(size=size, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    self.spike = np.random.random(self.size) &lt; self.freqs * self.dt / <span class="hljs-number">1000.</span>
+
+<span class="hljs-comment"># poisson_freq = 2400Hz</span>
+neu_poisson_A = PoissonInput(N_A, freqs=poisson_freq, dt=dt)
+neu_poisson_B = PoissonInput(N_B, freqs=poisson_freq, dt=dt)
+neu_poisson_non = PoissonInput(N_non, freqs=poisson_freq, dt=dt)
+neu_poisson_I = PoissonInput(N_I, freqs=poisson_freq, dt=dt)
+
+syn_back2A_AMPA = AMPA(pre=neu_poisson_A, post=neu_A,
+                       conn=bp.connect.One2One())
+syn_back2B_AMPA = AMPA(pre=neu_poisson_B, post=neu_B,
+                       conn=bp.connect.One2One())
+syn_back2non_AMPA = AMPA(pre=neu_poisson_non, post=neu_non,
+                         conn=bp.connect.One2One())
+
+syn_back2I_AMPA = AMPA(pre=neu_poisson_I, post=neu_I,
+                       conn=bp.connect.One2One())
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> [syn_back2A_AMPA, syn_back2B_AMPA, syn_back2non_AMPA]:
+  i.g_max = g_max_ext2E_AMPA
+  i.E = E_AMPA
+  i.tau_decay = tau_decay_AMPA
+
+syn_back2I_AMPA.g_max = g_max_ext2I_AMPA
+syn_back2I_AMPA.E = E_AMPA
+syn_back2I_AMPA.tau_decay = tau_decay_AMPA
+<span class="hljs-comment"># Note: all neurons receive 2400Hz background poisson inputs</span>
+
+<span class="hljs-comment">## def stimulus input</span>
+<span class="hljs-comment"># Note: inputs only given to A and B group</span>
+mu_0 = <span class="hljs-number">40.</span>
+coherence = <span class="hljs-number">25.6</span>
+rou_A = mu_0 / <span class="hljs-number">100.</span>
+rou_B = mu_0 / <span class="hljs-number">100.</span>
+mu_A = mu_0 + rou_A * coherence
+mu_B = mu_0 - rou_B * coherence
+print(f<span class="hljs-string">&quot;coherence = {coherence}, mu_A = {mu_A}, mu_B = {mu_B}&quot;</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PoissonStim</span><span class="hljs-params">(bp.NeuGroup)</span>:</span>
+  <span class="hljs-string">&quot;&quot;&quot;
+  from time &lt;t_start&gt; to &lt;t_end&gt; during the simulation, the neuron
+  generates a poisson spike with frequency &lt;self.freq&gt;. however,
+  the value of &lt;self.freq&gt; changes every &lt;t_interval&gt; ms and obey
+  a Gaussian distribution defined by &lt;mean_freq&gt; and &lt;var_freq&gt;.
+  &quot;&quot;&quot;</span>
+  target_backend = <span class="hljs-string">&apos;general&apos;</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, size, dt=<span class="hljs-number">0.</span>, t_start=<span class="hljs-number">0.</span>, t_end=<span class="hljs-number">0.</span>, t_interval=<span class="hljs-number">0.</span>,
+               mean_freq=<span class="hljs-number">0.</span>, var_freq=<span class="hljs-number">20.</span>, **kwargs)</span>:</span>
+    self.dt = dt
+    self.stim_start_t = t_start
+    self.stim_end_t = t_end
+    self.stim_change_freq_interval = t_interval
+    self.mean_freq = mean_freq
+    self.var_freq = var_freq
+
+    self.freq = <span class="hljs-number">0.</span>
+    self.t_last_change_freq = <span class="hljs-number">-1e7</span>
+    self.spike = bp.ops.zeros(size, dtype=bool)
+
+    super(PoissonStim, self).__init__(size=size, **kwargs)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(self, _t)</span>:</span>
+    <span class="hljs-keyword">if</span> self.stim_start_t &lt; _t &lt; self.stim_end_t:
+      <span class="hljs-keyword">if</span> self.stim_change_freq_interval &lt;= _t - self.t_last_change_freq:
+        self.freq = np.random.normal(self.mean_freq, self.var_freq)
+        self.freq = max(self.freq, <span class="hljs-number">0</span>)
+        self.t_last_change_freq = _t
+      self.spike = np.random.random(self.size) &lt; (self.freq * self.dt / <span class="hljs-number">1000</span>)
+    <span class="hljs-keyword">else</span>:
+      self.freq = <span class="hljs-number">0.</span>
+      self.spike[:] = <span class="hljs-keyword">False</span>
+
+
+neu_input2A = PoissonStim(N_A, dt=dt, t_start=pre_period,
+                          t_end=pre_period + stim_period,
+                          t_interval=<span class="hljs-number">50.</span>, mean_freq=mu_A, var_freq=<span class="hljs-number">10.</span>,
+                          monitors=[<span class="hljs-string">&apos;freq&apos;</span>])
+neu_input2B = PoissonStim(N_B, dt=dt, t_start=pre_period,
+                          t_end=pre_period + stim_period,
+                          t_interval=<span class="hljs-number">50.</span>, mean_freq=mu_B, var_freq=<span class="hljs-number">10.</span>,
+                          monitors=[<span class="hljs-string">&apos;freq&apos;</span>])
+
+syn_input2A_AMPA = AMPA(pre=neu_input2A, post=neu_A,
+                        conn=bp.connect.One2One())
+
+syn_input2B_AMPA = AMPA(pre=neu_input2B, post=neu_B,
+                        conn=bp.connect.One2One())
+
+syn_input2A_AMPA.g_max = g_max_ext2E_AMPA
+syn_input2A_AMPA.E = E_AMPA
+syn_input2A_AMPA.tau_decay = tau_decay_AMPA
+
+syn_input2B_AMPA.g_max = g_max_ext2E_AMPA
+syn_input2B_AMPA.E = E_AMPA
+syn_input2B_AMPA.tau_decay = tau_decay_AMPA
+
+<span class="hljs-comment"># build &amp; simulate network</span>
+net = bp.Network(
+  neu_poisson_A, neu_poisson_B,
+  neu_poisson_non, neu_poisson_I,
+  <span class="hljs-comment"># bg input</span>
+  syn_back2A_AMPA, syn_back2B_AMPA,
+  syn_back2non_AMPA, syn_back2I_AMPA,
+  <span class="hljs-comment"># bg conn</span>
+  neu_input2A, neu_input2B,
+  <span class="hljs-comment"># stim input</span>
+  syn_input2A_AMPA, syn_input2B_AMPA,
+  <span class="hljs-comment"># stim conn</span>
+  neu_A, neu_B, neu_non, neu_I,
+  <span class="hljs-comment"># E(A B non), I neu</span>
+  syn_A2A_AMPA, syn_A2A_NMDA,
+  syn_A2B_AMPA, syn_A2B_NMDA,
+  syn_A2non_AMPA, syn_A2non_NMDA,
+  syn_B2A_AMPA, syn_B2A_NMDA,
+  syn_B2B_AMPA, syn_B2B_NMDA,
+  syn_B2non_AMPA, syn_B2non_NMDA,
+  syn_non2A_AMPA, syn_non2A_NMDA,
+  syn_non2B_AMPA, syn_non2B_NMDA,
+  syn_non2non_AMPA, syn_non2non_NMDA,
+  <span class="hljs-comment"># E2E conn</span>
+  syn_A2I_AMPA, syn_A2I_NMDA,
+  syn_B2I_AMPA, syn_B2I_NMDA,
+  syn_non2I_AMPA, syn_non2I_NMDA,
+  <span class="hljs-comment"># E2I conn</span>
+  syn_I2A_GABAa, syn_I2B_GABAa, syn_I2non_GABAa,
+  <span class="hljs-comment"># I2E conn</span>
+  syn_I2I_GABAa
+  <span class="hljs-comment"># I2I conn</span>
+)
+<span class="hljs-comment"># Note: you may also use .add method of bp.Network to add</span>
+<span class="hljs-comment">#       NeuGroups and SynConns to network</span>
+
+net.run(duration=total_period, inputs=[], report=<span class="hljs-keyword">True</span>)
+
+
+<span class="hljs-comment"># visualize</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_population_fr</span><span class="hljs-params">(data, time_window, time_step)</span>:</span>
+  spike_cnt_group = data.sum(axis=<span class="hljs-number">1</span>)
+  pop_num = data.shape[<span class="hljs-number">1</span>]
+  time_cnt = int(time_step // dt)
+  first_step_sum = spike_cnt_group[<span class="hljs-number">0</span>:time_cnt].sum(axis=<span class="hljs-number">0</span>)
+  pop_fr_group = []
+  <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> range(data.shape[<span class="hljs-number">0</span>]):
+    <span class="hljs-keyword">if</span> t &lt; time_cnt:
+      pop_fr_group.append((first_step_sum / time_step) / pop_num)
+    <span class="hljs-keyword">else</span>:
+      pop_fr_group.append(spike_cnt_group[t - time_cnt:t].sum(axis=<span class="hljs-number">0</span>))
+  <span class="hljs-keyword">return</span> pop_fr_group
+
+
+fig, gs = bp.visualize.get_figure(<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>)
+
+fig.add_subplot(gs[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+bp.visualize.raster_plot(net.ts, neu_A.mon.spike,
+                         markersize=<span class="hljs-number">1</span>)
+plt.xlabel(<span class="hljs-string">&quot;time&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;spike of group A&quot;</span>)
+fig.add_subplot(gs[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>])
+bp.visualize.raster_plot(net.ts, neu_B.mon.spike,
+                         markersize=<span class="hljs-number">1</span>)
+plt.xlabel(<span class="hljs-string">&quot;time&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;spike of group B&quot;</span>)
+
+fig.add_subplot(gs[<span class="hljs-number">2</span>, <span class="hljs-number">0</span>])
+print(<span class="hljs-string">&quot;computing fr...&quot;</span>)
+pop_fr_A = compute_population_fr(neu_A.mon.spike, time_window=<span class="hljs-number">50.</span>, time_step=<span class="hljs-number">5.</span>)
+pop_fr_B = compute_population_fr(neu_B.mon.spike, time_window=<span class="hljs-number">50.</span>, time_step=<span class="hljs-number">5.</span>)
+print(<span class="hljs-string">&quot;get fr&quot;</span>)
+plt.bar(net.ts, pop_fr_A, label=<span class="hljs-string">&quot;group A&quot;</span>)
+plt.bar(net.ts, pop_fr_B, label=<span class="hljs-string">&quot;group B&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;time&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;population activity&quot;</span>)
+plt.legend()
+
+fig.add_subplot(gs[<span class="hljs-number">3</span>, <span class="hljs-number">0</span>])
+plt.plot(net.ts, neu_input2A.mon.freq, label=<span class="hljs-string">&quot;group A&quot;</span>)
+plt.plot(net.ts, neu_input2B.mon.freq, label=<span class="hljs-string">&quot;group B&quot;</span>)
+plt.xlabel(<span class="hljs-string">&quot;time&quot;</span>)
+plt.ylabel(<span class="hljs-string">&quot;input firing rate&quot;</span>)
+plt.legend()
+
+plt.show()
+</code></pre>
+<hr>
+<h2 id="&#x53D1;&#x653E;&#x7387;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;">&#x53D1;&#x653E;&#x7387;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</h2>
+<h3 id="&#x6289;&#x62E9;&#x6A21;&#x578B;">&#x6289;&#x62E9;&#x6A21;&#x578B;</h3>
 <pre><code class="lang-python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> OrderedDict
 <span class="hljs-keyword">import</span> brainpy <span class="hljs-keyword">as</span> bp
 
@@ -634,7 +1377,7 @@ plot_animate()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"网络模型","level":"1.5.3","depth":2,"previous":{"title":"突触模型","level":"1.5.2","depth":2,"path":"appendix/synapses.md","ref":"appendix/synapses.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"code":{"copyButtons":true},"splitter":{},"search-pro":{},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy手册","language":"zh-hans","gitbook":"*","description":"介绍计算神经科学常见的模型，以及如何使用BrainPy进行计算模拟。"},"file":{"path":"appendix/networks.md","mtime":"2021-05-11T09:03:28.959Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-11T09:07:29.437Z"},"basePath":"..","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"网络模型","level":"1.5.3","depth":2,"previous":{"title":"突触模型","level":"1.5.2","depth":2,"path":"appendix/synapses.md","ref":"appendix/synapses.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"code":{"copyButtons":true},"splitter":{},"search-pro":{},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy手册","language":"zh-hans","gitbook":"*","description":"介绍计算神经科学常见的模型，以及如何使用BrainPy进行计算模拟。"},"file":{"path":"appendix/networks.md","mtime":"2021-05-12T08:44:46.862Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-12T08:45:48.206Z"},"basePath":"..","book":{"language":"zh"}});
         });
     </script>
 </div>
