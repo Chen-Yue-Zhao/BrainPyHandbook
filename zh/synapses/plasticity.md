@@ -10,12 +10,12 @@
 
 ### 2.2.1 突触短时程可塑性（STP）
 
-我们首先从实验结果来介绍突触短时程可塑性。在图2-1中，上图表示突触前神经元的动作电位，下图为突触后神经元的膜电位。我们可以看到，当突触前神经元在短时间内持续发放的时候，突触后神经元的反应越来越弱，呈现出短时程抑制 (short term depression)。而当突触前神经元停止发放几百毫秒后，再来一个动作电位，此时突触后神经元的反应基本恢复到一开始的状态，因此这个抑制效果持续的时间很短，称为短时程可塑性。
+我们首先从实验结果来介绍突触短时程可塑性。在图2-4中，上图表示突触前神经元的动作电位，下图为突触后神经元的膜电位。我们可以看到，当突触前神经元在短时间内持续发放的时候，突触后神经元的反应越来越弱，呈现出短时程抑制 (short term depression)。而当突触前神经元停止发放几百毫秒后，再来一个动作电位，此时突触后神经元的反应基本恢复到一开始的状态，因此这个抑制效果持续的时间很短，称为短时程可塑性。
 
 <div style="text-align:center">
-  <img src="../../figs/syns/stp.png" width="400">
+  <img src="../../figs/syns/2-4stp.png" width="400">
   <br>
-  <strong>图2-1 突触短时程可塑性</strong> (改编自 <cite  id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
+  <strong>图2-4 突触短时程可塑性</strong> (改编自 <cite  id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -109,12 +109,12 @@ run_stp(U=0.1, tau_d=10, tau_f=100.)
 
 #### 脉冲时间依赖可塑性（STDP）
 
-图2-2显示了实验上观察到的脉冲时间依赖可塑性（spiking timing dependent plasticity；STDP）的现象。x轴为突触前神经元和突触后神经元产生脉冲（spike）的时间差，位于零点左侧的数据点为突触前神经元先于突触后神经元发放的情况，由图可见此时突触权重为正，表现出长时程增强 (long term potentiation；LTP）的现象；而零点右侧则是突触后神经元比突触前神经元更先发放的情况，表现出长时程抑制 (long term depression；LTD）。
+图2-5显示了实验上观察到的脉冲时间依赖可塑性（spiking timing dependent plasticity；STDP）的现象。x轴为突触前神经元和突触后神经元产生脉冲（spike）的时间差，位于零点左侧的数据点为突触前神经元先于突触后神经元发放的情况，由图可见此时突触权重为正，表现出长时程增强 (long term potentiation；LTP）的现象；而零点右侧则是突触后神经元比突触前神经元更先发放的情况，表现出长时程抑制 (long term depression；LTD）。
 
 <div style="text-align:center">
-  <img src="../../figs/syns/stdp.png" width="350" height="320">
+  <img src="../../figs/syns/2-5stdp.png" width="350" height="320">
   <br>
-  <strong>图2-2 脉冲时间依赖可塑性</strong> (改编自 <cite  id="reffn_2">Bi & Poo, 2001 <sup><a href="#fn_2">2</a></sup></cite>)
+  <strong>图2-5 脉冲时间依赖可塑性</strong> (改编自 <cite  id="reffn_2">Bi & Poo, 2001 <sup><a href="#fn_2">2</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -266,12 +266,12 @@ $$
 
 
 
-我们打算实现如图2-3所示的连接。突触后神经元群$$i$$（紫色）同时接受两群神经元$$j_1$$（蓝色）和$$j_2$$（红色）的输入。我们给$$i$$和$$j_2$$完全相同的刺激，而给$$j_1$$的刺激一开始跟$$i$$一致，但后来就不一致了。因此，根据赫布学习律，我们预期同步发放时，突触权重$$w$$会增加，当$$j_1$$不再与$$i$$同步发放时，则$$w_{ij_1}$$停止增加。
+我们打算实现如图2-6所示的连接。突触后神经元群$$i$$（紫色）同时接受两群神经元$$j_1$$（蓝色）和$$j_2$$（红色）的输入。我们给$$i$$和$$j_2$$完全相同的刺激，而给$$j_1$$的刺激一开始跟$$i$$一致，但后来就不一致了。因此，根据赫布学习律，我们预期同步发放时，突触权重$$w$$会增加，当$$j_1$$不再与$$i$$同步发放时，则$$w_{ij_1}$$停止增加。
 
 <div style="text-align:center">
-  <img src="../../figs/syns/conn.png" width="300">
+  <img src="../../figs/syns/2-6conn.png" width="300">
   <br>
-  <strong>图2-3 神经元的连接</strong>
+  <strong>图2-6 神经元的连接</strong>
 </div>
 <div><br></div>
 
@@ -293,18 +293,18 @@ $$
 \frac d{dt} w_{ij} =  \eta r_i(r_i - r_\theta) r_j
 $$
 
-其中$$\eta$$为学习速率，$$r_\theta$$为学习的阈值（见图2-4）。图2-4画出了上式的右边，当发放频率高于阈值时呈现LTP，低于阈值时则为LTD。因此，这是一种频率依赖可塑性（回想一下，前面介绍的STDP为时间依赖可塑性），可以通过调整阈值$$r_\theta$$实现选择性。
+其中$$\eta$$为学习速率，$$r_\theta$$为学习的阈值（见图2-7）。图2-7画出了上式的右边，当发放频率高于阈值时呈现LTP，低于阈值时则为LTD。因此，这是一种频率依赖可塑性（回想一下，前面介绍的STDP为时间依赖可塑性），可以通过调整阈值$$r_\theta$$实现选择性。
 
 
 
 <div style="text-align:center">
-  <img src="../../figs/syns/bcm.png" width="300">
+  <img src="../../figs/syns/2-7bcm.png" width="300">
   <br>
-    <strong> 图2-4 BCM法则</strong> (引自 <cite>Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
+    <strong> 图2-7 BCM法则</strong> (引自 <cite>Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
 <div><br></div>
 
-我们将实现和Oja法则相同的连接方式（图2-3），但给的刺激不同。在这里，我们让$$j_1$$（蓝色）和$$j_2$$（红色）交替发放，且$$j_1$$的发放率比$$j_2$$高。我们动态调整阈值为$$r_i$$的时间平均，即 $$r_\theta = f(r_i)=\frac {\int dt r_i}T$$。BrainPy实现的代码如下。
+我们将实现和Oja法则相同的连接方式（图2-6），但给的刺激不同。在这里，我们让$$j_1$$（蓝色）和$$j_2$$（红色）交替发放，且$$j_1$$的发放率比$$j_2$$高。我们动态调整阈值为$$r_i$$的时间平均，即 $$r_\theta = f(r_i)=\frac {\int dt r_i}T$$。BrainPy实现的代码如下。
 
 ![bcm_def](../../figs/syns/codes/zh/bcm_def.png)
 

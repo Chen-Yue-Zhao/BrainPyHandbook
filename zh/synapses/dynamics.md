@@ -20,7 +20,7 @@
 
 
 <div style="text-align:center">
-  <img src="../../figs/syns/bio_syn.png" width="450">
+  <img src="../../figs/syns/2-1bio_syn.png" width="450">
   <br>
     <strong> 图 2-1 生物突触 </strong> (引自 <cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
@@ -37,7 +37,7 @@
 我们可以用马尔可夫过程来描述离子通道的开关。如图2-2所示，$$s$$代表通道打开的概率，$$1-s$$代表离子通道关闭的概率，$$\alpha$$和$$\beta$$是转移概率（transition probability）。由于神经递质能让离子通道打开，所以从$$1-s$$到$$s$$的转移概率受神经递质浓度（以[T]表示）影响。
 
 <div style="text-align:center">
-  <img src="../../figs/syns/markov.png" width="170"> 
+  <img src="../../figs/syns/2-2markov.png" width="170"> 
   <br>	
   <strong> 图2-2 离子通道动力学的马尔可夫过程 </strong>
 </div>
@@ -308,13 +308,13 @@ $$
         <strong>(a)</strong>
       </div>
       <div style="grid-column:2;grid-row:2">
-        <img src="../../figs/syns/bio_gap.png" width="200">
+        <img src="../../figs/syns/2-3a_bio_gap.png" width="200">
       </div>
       <div style="grid-column:3;grid-row:1;align-self:end;justify-self:end">
         <strong>(b)</strong>
       </div>
       <div style="grid-column:4;grid-row:2">
-        <img style="width:200px" src="../../figs/syns/gap_model.jpg">
+        <img style="width:200px" src="../../figs/syns/2-3b_gap_model.jpg">
       </div>
     </div>
   <br>

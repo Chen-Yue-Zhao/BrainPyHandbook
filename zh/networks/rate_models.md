@@ -7,13 +7,13 @@
 
 
 <div align="center">
-  <img src="../../figs/nets/decision.png" width="300">
+  <img src="../../figs/nets/3-6decision.png" width="300">
   <br>
-  <strong>图3-1 简化的抉择模型</strong> (引自 <cite>Wong & Wang, 2006 <sup><a href="#fn_1">1</a></sup></cite>)
+  <strong>图3-6 简化的抉择模型</strong> (引自 <cite>Wong & Wang, 2006 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
 <div><br></div>
 
-基于发放率的抉择模型如图3-1所示，$$S_1$$（蓝色）和$$S_2$$（红色）分别表示两群神经元的状态，同时也分别对应着两个选项。他们都由兴奋性的神经元组成，且各自都有一个循环（recurrent）连接。而同时它们都会给对方一个抑制性的输入，以此形成相互竞争的关系。该模型的动力学方程如下：
+基于发放率的抉择模型如图3-6所示，$$S_1$$（蓝色）和$$S_2$$（红色）分别表示两群神经元的状态，同时也分别对应着两个选项。他们都由兴奋性的神经元组成，且各自都有一个循环（recurrent）连接。而同时它们都会给对方一个抑制性的输入，以此形成相互竞争的关系。该模型的动力学方程如下：
 $$
 \frac{dS_1} {dt} = -\frac {S_1} \tau + (1-S_1) \gamma r_1
 $$
@@ -32,7 +32,7 @@ $$
 f(I)= \frac {aI-b} {1- \exp [-d(aI-b)]}
 $$
 
-$$I_{syn, i}$$ 的公式由图3-1的模型结构给出：
+$$I_{syn, i}$$ 的公式由图3-6的模型结构给出：
 
 $$
 I_{syn, 1} = J_{11} S_1 - J_{12} S_2 + I_0 + I_1
@@ -150,12 +150,12 @@ phase_analyze(I=30., coh=1.)
 
 ### 3.2.2 连续吸引子模型（CANN）
 
-这里我们将介绍发放率模型的另一个例子——连续吸引子神经网络（CANN）。一维CANN的结构如下：
+这里我们将介绍发放率模型的另一个例子——连续吸引子神经网络（CANN）。图3-7呈现了一维CANN的结构。
 
 <div align="center">
-  <img src="../../figs/nets/cann.png" width="300">
+  <img src="../../figs/nets/3-7cann.png" width="300">
   <br>
-  <strong>图3-2 连续吸引子神经网络</strong> (引自 <cite>Wu et al., 2008 <sup><a href="#fn_2">2</a></sup></cite>)
+  <strong>图3-7 连续吸引子神经网络</strong> (引自 <cite>Wu et al., 2008 <sup><a href="#fn_2">2</a></sup></cite>)
 </div>
 <div><br></div>
 
