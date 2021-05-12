@@ -1,6 +1,6 @@
-## Biophysical models
+## 生理模型
 
-### Hodgkin-Huxley model
+### Hodgkin-Huxley模型
 
 ```python
 import brainpy as bp
@@ -83,9 +83,9 @@ bp.visualize.line_plot(neu.mon.ts, neu.mon.V,
 
 ------
 
-## Reduced models
+## 简化模型
 
-### LIF model
+### LIF模型
 
 ```python
 import brainpy as bp
@@ -154,7 +154,7 @@ bp.visualize.line_plot(neu.mon.ts, neu.mon.V,
 
 ------
 
-### QuaIF model
+### QuaIF模型
 
 ```python
 import brainpy as bp
@@ -226,7 +226,7 @@ bp.visualize.line_plot(neu.mon.ts, neu.mon.V,
 
 ------
 
-### ExpIF model
+### ExpIF模型
 
 ```python
 import brainpy as bp
@@ -300,7 +300,7 @@ bp.visualize.line_plot(neu.mon.ts, neu.mon.V,
 
 ------
 
-### AdExIF model
+### AdExIF模型
 
 ```python
 import brainpy as bp
@@ -383,7 +383,7 @@ bp.visualize.line_plot(neu.mon.ts, neu.mon.V,
 
 ------
 
-### Hindmarsh-Rose model
+### Hindmarsh-Rose模型
 
 ```python
 import brainpy as bp
@@ -476,7 +476,7 @@ phase_plane_analyzer.plot_trajectory(
 
 ------
 
-### GeneralizedIF model
+### GeneralizedIF模型
 
 ```python
 import brainpy as bp
@@ -724,9 +724,9 @@ for i in range(pattern_num):
 
 ------
 
-## Firing rate models
+## 发放率模型
 
-### Firing Rate Unit model
+### 发放率单元
 
 ```python
 import brainpy as bp
