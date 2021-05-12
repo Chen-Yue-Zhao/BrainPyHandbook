@@ -6,7 +6,8 @@ To achieve our final goal of modeling neurons with computational neuroscience me
 
 <center><img src="../../figs/neus/neuron_membrane.png" width="584" height="300">	</center>
 
-<center><b> Fig. 1-1 Neuron membrane diagram (<cite id="reffn_1">what-when-how.com <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
+<center><b> Fig. 1-1 Neuron membrane diagram (<cite id="reffn_1">Bear et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
+
 The figure above is a general diagram of neuron membrane with phospholipid bilayer and ion channels. The membrane divides the ions and fluid into intracellular and extracellular, partially prevent them from exchanging, thus generates **membrane potential**---- the difference in electric potential across the membrane.
 
 An ion in the fluid is subjected to two forces. The force of diffusion is caused by the ion concentration difference across the membrane, while the force of electric field is caused by the electric potential difference. When these two forces reach balance, the total forces on ions are 0, and each type of ion meets an equilibrium potential, while the neuron holds a membrane potential lower than 0.
@@ -15,9 +16,10 @@ This membrane potential integrated by all those ion equilibrium potentials is th
 
 However, our neural system receives countless inputs every millisecond, from external inputs to recurrent inputs, from specific stimulus inputs to non-specific background inputs. Receiving all these inputs, neurons generate **action potentials** (or **spikes**) to transfer and process information all across the neural system.
 
-<center><img src="../../figs/neus/action_potential.png" width="533" height="300">	</center>
+<center><img src="../../figs/neus/action_potential_en.png" width="384" height="300">	</center>
 
-<center><b> Fig. 1-2 Action Potential (<cite id="reffn_2">wikipedia <sup><a href="#fn_2">2</a></sup></cite>) </b></center>
+<center><b> Fig. 1-2 Action Potential (Adapted from <cite id="reffn_1">Bear et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>) </b></center>
+
 Passing through the ion channels shown in Fig.1-1, ions on both sides of the hydrophobic phospholipid bilayer are exchanged. Due to changes in the environment caused by, for example, an external input, ion channels will switch between their open/close states, therefore allow/prohibit ion exchanges. During the switch, the ion concentrations (mainly Na+ and K+) change, induce a significant change on neuron's membrane potential: the membrane potential will raise to a peak value and then fall back in a short time period. Biologically, when such a series of potential changes happens, we say the neuron generates an **action potential** or a **spike**, or the neuron fires.
 
 An action potential can be mainly divided into three periods: **depolarization**, **repolarization** and **refractory period**. During the depolarization period, Na+ flow into the neuron and K+ flow out of the neuron, however the inflow of Na+ is faster, so the membrane potential raises from a low value $$V_{rest}$$ to a value much higher called $$V_{th}$$, then the outflow of K+ becomes faster than Na+, and the membrane potential is reset to a value lower than resting potential during the repolarization period. After that, because of the relatively lower membrane potential, the neuron is unlikely to generate another spike immediately, until the refractory period passes.
@@ -32,5 +34,4 @@ Those firing patterns, together with the shape of action potentials, are what co
 
 
 
-[^ 1]: TODO
-[^ 2 ]: TODO
+[^ 1]: Bear, Mark, Barry Connors, and Michael A. Paradiso. *Neuroscience: Exploring the brain*. Jones & Bartlett Learning, LLC, 2020.
