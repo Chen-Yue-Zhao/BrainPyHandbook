@@ -10,7 +10,8 @@ Vreeswijk和Sompolinsky（1996）提出了**兴奋-抑制平衡网络**（E/I ba
 
 <center><img src="../../figs/nets/3-2.png" width="616" height="300"></center>
 
-<center><b>Fig.3-1 兴奋-抑制平衡网络结构 （<cite id="reffn_1">Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>）</b></center>
+<center><b>图3-1 兴奋-抑制平衡网络结构 （<cite id="reffn_1">Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>）</b></center>
+
 图3-1画出了兴奋-抑制平衡网络的结构。该网络由兴奋性LIF神经元和和抑制性LIF神经元构成，其数量比$$N_E: N_I = 4:1$$。在网络两类神经元之间和同类神经元之内，建立了四组指数型突触连接，分别是兴奋-兴奋连接（E2E conn），兴奋-抑制连接（E2I conn），抑制-兴奋连接（I2E conn），抑制-抑制连接（I2I conn）。在代码中我们通过定义符号相反的突触权重，来指明突触连接的兴奋性或抑制性。
 
 <center><img src="../../figs/nets/codes/zh/EInet1.png">	</center>
@@ -38,7 +39,8 @@ Vreeswijk和Sompolinsky（1996）提出了**兴奋-抑制平衡网络**（E/I ba
 
 <center><img src="../../figs/nets/EI_neuron_distribution.jpg" width="352" hight="300"></center>
 
-<center><b>Fig.3-2 兴奋-抑制平衡网络中神经元膜电位的分布（<cite id="reffn_2">Tian et al.，2020 <sup><a href="#fn_2">2</a></sup></cite>）</b></center>
+<center><b>图3-2 兴奋-抑制平衡网络中神经元膜电位的分布（<cite id="reffn_2">Tian et al.，2020 <sup><a href="#fn_2">2</a></sup></cite>）</b></center>
+
 仿真证实，在这种情况下，网络对输入产生反应的延迟时间和突触的延迟时间处于同一量级，并且二者都远小于单神经元从静息电位开始积累同样大小的外部输入直到产生动作电位所需的延迟时间（Vreeswijk和Sompolinsky，1996；Tian et al.，2020）。因此，兴奋-抑制平衡网络面对外部输入的变化可以快速反应，改变自身的活跃水平。
 
 ------
@@ -51,14 +53,15 @@ Vreeswijk和Sompolinsky（1996）提出了**兴奋-抑制平衡网络**（E/I ba
 
 <center><img src="../../figs/nets/3-4.png" width="440" height="200"> </center>
 
-<center><b>Fig.3-4 生理实验中随机点的运动示意图（<cite id="reffn_3">Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>）</b></center>
+<center><b>图3-3 生理实验中随机点的运动示意图（<cite id="reffn_3">Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>）</b></center>
+
 Wang（2002）提出了本节所述的抉择网络，希望建模在视觉运动区分实验中猕猴大脑新皮层的抉择回路的活动。
 
 <center><img src="../../figs/nets/3-5.png" width="440" height="240"></center>
 
-<center><b>Fig.3-5 抉择网络结构（<cite id="reffn_4">Wang，2002<sup><a href="#fn_4">4</a></sup></cite>）</b></center>
+<center><b>图3-4 抉择网络结构（<cite id="reffn_4">Wang，2002<sup><a href="#fn_4">4</a></sup></cite>）</b></center>
 
-如图3-5所示，网络同样基于兴奋-抑制平衡网络。兴奋性神经元和抑制型神经元的数量比是$$N_E:N_I = 4:1$$，调整参数使得网络处在平衡状态下。
+如图3-4所示，网络同样基于兴奋-抑制平衡网络。兴奋性神经元和抑制型神经元的数量比是$$N_E:N_I = 4:1$$，调整参数使得网络处在平衡状态下。
 
 为了简化模型，实验被设定为一个二选一的任务：在兴奋性神经元群中，特别地标出两个选择性子神经元群A和B，其他的兴奋性神经元称为非选择性神经元，用下标$$_{non}$$表示。A群和B群的数目均为兴奋性神经元的0.15倍（$$N_A = N_B = 0.15N_E$$），它们分别代表着两个相反的运动方向，可以视作随机点要么向左，要么向右，没有第三个方向，网络的抉择结果也必须在这两个子群中产生。非选择性神经元的数目为$$N_{non} = (1-2*0.15)N_E$$。
 
@@ -70,7 +73,7 @@ Wang（2002）提出了本节所述的抉择网络，希望建模在视觉运动
 
 因此，网络中的E2E连接被建模为有结构的连接。如表3-1所示，$$w+ > 1 > w-$$。这样，在A群或B群的内部，兴奋性突触连接更强，形成了一种相对的自激活；而在A、B两个选择性子神经元群之间或是A群、B群和非选择性子神经元群之间，兴奋性突触连接较弱，实际上形成了相对的抑制。A和B两个神经元因此产生竞争，迫使网络做出二选一的抉择。
 
-<center><b>Sheet 3-1 决策网络中兴奋性神经元间连接权重的分布</b></center>
+<center><b>表3-1 决策网络中兴奋性神经元间连接权重的分布</b></center>
 <center><img src="../../figs/nets/3-6.png"></center>
 
 <center><img src="../../figs/nets/codes/zh/DMnet1.PNG">	</center>

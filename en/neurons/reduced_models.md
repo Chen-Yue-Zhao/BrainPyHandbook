@@ -19,7 +19,7 @@ $$\tau = RC$$ is the time constant of LIF model, the larger $$\tau$$ is, the slo
 
 <center><img src="../../figs/neus/LIF_circuit.png" width="200" height="271"></center>
 
-<center><b>Fig1-4 Equivalent circuit of LIF model</b></center>
+<center><b>Fig.1-5 Equivalent circuit of LIF model</b></center>
 
 Compared with HH model, LIF model does not model the shape of action potentials, which means, the membrane potential does not burst before a spike. Also, the refractory period is overlooked in the original model, and in order to generate it, another conditional judgment must be added:
 

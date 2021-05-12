@@ -10,7 +10,7 @@ The randomness and noise in E/I balanced network give  each neuron in the networ
 
 <center><img src="../../figs/nets/3-2.png" width="616" height="300"></center>
 
-<center><b>Fig.3-1 Structure of E/I balanced network (<cite id="reffn_1">Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
+<center><b>Fig. 3-1 Structure of E/I balanced network (<cite id="reffn_1">Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
 
 Vreeswijk and Sompolinsky also suggested a possible function of this irregular firing pattern: E/I balanced network can respond to the changes of external stimulus quickly.
 
@@ -18,7 +18,7 @@ As shown in Fig. 3-3, when there is no external input, the distribution of neuro
 
 <center><img src="../../figs/nets/EI_neuron_distribution.jpg" width="352" hight="300"></center>
 
-<center><b>Fig.3-2 Distribution of neuron membrane potentials in E/I balanced network (<cite id="reffn_2">Tian et al.，2020 <sup><a href="#fn_2">2</a></sup></cite>)</b></center>
+<center><b>Fig. 3-2 Distribution of neuron membrane potentials in E/I balanced network (<cite id="reffn_2">Tian et al.，2020 <sup><a href="#fn_2">2</a></sup></cite>)</b></center>
 
 
 When we give the network a small constant external stimulus, those neurons whose membrane potentials fall near the threshold potential will soon meet the threshold, therefore spike rapidly. On the network scale, the firing rate of the network can adjust rapidly once the input changes.
@@ -45,7 +45,8 @@ See above section 1 and 2 for definition of LIF neuron and exponential synapse. 
 ![png](../../figs/nets/out/output_8_0.png)
 
 
-<center><b>Fig.3-3 E/I balanced net raster plot</b></center>
+
+------
 
 ### 3.1.2 Decision Making Network
 
@@ -55,17 +56,17 @@ For example, in the visual motion discrimination task (Roitman and Shadlen, 2002
 
 <center><img src="../../figs/nets/3-4.png" width="440" height="200"> </center>
 
-<center><b>Fig.3-4 Experimental Diagram (<cite id="reffn_3">Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>)</b></center>
+<center><b>Fig. 3-3 Experimental Diagram (<cite id="reffn_3">Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>)</b></center>
 
 Wang (2002) proposed a decision making network to model the activity of rhesus LIP neurons during decision making period in the visual motion discrimination task. 
 
-As shown in Fig. 3-5, this network is based on E/I balanced network. The ratio of excitatory neurons and inhibitory neurons is $$N_E:N_I = 4:1$$, and parameters are adjusted to maintain the balanced state.
+As shown in Fig. 3-4, this network is based on E/I balanced network. The ratio of excitatory neurons and inhibitory neurons is $$N_E:N_I = 4:1$$, and parameters are adjusted to maintain the balanced state.
 
 To accomplish the decision making task, among the excitatory neuron group, two selective subgroup A and B are chosen, both with a size of $$N_A = N_B = 0.15N_E$$. These two subgroups are marked as A and B in Fig. 3-5, and we call other excitatory neurons as non-selective neurons, $$N_{non} = (1-2*0.15)N_E$$.
 
 <center><img src="../../figs/nets/3-5.png" width="440" height="240"></center>
 
-<center><b>Fig.3-5 structure of decision making network (<cite id="reffn_4">Wang，2002<sup><a href="#fn_4">4</a></sup></cite>)</b></center>
+<center><b>Fig. 3-4 structure of decision making network (<cite id="reffn_4">Wang，2002<sup><a href="#fn_4">4</a></sup></cite>)</b></center>
 
 <center><img src="../../figs/nets/codes/en/DMnet2.PNG">	</center>
 

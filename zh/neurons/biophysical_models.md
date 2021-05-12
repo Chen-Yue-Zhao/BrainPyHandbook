@@ -10,7 +10,7 @@ Hodgkin和Huxley（1952）在枪乌贼的巨轴突上用膜片钳技术记录了
 
 <center><img src="../../figs/neus/1-2.png">	</center>
 
-<center><b>Fig. 1-4 神经元细胞膜的等效电路图（<cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>） </b></center>
+<center><b>图1-4 神经元细胞膜的等效电路图（<cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>） </b></center>
 上图是将图1-1中真实神经元膜转换为电子元件所得到的等效电路图，图中电容$$C$$表示低电导的疏水性磷脂双层膜，电流$$I$$表示外界输入。
 
 右侧三个并联的电阻中，Na+和K+通道被单独建模为两个可变电阻$$R_{Na}$$和$$R_K$$（这是由于Na+和K+在动作电位的形成中特别重要），电阻$$R$$则代表膜上除了Na+通道和K+通道之外所有未指明的离子通道，有时也表示为下标$$_L$$或者$$_{leak}$$。电源 $$E_{Na}$$, $$E_K$$ 和$$E_L$$对应着由相应离子在膜两侧的浓度差所引起的电位差。
@@ -56,8 +56,6 @@ $$
 <center><img src="../../figs/neus/codes/zh/HH1.png">	</center>
 
 <center><img src="../../figs/neus/codes/zh/HH1.png">	</center>
-
-*在我们的github仓库中运行代码：https://github.com/PKU-NIP-Lab/BrainModels（如无特殊说明，下同）*
 
 BrainPy仿真的HH模型的V-t图如下所示。我们在上一节中曾经提到，真实的动作电位可以分为去极化、复极化和不应期三个阶段，这三个阶段可以与下图一一对应。另外，在去极化时，可以看到膜电位先是累积外部输入缓慢上升，一旦越过某个特定值（图中约在-55mV左右）就转为快速增长，这也复现了真实动作电位的形状。
 

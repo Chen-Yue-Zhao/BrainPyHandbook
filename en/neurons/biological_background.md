@@ -28,7 +28,7 @@ A single action potential is complex enough, but in our neural system, one singl
 
 <center><img src="../../figs/neus/multiple_firing_pattern.png" width="600" height="300">	</center>
 
-<center><b>Figure 1-3 Some firing patterns</b></center>
+<center><b>Fig. 1-3 Some firing patterns</b></center>
 
 Those firing patterns, together with the shape of action potentials, are what computational neuroscience wants to model at the cellular level.
 

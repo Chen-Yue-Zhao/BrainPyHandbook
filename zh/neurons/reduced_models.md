@@ -20,7 +20,8 @@ $$
 
 <center><img src="../../figs/neus/LIF_circuit.png" width="200" height="271"></center>
 
-<center><b>Fig1-4 LIF模型对应的细胞膜等效电路图（简化后）</b></center>
+<center><b>图1-5 LIF模型对应的细胞膜等效电路图（简化后）</b></center>
+
 尽管LIF模型可以产生动作电位，但没有建模动作电位的形状。在发放动作电位前，LIF神经元膜电位的增长速度将逐渐降低，而并非像真实神经元那样先缓慢增长，在跨过阈值电位之后转为迅速增长。
 
 原始LIF模型还忽略了不应期。要模拟不应期，必须再补充一个条件判断：如果当前时刻距离上次发放的时间小于不应期时长，则神经元处于不应期，膜电位$$V$$不再更新。
@@ -127,7 +128,7 @@ $$
 
 ![png](../../figs/neus/out/output_60_1.png)
 
-<center><b>Fig. 1-5 Hindmarsh-Rose模型变量随时间的变化</b></center>
+<center><b>图1-6 Hindmarsh-Rose模型变量随时间的变化</b></center>
 
 利用BrainPy的理论分析模块`analysis`，我们可以找出这种周期性的产生原因。将慢变量$$z$$近似为常数，则Hindmarsh-Rose模型的二维相图中，变量$$V$$和$$y$$的轨迹趋近于一个极限环。因此，这两个变量的值会沿极限环周期性变化。
 
