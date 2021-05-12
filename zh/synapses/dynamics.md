@@ -2,7 +2,7 @@
 
 我们在前面的章节中已经学习了如何建模神经元的动作电位，那么神经元之间是怎么连接起来的呢？神经元的动作电位是如何在不同神经元之间传导的呢？这里，我们将介绍如何用BrainPy来模拟神经元之间的沟通。
 
-> 注：本章所述模型的完整BrainPy代码请见[附录](../appendix/synapses.md)，或[右键点此](../appendix/synapses.ipynb)下载jupyter notebook版本
+> 注：本章所述模型的完整BrainPy代码请见[附录](../appendix/synapses.md)，或[右键点此](../appendix/synapses.ipynb)下载jupyter notebook版本。
 
 ### 2.1.1 化学突触
 

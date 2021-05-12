@@ -4,7 +4,7 @@
 
 可塑性主要分为短时程可塑性（short-term plasticity）与长时程可塑性（long-term plasticity）。我们将首先介绍突触短时程可塑性，然后介绍几种不同的突触长时程可塑性模型。
 
-> 注：本章所述模型的完整BrainPy代码请见[附录](../appendix/synapses.md)，或[右键点此](../appendix/synapses.ipynb)下载jupyter notebook版本
+> 注：本章所述模型的完整BrainPy代码请见[附录](../appendix/synapses.md)，或[右键点此](../appendix/synapses.ipynb)下载jupyter notebook版本。
 
 
 
