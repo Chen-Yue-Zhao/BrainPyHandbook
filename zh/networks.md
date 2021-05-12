@@ -4,4 +4,6 @@
 
 ### 3.1 [脉冲神经网络](networks/spiking_neural_networks.md)
 
-### 3.2 [发放率神经网络](networks/rate_models.md)
+### 3.2 [发放率神经网络](networks/rate_models.md)](neurons/firing_rate_models.md)
+
+注：本章所述模型的完整BrainPy代码请见[附录](../appendix/networks.md)，或[右键点此](../appendix/networks.ipynb)下载jupyter notebook版本。
