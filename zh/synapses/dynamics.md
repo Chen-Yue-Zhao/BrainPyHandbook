@@ -2,6 +2,8 @@
 
 我们在前面的章节中已经学习了如何建模神经元的动作电位，那么神经元之间是怎么连接起来的呢？神经元的动作电位是如何在不同神经元之间传导的呢？这里，我们将介绍如何用BrainPy来模拟神经元之间的沟通。
 
+> 注：本章所述模型的完整BrainPy代码请见[附录](../appendix/synapses.md)，或[右键点此](../appendix/synapses.ipynb)下载jupyter notebook版本
+
 ### 2.1.1 化学突触
 
 #### 生物背景
@@ -61,7 +63,7 @@ $$
 
 <img src="../../figs/syns/codes/zh/ampa_run.png" style="width:100%">
 
-运行以上代码（本章代码请查看[附录](../appendix/synapses.md)，或[点此](../appendix/synapses.ipynb)下载jupyter notebook），即可看到以下的结果：
+运行以上代码，即可看到以下的结果：
 
 
 ![png](../../figs/syns/out/output_9_0.png)
@@ -192,13 +194,13 @@ $$
 
 
 
-现在可以回顾一下我们刚才实现的NMDA模型和GABA<sub>B</sub>模型，它们都是基于电导的模型，而在NMDA模型中，$$E=0$$，因此产生兴奋性电流；而在GABA<sub>B</sub>中，$$E=-95$$，产生抑制性电流。若对上述模型的完整代码实现感兴趣，可以查看我们的[BrainModels](https://github.com/PKU-NIP-Lab/BrainModels/tree/main/brainmodels/numba_backend/synapses)仓库。
+现在可以回顾一下我们刚才实现的NMDA模型和GABA<sub>B</sub>模型，它们都是基于电导的模型，而在NMDA模型中，$$E=0$$，因此产生兴奋性电流；而在GABA<sub>B</sub>中，$$E=-95$$，产生抑制性电流。
 
 
 
 #### 抽象的简化模型
 
-前面我们建模了几种经典的化学突触模型，它们的门控变量$$s$$的动力学都有着先上升后下降的特征。当我们不需要具体地建模某种生物学突触时，只要把握了突触的基本动力学特征（先上升后下降）即可。这里，我们会介绍四种抽象的简化模型及其在BrainPy上的实现，这些抽象模型既可以用于基于电流的，也可以用于基于电导的，可以根据需要选择。我们在[BrainModels](https://brainmodels.readthedocs.io/en/latest/apis/synapses.html)中提供了这些模型的接口，可以直接调用。
+前面我们建模了几种经典的化学突触模型，它们的门控变量$$s$$的动力学都有着先上升后下降的特征。当我们不需要具体地建模某种生物学突触时，只要把握了突触的基本动力学特征（先上升后下降）即可。这里，我们会介绍四种抽象的简化模型及其在BrainPy上的实现，这些抽象模型既可以用于基于电流的，也可以用于基于电导的，可以根据需要选择。
 
 ##### (1) 双指数差（Differences of two exponentials）
 
