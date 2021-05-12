@@ -4,7 +4,7 @@ When we model the firing of neurons, we need to connect them. Synapse is very im
 
 We will first introduce how to implement synaptic dynamics with BrainPy, then introduce synapse plasticity.
 
-### 2.1 [Synaptic Models](synapse/dynamics.md)
+### 2.1 [Synaptic Models](synapses/dynamics.md)
 
-### 2.2 [Plasticity Models](synapse/plasticity.md)
+### 2.2 [Plasticity Models](synapses/plasticity.md)
 

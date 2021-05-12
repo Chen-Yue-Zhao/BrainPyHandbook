@@ -1,8 +1,8 @@
-# 附录：突触模型
+# Appendix: Synapses
 
-## 突触动力学模型
+## Synapse models
 
-### AMPA模型
+### AMPA
 
 
 ```python
@@ -75,7 +75,7 @@ run_syn(AMPA, T_duration=3.)
 ```
 
 
-### NMDA模型
+### NMDA
 
 
 ```python
@@ -145,7 +145,7 @@ run_syn(NMDA)
 
 
 
-### GABA<sub>B</sub>模型
+### GABA_b
 
 
 ```python
@@ -225,7 +225,7 @@ bp.visualize.line_plot(net.ts, syn.mon.s, ylabel='s', show=True)
 
 
 
-### 双指数差（Differences of two exponentials）
+### Differences of two exponentials
 
 
 ```python
@@ -275,7 +275,7 @@ run_syn(Two_exponentials, tau1=2.)
 
 
 
-### Alpha突触
+### Alpha
 
 
 ```python
@@ -323,7 +323,7 @@ run_syn(Alpha)
 
 
 
-### 单指数衰减（Single exponential decay）
+### Single exponential decay
 
 
 ```python
@@ -368,7 +368,7 @@ run_syn(Exponential)
 
 
 
-### 电压跳变（Voltage jump）
+### Voltage jump
 
 
 ```python
@@ -401,7 +401,7 @@ run_syn(Voltage_jump)
 
 
 
-### 缝隙连接（Gap junction）
+### Gap junction
 
 
 ```python
@@ -475,9 +475,9 @@ plt.show()
 
 
 
-## 突触可塑性模型
+## Synaptic plasticity
 
-### 突触短时程可塑性（STP）
+### STP
 
 
 ```python
@@ -572,8 +572,6 @@ run_stp(U=0.2, tau_d=150., tau_f=2.)
 
 
 
-
-
 ```python
 run_stp(U=0.1, tau_d=10, tau_f=100.)
 ```
@@ -582,7 +580,7 @@ run_stp(U=0.1, tau_d=10, tau_f=100.)
 
 
 
-### 脉冲时间依赖可塑性（STDP）
+### STDP
 
 
 ```python
@@ -727,7 +725,7 @@ plt.show()
 
 
 
-### Oja法则
+### Oja's rule
 
 
 ```python
@@ -832,7 +830,7 @@ plt.show()
 
 
 
-### BCM法则
+### BCM rule
 
 
 ```python
