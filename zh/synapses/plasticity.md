@@ -15,7 +15,7 @@
 <div style="text-align:center">
   <img src="../../figs/syns/2-4stp.png" width="400">
   <br>
-  <strong>图2-4 突触短时程可塑性</strong> (改编自 <cite  id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
+  <strong>图2-4 突触短时程可塑性</strong> (改编自 <cite>Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -357,5 +357,9 @@ plt.show()
 
 ### 参考资料
 
-[^1]: Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
-[^2]: Bi, Guo-qiang, and Mu-ming Poo. "Synaptic modification by correlated activity: Hebb's postulate revisited." Annual review of neuroscience 24.1 (2001): 139-166.
+<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+
+
+
+<span id="fn_2"></span>[2] Bi, Guo-qiang, and Mu-ming Poo. "Synaptic modification by correlated activity: Hebb's postulate revisited." Annual review of neuroscience 24.1 (2001): 139-166.
+

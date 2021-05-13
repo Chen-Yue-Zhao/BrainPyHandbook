@@ -2,7 +2,7 @@
 
 本章首先介绍了建模神经元的基础——生物背景，随后按照从繁到简的顺序，介绍三类主要的神经元模型：生理模型、简化模型和发放率模型。
 
-> 注：本章所述模型的完整BrainPy代码请见[附录](../appendix/neurons.md)，或[右键点此](../appendix/neurons.ipynb)下载jupyter notebook版本。
+> 注：本章所述模型的完整BrainPy代码请见[附录](appendix/neurons.md)，或[右键点此](appendix/neurons.ipynb)下载jupyter notebook版本。
 
 ### 1.1 [生物背景](neurons/biological_background.md)
 

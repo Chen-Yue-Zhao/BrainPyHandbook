@@ -22,7 +22,7 @@
 <div style="text-align:center">
   <img src="../../figs/syns/2-1bio_syn.png" width="450">
   <br>
-    <strong> 图 2-1 生物突触 </strong> (引自 <cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
+    <strong> 图 2-1 生物突触 </strong> (引自 <cite>Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -376,6 +376,7 @@ plt.show()
 
 ### 参考资料
 
-[^1]: Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
-[^2]: Sterratt, David, et al. Principles of computational modeling in neuroscience. Cambridge University Press, 2011.
+<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+
+<span id="fn_2"></span>[2] Sterratt, David, et al. Principles of computational modeling in neuroscience. Cambridge University Press, 2011.
 
