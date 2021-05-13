@@ -55,7 +55,7 @@ $$
 
 <center><img src="../../figs/neus/codes/zh/HH1.png">	</center>
 
-<center><img src="../../figs/neus/codes/zh/HH1.png">	</center>
+<center><img src="../../figs/neus/codes/zh/HH2.png">	</center>
 
 BrainPy仿真的HH模型的V-t图如下所示。我们在上一节中曾经提到，真实的动作电位可以分为去极化、复极化和不应期三个阶段，这三个阶段可以与下图一一对应。另外，在去极化时，可以看到膜电位先是累积外部输入缓慢上升，一旦越过某个特定值（图中约在-55mV左右）就转为快速增长，这也复现了真实动作电位的形状。
 
