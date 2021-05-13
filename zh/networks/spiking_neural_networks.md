@@ -65,7 +65,7 @@ Wang（2002）提出了本节所述的抉择网络，希望建模在视觉运动
 
 为了简化模型，实验被设定为一个二选一的任务：在兴奋性神经元群中，特别地标出两个选择性子神经元群A和B，其他的兴奋性神经元称为非选择性神经元，用下标$$_{non}$$表示。A群和B群的数目均为兴奋性神经元的0.15倍（$$N_A = N_B = 0.15N_E$$），它们分别代表着两个相反的运动方向，可以视作随机点要么向左，要么向右，没有第三个方向，网络的抉择结果也必须在这两个子群中产生。非选择性神经元的数目为$$N_{non} = (1-2*0.15)N_E$$。
 
-<center><img src="../../figs/nets/codes/zh/DMnet2.PNG">	</center>
+<center><img src="../../figs/nets/codes/zh/DMnet2.png">	</center>
 
 抉择网络中共有四组突触——E2E，E2I，I2E和I2I突触连接，其中兴奋性突触实现为AMPA突触，抑制性突触实现为GABAa突触。
 
@@ -76,13 +76,13 @@ Wang（2002）提出了本节所述的抉择网络，希望建模在视觉运动
 <center><b>表3-1 决策网络中兴奋性神经元间连接权重的分布</b></center>
 <center><img src="../../figs/nets/3-6.png"></center>
 
-<center><img src="../../figs/nets/codes/zh/DMnet1.PNG">	</center>
+<center><img src="../../figs/nets/codes/zh/DMnet1.png">	</center>
 
 抉择网络接受的外部输入可分为两类：
 
 1）所有神经元都收到从其他脑区传来的非特定的背景输入，表示为AMPA突触介导的高频泊松输入（2400Hz）。
 
-<center><img src="../../figs/nets/codes/zh/DMnet3.PNG">	</center>
+<center><img src="../../figs/nets/codes/zh/DMnet3.png">	</center>
 
 2）仅选择性的A群和B群收到外部传来的刺激输入，表示为AMPA突触介导的较低频泊松输入（约100Hz内）。
 
@@ -108,9 +108,9 @@ $$
 f_B \sim N(\mu_B, \delta^2)
 $$
 
-<center><img src="../../figs/nets/codes/zh/DMnet4.PNG">	</center>
+<center><img src="../../figs/nets/codes/zh/DMnet4.png">	</center>
 
-<center><img src="../../figs/nets/codes/zh/DMnet5.PNG">	</center>
+<center><img src="../../figs/nets/codes/zh/DMnet5.png">	</center>
 
 下图中可以看到，在本次仿真中，子神经元群A收到的刺激输入平均大于B收到的刺激输入。经过一定的延迟时间，A群的活动水平明显高于B群，说明网络做出了正确的选择。
 
