@@ -61,4 +61,4 @@ Attached coded are integrated in the path `./<laguage>/appendix/`.
 
 #### Note
 
-If you have suggestions about *BrainPy Handbook*, we welcome issues in repository.
+If you have suggestions about *BrainPy Handbook*, we welcome issues in our repository.
