@@ -8,7 +8,7 @@ In last section we have introduced a general template for neuron membrane. Compu
 
 <center><img src="../../figs/neus/1-2.png">	</center>
 
-<center><b>Fig. 1-4 Equivalent circuit diagram (<cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
+<center><b>Fig. 1-4 Equivalent circuit diagram (<cite>Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
 
 The equivalent circuit diagram of Fig.1-1 is shown in Fig. 1-4, in which the patch of neuron membrane is converted into electric components. In Fig.1-4, the capacitance $$C$$ refers to the hydrophobic phospholipid bilayer with low conductance, and current $$I$$ refers to the external stimulus.
 
@@ -61,5 +61,9 @@ The V-t plot of HH model simulated by BrainPy is shown below. The three periods,
 
 ![png](../../figs/neus/out/output_27_0.png)
 
-[^1]: Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+
+
+### References
+
+<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
 

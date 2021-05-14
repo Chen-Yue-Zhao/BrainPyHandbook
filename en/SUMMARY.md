@@ -12,7 +12,7 @@
 * [3. Network models](networks.md)
     * [3.1 Spiking neural networks](networks/spiking_neural_networks.md)
     * [3.2 Firing rate networks](networks/rate_models.md)
-* [Appendix: model code](en/appendix.md)
+* [Appendix: model code](appendix.md)
     * [Neuron models](appendix/neurons.md)
     * [Synapse models](appendix/synapses.md)
     * [Network models](appendix/networks.md)

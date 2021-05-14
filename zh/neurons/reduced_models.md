@@ -43,7 +43,7 @@ $$
 
 <center><img src="../../figs/neus/codes/zh/QuaIF1.png"></center>
 
-<center><img src="../../figs/neus/codes/zh/QuaIF2.PNG"></center>
+<center><img src="../../figs/neus/codes/zh/QuaIF2.png"></center>
 
 
 ![png](../../figs/neus/out/output_41_0.png)

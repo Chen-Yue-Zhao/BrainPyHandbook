@@ -21,7 +21,7 @@ $$
 
 The subscript $$x\in\{e, i\}$$ points out whether this parameter or variable corresponds to excitatory or inhibitory neuron group. In the differential equations, $$\tau_x$$ refers to the time constant of neuron columns, parameters $$k_x$$ and $$r_x$$ control the refractory periods, $$a_x$$ and $$\theta_x$$ refer to the slope factors and phase parameters of sigmoid functions, and external inputs $$I_{ext_{x}}$$ are given separately to excitatory and inhibitory neuron groups.
 
-<center><img src="../../figs/neus/codes/en/frunit1.PNG">	</center>
+<center><img src="../../figs/neus/codes/en/frunit1.png">	</center>
 
-<center><img src="../../figs/neus/codes/en/frunit2.PNG">	</center>
+<center><img src="../../figs/neus/codes/en/frunit2.png">	</center>
 

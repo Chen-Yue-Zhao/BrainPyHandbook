@@ -455,7 +455,7 @@ bp.visualize.line_plot(group.mon.ts, group.mon.V, show=True)
 
 # Phase plane analysis
 phase_plane_analyzer = bp.analysis.PhasePlane(
-    neu.integral,
+    group.integral,
     target_vars={'V': [-3., 3.], 'y': [-20., 5.]},
     fixed_vars={'z': 0.},
     pars_update={'I_ext': param[mode][1], 'a': 1., 'b': 3.,

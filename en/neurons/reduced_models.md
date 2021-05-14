@@ -29,7 +29,7 @@ t-t_{last spike}<=refractory period
 $$
 then neuron is in refractory period, membrane potential $$V$$ will not be updated.
 
-<center><img src="../../figs/neus/codes/en/LIF.PNG"></center>
+<center><img src="../../figs/neus/codes/en/LIF.png"></center>
 
 
 ![png](../../figs/neus/out/output_37_0.png)
@@ -44,9 +44,9 @@ $$
 
 In the equation above, $$a_0$$ is a parameter controls the slope of membrane potential before a spike, and $$V_c$$ is the critical potential for action potential initialization. Below $$V_C$$, membrane potential $$V$$ increases slowly, once it grows beyond $$V_C$$, $$V$$ turns to rapid increase.
 
-<center><img src="../../figs/neus/codes/en/QuaIF1.PNG"></center>
+<center><img src="../../figs/neus/codes/en/QuaIF1.png"></center>
 
-<center><img src="../../figs/neus/codes/en/QuaIF2.PNG"></center>
+<center><img src="../../figs/neus/codes/en/QuaIF2.png"></center>
 
 
 ![png](../../figs/neus/out/output_41_0.png)
@@ -60,9 +60,9 @@ $$
 
 In the exponential term, $$V_T$$ is the critical potential of generating action potential, below which $$V$$ increases slowly and above which rapidly. $$\Delta_T$$ is the slope of action potentials in ExpIF model, and when $$\Delta_T\to 0$$, the shape of spikes in ExpIF model will be equivalent to the LIF model with $$V_{th} = V_T$$(Fourcaud-Trocme et al., 2003) .
 
-<center><img src="../../figs/neus/codes/en/ExpIF1.PNG"></center>
+<center><img src="../../figs/neus/codes/en/ExpIF1.png"></center>
 
-<center><img src="../../figs/neus/codes/en/ExpIF2.PNG"></center>
+<center><img src="../../figs/neus/codes/en/ExpIF2.png"></center>
 
 
 ![png](../../figs/neus/out/output_45_0.png)
@@ -86,9 +86,9 @@ The weight term $$w$$ is regulated by the second differential equation. $$a$$ de
 
 Give AdExIF neuron a constant input, after several spikes, the value of $$w$$ will increase to a high value, which slows down the rising speed of $$V$$, thus reduces the neuron's firing rate.
 
-<center><img src="../../figs/neus/codes/en/AdExIF1.PNG"></center>
+<center><img src="../../figs/neus/codes/en/AdExIF1.png"></center>
 
-<center><img src="../../figs/neus/codes/en/AdExIF2.PNG"></center>
+<center><img src="../../figs/neus/codes/en/AdExIF2.png"></center>
 
 <center><img src = "../../figs/neus/out/output_51_0.png"></center>
 
@@ -110,7 +110,7 @@ $$
 
 The $$V$$ variable refers to membrane potential, and $$y$$, $$z$$ are two gating variables. The parameter $$b$$ in $$\frac{dV}{dt}$$ equation allows the model to switch between spiking and bursting states, and controls the spiking frequency. $$r$$ controls slow variable $$z$$'s variation speed, affects the number of spikes per burst when bursting, and governs the spiking frequency together with $$b$$. The parameter $$s$$ governs adaptation, and other parameters are fitted by firing patterns.
 
-<center><img src="../../figs/neus/codes/en/HindmarshRose.PNG">	</center>
+<center><img src="../../figs/neus/codes/en/HindmarshRose.png">	</center>
 
 ![png](../../figs/neus/out/output_58_1.png)
 
@@ -122,7 +122,7 @@ In the variable-t plot painted below, we may see that the slow variable $$z$$ ch
 
 With the theoretical analysis module `analysis` of BrainPy, we may explain the existence of this periodicity through theoretical analysis. In Hindmarsh-Rose model, the trajectory of $$V$$ and $$y$$ approaches a limit cycle in phase plane, therefore their values change periodically along the limit cycle.
 
-<center><img src="../../figs/neus/codes/en/HindmarshRose2.PNG" ></center>
+<center><img src="../../figs/neus/codes/en/HindmarshRose2.png" ></center>
 
 <center><img src="../../figs/neus/1-16.png"></center>
 
@@ -162,9 +162,9 @@ However, in GIF model, variable amounts of internal currents are added to the eq
 
 The variable threshold potential $$V_{th}$$ is regulated by two parameters: $$a$$ describes the dependence of $$V_{th}$$ on the membrane potential $$V$$, and $$b$$ is the rate $$V_{th}$$ approaches the infinite value of threshold $$V_{th_{\infty}}$$. $$V_{th_{reset}}$$ is the reset value of threshold potential when neuron fires.
 
-<center><img src="../../figs/neus/codes/en/GIF1.PNG">	</center>
+<center><img src="../../figs/neus/codes/en/GIF1.png">	</center>
 
-<center><img src="../../figs/neus/codes/en/GIF2.PNG">	</center>
+<center><img src="../../figs/neus/codes/en/GIF2.png">	</center>
 
 
 ![png](../../figs/neus/out/output_67_0.png)

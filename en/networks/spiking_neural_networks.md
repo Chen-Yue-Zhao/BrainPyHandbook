@@ -10,7 +10,7 @@ The randomness and noise in E/I balanced network give  each neuron in the networ
 
 <center><img src="../../figs/nets/3-2.png" width="616" height="300"></center>
 
-<center><b>Fig. 3-1 Structure of E/I balanced network (<cite id="reffn_1">Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
+<center><b>Fig. 3-1 Structure of E/I balanced network (<cite>Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>)</b></center>
 
 Vreeswijk and Sompolinsky also suggested a possible function of this irregular firing pattern: E/I balanced network can respond to the changes of external stimulus quickly.
 
@@ -18,7 +18,7 @@ As shown in Fig. 3-3, when there is no external input, the distribution of neuro
 
 <center><img src="../../figs/nets/EI_neuron_distribution.jpg" width="352" hight="300"></center>
 
-<center><b>Fig. 3-2 Distribution of neuron membrane potentials in E/I balanced network (<cite id="reffn_2">Tian et al.，2020 <sup><a href="#fn_2">2</a></sup></cite>)</b></center>
+<center><b>Fig. 3-2 Distribution of neuron membrane potentials in E/I balanced network (<cite>Tian et al.，2020 <sup><a href="#fn_2">2</a></sup></cite>)</b></center>
 
 
 When we give the network a small constant external stimulus, those neurons whose membrane potentials fall near the threshold potential will soon meet the threshold, therefore spike rapidly. On the network scale, the firing rate of the network can adjust rapidly once the input changes.
@@ -31,15 +31,15 @@ Fig. 3-1 shows the structure of E/I balanced network:
 
 2)	Synapses: Synapses are realized with exponential synapse model. 4 groups of synapse connections are generated between the two groups of neurons, that is, excitatory-excitatory connection (E2E conn), excitatory-inhibitory connection (E2I conn), inhibitory-excitatory connection (I2E conn) and inhibitory-inhibitory connection (I2I conn). For excitatory or inhibitory synapse connections, we define synapse weights with different signal.
 
-<center><img src="../../figs/nets/codes/en/EInet1.PNG">	</center>
+<center><img src="../../figs/nets/codes/en/EInet1.png">	</center>
 
 3)	Inputs: All neurons in the network receive a constant external input current.
 
-<center><img src="../../figs/nets/codes/en/EInet2.PNG">	</center>
+<center><img src="../../figs/nets/codes/en/EInet2.png">	</center>
 
 See above section 1 and 2 for definition of LIF neuron and exponential synapse. After simulation, we visualize the raster plot and firing rate-t plot of E/I balanced network. the network firing rate changes from strong synchronization to irregular fluctuation.
 
-<center><img src="../../figs/nets/codes/en/EInet3.PNG">	</center>
+<center><img src="../../figs/nets/codes/en/EInet3.png">	</center>
 
 
 ![png](../../figs/nets/out/output_8_0.png)
@@ -56,7 +56,7 @@ For example, in the visual motion discrimination task (Roitman and Shadlen, 2002
 
 <center><img src="../../figs/nets/3-4.png" width="440" height="200"> </center>
 
-<center><b>Fig. 3-3 Experimental Diagram (<cite id="reffn_3">Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>)</b></center>
+<center><b>Fig. 3-3 Experimental Diagram (<cite>Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>)</b></center>
 
 Wang (2002) proposed a decision making network to model the activity of rhesus LIP neurons during decision making period in the visual motion discrimination task. 
 
@@ -66,9 +66,9 @@ To accomplish the decision making task, among the excitatory neuron group, two s
 
 <center><img src="../../figs/nets/3-5.png" width="440" height="240"></center>
 
-<center><b>Fig. 3-4 structure of decision making network (<cite id="reffn_4">Wang，2002<sup><a href="#fn_4">4</a></sup></cite>)</b></center>
+<center><b>Fig. 3-4 structure of decision making network (<cite>Wang，2002<sup><a href="#fn_4">4</a></sup></cite>)</b></center>
 
-<center><img src="../../figs/nets/codes/en/DMnet2.PNG">	</center>
+<center><img src="../../figs/nets/codes/en/DMnet2.png">	</center>
 
 As it is in E/I balanced network, 4 groups of synapses ---- E2E connection, E2I connection, I2E connection and I2I connection ---- are built in decision making network. Excitatory connections are realized with AMPA synapse, inhibitory connections are realized with GABAa synapse.
 
@@ -80,13 +80,13 @@ Therefore, E2E connections are structured in the network. As shown in Sheet 3-1,
 
 <center><img src="../../figs/nets/3-6.png"></center>
 
-<center><img src="../../figs/nets/codes/en/DMnet1.PNG">	</center>
+<center><img src="../../figs/nets/codes/en/DMnet1.png">	</center>
 
 We give two types of external inputs to the decision making network:
 
 1) Background inputs from other brain areas without specific meaning. Represented as high frequency Poisson input mediated by AMPA synapse.
 
-<center><img src="../../figs/nets/codes/en/DMnet3.PNG">	</center>
+<center><img src="../../figs/nets/codes/en/DMnet3.png">	</center>
 
 2) Stimulus inputs from outside the brain, which are given only to the two selective subgroup A and B. Represented as lower frequency Poisson input mediated by AMPA synapse. 
 
@@ -112,9 +112,9 @@ $$
 f_B \sim N(\mu_B, \delta^2)
 $$
 
-<center><img src="../../figs/nets/codes/en/DMnet4.PNG">	</center>
+<center><img src="../../figs/nets/codes/en/DMnet4.png">	</center>
 
-<center><img src="../../figs/nets/codes/en/DMnet5.PNG">	</center>
+<center><img src="../../figs/nets/codes/en/DMnet5.png">	</center>
 
 During the simulation, subgroup A receives a larger stimulus input than B, after a definite delay period, the activity of group A is significantly higher than group B, which means, the network chooses the right direction.
 
@@ -122,7 +122,14 @@ During the simulation, subgroup A receives a larger stimulus input than B, after
 
 
 
-[^ 1]: Van Vreeswijk, Carl, and Haim Sompolinsky. "Chaos in neuronal networks with balanced excitatory and inhibitory activity." *Science* 274.5293 (1996): 1724-1726.
-[^ 2 ]: Tian, Gengshuo, et al. "Excitation-Inhibition Balanced Neural Networks for Fast Signal Detection." *Frontiers in Computational Neuroscience* 14 (2020): 79.
-[^ 3 ]: Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
-[^ 4 ]: Wang, Xiao-Jing. "Probabilistic decision making by slow reverberation in cortical circuits." *Neuron* 36.5 (2002): 955-968.
+
+
+### References
+
+<span id="fn_1"></span>[1] Van Vreeswijk, Carl, and Haim Sompolinsky. "Chaos in neuronal networks with balanced excitatory and inhibitory activity." *Science* 274.5293 (1996): 1724-1726.
+
+<span id="fn_2"></span>[2] Tian, Gengshuo, et al. "Excitation-Inhibition Balanced Neural Networks for Fast Signal Detection." *Frontiers in Computational Neuroscience* 14 (2020): 79.
+
+<span id="fn_3"></span>[3] Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+
+<span id="fn_4"></span>[4] Wang, Xiao-Jing. "Probabilistic decision making by slow reverberation in cortical circuits." *Neuron* 36.5 (2002): 955-968.
