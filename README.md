@@ -1,12 +1,14 @@
 # BrainPy Handbook
 
+> Chinese verison of README.md [click here](README_zh.md)
+
 English online version of *BrainPy Handbook* is available at https://pku-nip-lab.github.io/BrainPyHandbook/en/. Chinese online version is available at https://pku-nip-lab.github.io/BrainPyHandbook/zh. To download PDF version, see path `./pdf/book_<language>.pdf` is this repository (https://github.com/PKU-NIP-Lab/BrainPyHandbook).
 
 
 
-#### Handbook introduction
-
 ------
+
+#### Handbook introduction
 
 In this handbook, we will introduce a series of canonical computational neuroscience models, including neuron models, synapse models and network models. We also provide their realization of BrainPy ---- a Python platform for computational neuroscience and brain-inspired computing.
 
@@ -16,9 +18,9 @@ The BrainPy realization is attached to each model in our handbook to help beginn
 
 
 
-#### Environment
-
 ------
+
+#### Environment
 
 Readers should be able to get our newest web version and PDF version on our website, and so not need to generate the handbook from .md files on their own.
 
@@ -32,9 +34,9 @@ Attached coded are integrated in the path `./<laguage>/appendix/`.
 
 
 
-#### Catalog
-
 ------
+
+#### Catalog
 
 * [0. Introduction](README.md)
 * [1. Neuron models](neurons.md)
@@ -55,8 +57,8 @@ Attached coded are integrated in the path `./<laguage>/appendix/`.
 
 
 
-#### Note
-
 ------
 
-Please raise issues if you have suggestions about *BrainPy Handbook*.
+#### Note
+
+If you have suggestions about *BrainPy Handbook*, we welcome issues in repository.
