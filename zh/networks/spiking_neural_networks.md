@@ -10,7 +10,7 @@ Vreeswijk和Sompolinsky（1996）提出了**兴奋-抑制平衡网络**（E/I ba
 
 <center><img src="../../figs/nets/3-2.png" width="616" height="300"></center>
 
-<center><b>图3-1 兴奋-抑制平衡网络结构 （<cite id="reffn_1">Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>）</b></center>
+<center><b>图3-1 兴奋-抑制平衡网络结构 （<cite>Vreeswijk and Sompolinsky, 1996 <sup><a href="#fn_1">1</a></sup></cite>）</b></center>
 
 图3-1画出了兴奋-抑制平衡网络的结构。该网络由兴奋性LIF神经元和和抑制性LIF神经元构成，其数量比$$N_E: N_I = 4:1$$。在网络两类神经元之间和同类神经元之内，建立了四组指数型突触连接，分别是兴奋-兴奋连接（E2E conn），兴奋-抑制连接（E2I conn），抑制-兴奋连接（I2E conn），抑制-抑制连接（I2I conn）。在代码中我们通过定义符号相反的突触权重，来指明突触连接的兴奋性或抑制性。
 
@@ -39,7 +39,7 @@ Vreeswijk和Sompolinsky（1996）提出了**兴奋-抑制平衡网络**（E/I ba
 
 <center><img src="../../figs/nets/EI_neuron_distribution.jpg" width="352" hight="300"></center>
 
-<center><b>图3-2 兴奋-抑制平衡网络中神经元膜电位的分布（<cite id="reffn_2">Tian et al.，2020 <sup><a href="#fn_2">2</a></sup></cite>）</b></center>
+<center><b>图3-2 兴奋-抑制平衡网络中神经元膜电位的分布（<cite>Tian et al.，2020 <sup><a href="#fn_2">2</a></sup></cite>）</b></center>
 
 仿真证实，在这种情况下，网络对输入产生反应的延迟时间和突触的延迟时间处于同一量级，并且二者都远小于单神经元从静息电位开始积累同样大小的外部输入直到产生动作电位所需的延迟时间（Vreeswijk和Sompolinsky，1996；Tian et al.，2020）。因此，兴奋-抑制平衡网络面对外部输入的变化可以快速反应，改变自身的活跃水平。
 
@@ -53,13 +53,13 @@ Vreeswijk和Sompolinsky（1996）提出了**兴奋-抑制平衡网络**（E/I ba
 
 <center><img src="../../figs/nets/3-4.png" width="440" height="200"> </center>
 
-<center><b>图3-3 生理实验中随机点的运动示意图（<cite id="reffn_3">Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>）</b></center>
+<center><b>图3-3 生理实验中随机点的运动示意图（<cite>Gerstner et al., 2014<sup><a href="#fn_3">3</a></sup></cite>）</b></center>
 
 Wang（2002）提出了本节所述的抉择网络，希望建模在视觉运动区分实验中猕猴大脑新皮层的抉择回路的活动。
 
 <center><img src="../../figs/nets/3-5.png" width="440" height="240"></center>
 
-<center><b>图3-4 抉择网络结构（<cite id="reffn_4">Wang，2002<sup><a href="#fn_4">4</a></sup></cite>）</b></center>
+<center><b>图3-4 抉择网络结构（<cite>Wang，2002<sup><a href="#fn_4">4</a></sup></cite>）</b></center>
 
 如图3-4所示，网络同样基于兴奋-抑制平衡网络。兴奋性神经元和抑制型神经元的数量比是$$N_E:N_I = 4:1$$，调整参数使得网络处在平衡状态下。
 
@@ -118,7 +118,12 @@ $$
 
 
 
-[^ 1]:Van Vreeswijk, Carl, and Haim Sompolinsky. "Chaos in neuronal networks with balanced excitatory and inhibitory activity." *Science* 274.5293 (1996): 1724-1726.
-[^ 2 ]:Tian, Gengshuo, et al. "Excitation-Inhibition Balanced Neural Networks for Fast Signal Detection." *Frontiers in Computational Neuroscience* 14 (2020): 79.
-[^ 3 ]:Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
-[^ 4 ]:Wang, Xiao-Jing. "Probabilistic decision making by slow reverberation in cortical circuits." *Neuron* 36.5 (2002): 955-968.
+### 参考资料
+
+<span id="fn_1"></span>[1] Van Vreeswijk, Carl, and Haim Sompolinsky. "Chaos in neuronal networks with balanced excitatory and inhibitory activity." *Science* 274.5293 (1996): 1724-1726.
+
+<span id="fn_2"></span>[2] Tian, Gengshuo, et al. "Excitation-Inhibition Balanced Neural Networks for Fast Signal Detection." *Frontiers in Computational Neuroscience* 14 (2020): 79.
+
+<span id="fn_3"></span>[3] Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+
+<span id="fn_4"></span>[4] Wang, Xiao-Jing. "Probabilistic decision making by slow reverberation in cortical circuits." *Neuron* 36.5 (2002): 955-968.

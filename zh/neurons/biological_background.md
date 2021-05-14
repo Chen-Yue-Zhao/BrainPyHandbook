@@ -6,7 +6,7 @@
 
 <center><img src="../../figs/neus/neuron_membrane.png" width="584" height="300">	</center>
 
-<center><b> 图1-1 神经元细胞膜示意图（<cite id="reffn_1">Bear et al.<sup><a href="#fn_1">1</a></sup></cite>） </b></center>
+<center><b> 图1-1 神经元细胞膜示意图（<cite>Bear et al., 2015<sup><a href="#fn_1">1</a></sup></cite>） </b></center>
 
 上图是一张带有离子通道和磷脂双层膜的神经元膜一般性示意图。细胞膜将离子和液体划分为胞内和胞外两侧，部分地限制了胞内和胞外的物质交换，两侧离子不能自由交换达到电中性，于是产生了**膜电位**，即细胞膜两侧的电位差。
 
@@ -18,7 +18,7 @@
 
 <center><img src="../../figs/neus/action_potential_zh.png" width="384" height="300">	</center>
 
-<center><b> 图1-2 动作电位（改编自<cite id="reffn_1">Bear et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>） </b></center>
+<center><b> 图1-2 动作电位（改编自<cite>Bear et al., 2015<sup><a href="#fn_1">1</a></sup></cite>） </b></center>
 
 图1-2中画出了神经元膜电位在一个动作电位中随时间的变化。由于比如说，外部输入引起的环境变化，图1-1中疏水性磷脂双层膜上的离子通道会在打开和关闭的状态之间切换，调控着离子穿过离子通道进行交换的速率。
 
@@ -36,4 +36,6 @@
 
 
 
-[^ 1]: Bear, Mark, Barry Connors, and Michael A. Paradiso. *Neuroscience: Exploring the brain*. Jones & Bartlett Learning, LLC, 2020.
+### 参考资料
+
+<span id="fn_1"></span>[1] Bear, Mark, Barry Connors, and Michael A. Paradiso. *Neuroscience: Exploring the brain, Fourth Edition*. Jones & Bartlett Learning, LLC, 2015.
