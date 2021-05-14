@@ -38,22 +38,22 @@ Attached coded are integrated in the path `./<laguage>/appendix/`.
 
 #### Catalog
 
-* [0. Introduction](README.md)
-* [1. Neuron models](neurons.md)
-  * [1.1 Biological background](neurons/biological_background.md)
-  * [1.2 Biophysical models](neurons/biophysical_models.md)
-  * [1.3 Reduced models](neurons/reduced_models.md)
-  * [1.4 Firing rate models](neurons/firing_rate_models.md)
-* [2. Synapse models](synapses.md)
-  * [2.1 Synaptic models](synapses/dynamics.md)
-  * [2.2 Plasticity models](synapses/plasticity.md)
-* [3. Network models](networks.md)
-  * [3.1 Spiking neural networks](networks/spiking_neural_networks.md)
-  * [3.2 Firing rate networks](networks/rate_models.md)
-* Appendix
-  * [Neuron models](appendix/neurons.md)
-  * [Synapse models](appendix/synapses.md)
-  * [Network models](appendix/networks.md)
+* [0. Introduction](en/README.md)
+* [1. Neuron models](en/neurons.md)
+  * [1.1 Biological background](en/neurons/biological_background.md)
+  * [1.2 Biophysical models](en/neurons/biophysical_models.md)
+  * [1.3 Reduced models](en/neurons/reduced_models.md)
+  * [1.4 Firing rate models](en/neurons/firing_rate_models.md)
+* [2. Synapse models](en/synapses.md)
+  * [2.1 Synaptic models](en/synapses/dynamics.md)
+  * [2.2 Plasticity models](en/synapses/plasticity.md)
+* [3. Network models](en/networks.md)
+  * [3.1 Spiking neural networks](en/networks/spiking_neural_networks.md)
+  * [3.2 Firing rate networks](en/networks/rate_models.md)
+* [Appendix: model code](en/appendix.md)
+  * [Neuron models](en/appendix/neurons.md)
+  * [Synapse models](en/appendix/synapses.md)
+  * [Network models](en/appendix/networks.md)
 
 
 

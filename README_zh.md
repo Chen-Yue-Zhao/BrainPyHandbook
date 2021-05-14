@@ -38,22 +38,22 @@ pip install -r requirements.txt
 
 #### 目录
 
-* [0. 简介](README.md)
-* [1. 神经元模型](neurons.md)
-  * [1.1 生物背景](neurons/biological_background.md)
-  * [1.2 生理模型](neurons/biophysical_models.md)
-  * [1.3 简化模型](neurons/reduced_models.md)
-  * [1.4 发放率模型](neurons/firing_rate_models.md)
-* [2. 突触模型](synapses.md)
-  * [2.1 突触动力学模型](synapses/dynamics.md)
-  * [2.2 突触可塑性模型](synapses/plasticity.md)
-* [3. 网络模型](networks.md)
-  * [3.1 脉冲神经网络](networks/spiking_neural_networks.md)
-  * [3.2 发放率神经网络](networks/rate_models.md)
-* [附录：模型代码](appendix.md)
-  * [神经元模型](appendix/neurons.md)
-  * [突触模型](appendix/synapses.md)
-  * [网络模型](appendix/networks.md)
+* [0. 简介](zh/README.md)
+* [1. 神经元模型](zh/neurons.md)
+  * [1.1 生物背景](zh/neurons/biological_background.md)
+  * [1.2 生理模型](zh/neurons/biophysical_models.md)
+  * [1.3 简化模型](zh/neurons/reduced_models.md)
+  * [1.4 发放率模型](zh/neurons/firing_rate_models.md)
+* [2. 突触模型](zh/synapses.md)
+  * [2.1 突触动力学模型](zh/synapses/dynamics.md)
+  * [2.2 突触可塑性模型](zh/synapses/plasticity.md)
+* [3. 网络模型](zh/networks.md)
+  * [3.1 脉冲神经网络](zh/networks/spiking_neural_networks.md)
+  * [3.2 发放率神经网络](zh/networks/rate_models.md)
+* [附录：模型代码](zh/appendix.md)
+  * [神经元模型](zh/appendix/neurons.md)
+  * [突触模型](zh/appendix/synapses.md)
+  * [网络模型](zh/appendix/networks.md)
 
 
 
