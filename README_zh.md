@@ -2,7 +2,9 @@
 
 > 英文版README.md [click here](README.md)
 
-《BrainPy中文手册》网页版请见https://pku-nip-lab.github.io/BrainPyHandbook/zh。如需查看英文网页版，请见https://pku-nip-lab.github.io/BrainPyHandbook/en/。本手册亦提供PDF下载版本，见本仓库（https://github.com/PKU-NIP-Lab/BrainPyHandbook）下`./pdf/book_<language>.pdf`。
+《BrainPy中文手册》网页版请见https://pku-nip-lab.github.io/BrainPyHandbook/zh。如需查看英文网页版，请见https://pku-nip-lab.github.io/BrainPyHandbook/en/。
+
+本手册亦提供PDF下载版本，见本仓库（https://github.com/PKU-NIP-Lab/BrainPyHandbook）下`./pdf/book_<language>.pdf`。
 
 
 

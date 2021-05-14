@@ -30,7 +30,7 @@ We provide this environment requirements for running the codes attached in our h
 pip install -r requirements.txt
 ```
 
-Attached coded are integrated in the path `./<laguage>/appendix/`.
+Attached coded are integrated in the path `./<language>/appendix/`.
 
 
 
