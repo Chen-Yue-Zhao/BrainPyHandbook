@@ -1,13 +1,62 @@
-# BrainPy Introduction
+# BrainPy Handbook
 
-In this chapter, we will briefly introduce how to implement computational neuroscience models with BrainPy. For more detailed documents and tutorials, please check our Github repository [BrainPy](https://github.com/PKU-NIP-Lab/BrainPy) and [BrainModels](https://github.com/PKU-NIP-Lab/BrainModels).
+English online version of *BrainPy Handbook* is available at https://pku-nip-lab.github.io/BrainPyHandbook/en/. Chinese online version is available at https://pku-nip-lab.github.io/BrainPyHandbook/zh. To download PDF version, see path `./pdf/book_<language>.pdf` is this repository (https://github.com/PKU-NIP-Lab/BrainPyHandbook).
 
-`BrainPy` is a Python platform for computational neuroscience and brain-inspired computation. To model with BrainPy, users should follow 3 steps:
 
-1) Define Python classes for neuron and synapse models. BrainPy provides base classes for different kinds of models, users only need to inherit from those base classes, and define specific methods to tell BrainPy what operations they want the models to take during the simulation. In this process, BrainPy will assist users in the numerical integration of differential equations (ODE, SDE, etc.), adaptation of various backends (`Numpy`, `PyTorch`, etc.), and other functions to simplify code logic.
 
-2) Instantiate Python classes as objects of neuron group and synapse connection groups, pass the instantiated objects to BrainPy class `Network`, and call method `run` to simulate the network.
+#### Handbook introduction
 
-3) Call BrainPy modules like the `measure` module and the `visualize` module to display the simulation results.
+------
 
-With this overall concept of BrainPy, we will go into more detail about implementations in the following sections. In neural systems, neurons are connected by synapses to build networks, so we will introduce [neuron models](neurons.md), [synapse models](synapses.md), and [network models](networks.md) in order.
+In this handbook, we will introduce a series of canonical computational neuroscience models, including neuron models, synapse models and network models. We also provide their realization of BrainPy ---- a Python platform for computational neuroscience and brain-inspired computing.
+
+We hope that, other than listing the models' definitions and functions, this handbook can also  provide an overview on the context and thoughts of the discipline of computational neuroscience. Through reading *BrainPy Handbook*, if our readers can establish a basic understanding of computational neuroscience modeling, know how to choose appropriate models in research and in application, or how to properly model biophysical phenomena, that is what we expected when editing this handbook.
+
+The BrainPy realization is attached to each model in our handbook to help beginners understanding the models and how to run their first simulation. For readers that are familiar with computational neuroscience, we also hope these codes can tell you the features and advantages of BrainPy.
+
+
+
+#### Environment
+
+------
+
+Readers should be able to get our newest web version and PDF version on our website, and so not need to generate the handbook from .md files on their own.
+
+We provide this environment requirements for running the codes attached in our handbook. We suggest students and researchers to see BrainPy's [repository](https://github.com/PKU-NIP-Lab/BrainPy) and [documentation](https://brainpy.readthedocs.io/en/latest/)，BrainModels' [repository](https://github.com/PKU-NIP-Lab/BrainModels) and [documentation](https://brainmodels.readthedocs.io/en/latest/), in which the codes are more effective. However, if you only need to run a simple simulation of our code, please install the requirements:
+
+```
+pip install -r requirements.txt
+```
+
+Attached coded are integrated in the path `./<laguage>/appendix/`.
+
+
+
+#### Catalog
+
+------
+
+* [0. Introduction](README.md)
+* [1. Neuron models](neurons.md)
+  * [1.1 Biological background](neurons/biological_background.md)
+  * [1.2 Biophysical models](neurons/biophysical_models.md)
+  * [1.3 Reduced models](neurons/reduced_models.md)
+  * [1.4 Firing rate models](neurons/firing_rate_models.md)
+* [2. Synapse models](synapses.md)
+  * [2.1 Synaptic models](synapses/dynamics.md)
+  * [2.2 Plasticity models](synapses/plasticity.md)
+* [3. Network models](networks.md)
+  * [3.1 Spiking neural networks](networks/spiking_neural_networks.md)
+  * [3.2 Firing rate networks](networks/rate_models.md)
+* Appendix
+  * [Neuron models](appendix/neurons.md)
+  * [Synapse models](appendix/synapses.md)
+  * [Network models](appendix/networks.md)
+
+
+
+#### Note
+
+------
+
+Please raise issues if you have suggestions about *BrainPy Handbook*.
