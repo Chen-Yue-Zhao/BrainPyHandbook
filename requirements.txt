@@ -1,4 +1,0 @@
-numpy>=1.15
-matplotlib>=3.3
-brainpy-simulator>=1.0.1
-brainmodels>=1.0.1
