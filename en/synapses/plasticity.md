@@ -18,12 +18,12 @@ The introduction is as follows:
 
 ### 2.2.1 Short-term plasticity (STP)
 
-Let's first look at short-term plasticity. We will start with the results of the experiment. Fig. 2-1 shows the changes of the membrane potential of postsynaptic neurons as the firing of presynaptic neurons. We can see that when the presynaptic neurons repeatedly firing with short intervals, the response of the postsynaptic neurons becomes weaker and weaker, showing a short term depression. But the response recovers after a short period of time, so this plasticity is short-term.
+Let's first look at short-term plasticity. We will start with the results of the experiment. Fig. 2-4 shows the changes of the membrane potential of postsynaptic neurons as the firing of presynaptic neurons. We can see that when the presynaptic neurons repeatedly firing with short intervals, the response of the postsynaptic neurons becomes weaker and weaker, showing a short term depression. But the response recovers after a short period of time, so this plasticity is short-term.
 
 <div style="text-align:center">
-  <img src="../../figs/syns/stp.png" width="400">
+  <img src="../../figs/syns/2-4stp.png" width="400">
   <br>
-  <strong>Fig. 2-1 Short-term plasticity.</strong> (Adapted from <cite  id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
+  <strong>Fig. 2-4 Short-term plasticity.</strong> (Adapted from <cite  id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -118,12 +118,12 @@ We can see from the figure that when we set $$\tau_f > \tau_d$$, on the contrary
 
 #### Spike-timing dependent plasticity (STDP)
 
-Fig. 2-2 shows the spiking timing dependent plasticity (STDP) of experimental results. The x-axis is the time difference between the spike of the presynaptic neuron and the postsynaptic neuron. The left part of the zero represents the spike timing of the presynaptic neuron earlier than that of the postsynaptic neuron, which shows long term potentiation (LTP); and the right side of the zero represents the postsynaptic neuron fires before the presynaptic neuron does, showing long term depression (LTD).
+Fig. 2-5 shows the spiking timing dependent plasticity (STDP) of experimental results. The x-axis is the time difference between the spike of the presynaptic neuron and the postsynaptic neuron. The left part of the zero represents the spike timing of the presynaptic neuron earlier than that of the postsynaptic neuron, which shows long term potentiation (LTP); and the right side of the zero represents the postsynaptic neuron fires before the presynaptic neuron does, showing long term depression (LTD).
 
 <div style="text-align:center">
-  <img src="../../figs/syns/stdp.png" width="350" height="320">
+  <img src="../../figs/syns/2-5stdp.png" width="350" height="320">
   <br>
-  <strong>Fig. 2-2 Spike timing dependent plasticity.</strong> (Adapted from <cite  id="reffn_2">Bi & Poo, 2001 <sup><a href="#fn_2">2</a></sup></cite>)
+  <strong>Fig. 2-5 Spike timing dependent plasticity.</strong> (Adapted from <cite  id="reffn_2">Bi & Poo, 2001 <sup><a href="#fn_2">2</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -278,13 +278,13 @@ Since Oja's rule is a rate-based model, we need a rate-based neuron model to see
 
 
 <div style="text-align:center">
-  <img src="../../figs/syns/conn.png" width="300">
+  <img src="../../figs/syns/2-6conn.png" width="300">
   <br>
-  <strong>Fig. 2-3 Connection of neuron groups.</strong>
+  <strong>Fig. 2-6 Connection of neuron groups.</strong>
 </div>
 <div><br></div>
 
-We aim to implement the connection as shown in Fig. 2-3. The purple neuron group receives inputs from the blue and red groups. The external input to the post group is exactly the same as the red one, while the blue one is the same at first, but not later.
+We aim to implement the connection as shown in Fig. 2-6. The purple neuron group receives inputs from the blue and red groups. The external input to the post group is exactly the same as the red one, while the blue one is the same at first, but not later.
 
 The simulation code is as follows.
 
@@ -307,18 +307,18 @@ $$
 \frac d{dt} w_{ij} =  \eta r_i(r_i - r_\theta) r_j
 $$
 
-where $$\eta$$ represents the learning rate, and $$r_\theta$$ represents the threshold of learning (see Fig. 2-4). Fig. 2-4 shows the right side of the formula. When the firing rate is greater than the threshold, there is LTP, and when the firing rate is lower than the threshold, there is LTD. Therefore, the selectivity can be achieved by adjusting the threshold $$r_\theta$$.
+where $$\eta$$ represents the learning rate, and $$r_\theta$$ represents the threshold of learning (see Fig. 2-7). Fig. 2-7 shows the right side of the formula. When the firing rate is greater than the threshold, there is LTP, and when the firing rate is lower than the threshold, there is LTD. Therefore, the selectivity can be achieved by adjusting the threshold $$r_\theta$$.
 
 
 
 <div style="text-align:center">
-  <img src="../../figs/syns/bcm.png" width="300">
+  <img src="../../figs/syns/2-7bcm.png" width="300">
   <br>
-    <strong> Fig. 2-4 BCM rule </strong> (From <cite>Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
+    <strong> Fig. 2-7 BCM rule </strong> (From <cite>Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
 <div><br></div>
 
-We will implement the same connections as the previous Oja's rule (Fig. 2-3), with different firing rates. Here the two groups of neurons are alternately firing. Among them, the blue group is always stronger than the red one. We adjust the threshold by setting it as the time average of $$r_i$$, that is $$r_\theta = f(r_i)$$. The code implemented by BrainPy is as follows.
+We will implement the same connections as the previous Oja's rule (Fig. 2-6), with different firing rates. Here the two groups of neurons are alternately firing. Among them, the blue group is always stronger than the red one. We adjust the threshold by setting it as the time average of $$r_i$$, that is $$r_\theta = f(r_i)$$. The code implemented by BrainPy is as follows.
 
 ![bcm_def](../../figs/syns/codes/en/bcm_def.png)
 

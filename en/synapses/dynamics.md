@@ -18,7 +18,7 @@ In this section, we will introduce how to use BrainPy to implement some common s
 
 
 <div style="text-align:center">
-  <img src="../../figs/syns/bio_syn.png" width="450">
+  <img src="../../figs/syns/2-1bio_syn.png" width="450">
   <br>
     <strong> Fig. 2-1 Biological Synapse </strong> (Adapted from <cite  id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
@@ -35,7 +35,7 @@ As we mentioned before, the AMPA receptor is an ionotropic receptor, that is, wh
 We can use Markov process to describe the opening and closing process of ion channels. As shown in Fig. 2-2,  $$s$$ represents the probability of channel opening, $$1-s$$ represents the probability of ion channel closing, and $$\alpha$$ and $$\beta$$ are the transition probability. Because neurotransmitters can open ion channels, the transfer probability from $$1-s$$ to $$s$$ is affected by the concentration of neurotransmitters. We denote the concentration of neurotransmitters as [T].
 
 <div style="text-align:center">
-  <img src="../../figs/syns/markov.png" width="170"> 
+  <img src="../../figs/syns/2-2markov.png" width="170"> 
   <br>	
   <strong> Fig. 2-2 Markov process of channel dynamics </strong>
 </div>
@@ -311,13 +311,13 @@ In addition to the chemical synapses described earlier, electrical synapses are 
         <strong>(a)</strong>
       </div>
       <div style="grid-column:2;grid-row:2">
-        <img src="../../figs/syns/bio_gap.png" width="200">
+        <img src="../../figs/syns/2-3a_bio_gap.png" width="200">
       </div>
       <div style="grid-column:3;grid-row:1;align-self:end;justify-self:end">
         <strong>(b)</strong>
       </div>
       <div style="grid-column:4;grid-row:2">
-        <img style="width:200px" src="../../figs/syns/gap_model.jpg">
+        <img style="width:200px" src="../../figs/syns/2-3b_gap_model.jpg">
       </div>
     </div>
   <br>

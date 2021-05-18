@@ -1,11 +1,11 @@
 ## 3.3 CANN
 
-Let's see another example of firing rate model, a continuous attractor neural network (CANN)[^2]. Fig. 3-2 demonstrates the structure of one-dimensional CANN.
+Let's see another example of firing rate model, a continuous attractor neural network (CANN)[^2]. Fig. 3-6 demonstrates the structure of one-dimensional CANN.
 
 <div align="center">
-  <img src="../../figs/nets/cann.png" width="300">
+  <img src="../../figs/nets/3-6cann.png" width="300">
   <br>
-  <strong>Fig. 3-2 Structure of CANN.</strong> (From <cite>Wu et al., 2008 <sup><a href="#fn_2">2</a></sup></cite>)
+  <strong>Fig. 3-6 Structure of CANN.</strong> (From <cite>Wu et al., 2008 <sup><a href="#fn_2">2</a></sup></cite>)
 </div>
 <div><br></div>
 

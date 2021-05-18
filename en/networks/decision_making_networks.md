@@ -18,7 +18,7 @@ Wang et al. (2002; 2006) proposed the spiking neural network and firing rate neu
 
 Wang (2002) first proposed the decision making spiking network. As shown in Fig. 3-4, this network is based on E/I balanced network. The ratio of excitatory neurons and inhibitory neurons is $$N_E:N_I = 4:1$$, and parameters are adjusted to maintain the balanced state.
 
-To accomplish the decision making task, among the excitatory neuron group, two selective subgroup A and B are chosen, both with a size of $$N_A = N_B = 0.15N_E$$. These two subgroups are marked as A and B in Fig. 3-5, and we call other excitatory neurons as non-selective neurons, $$N_{non} = (1-2*0.15)N_E$$.
+To accomplish the decision making task, among the excitatory neuron group, two selective subgroup A and B are chosen, both with a size of $$N_A = N_B = 0.15N_E$$. These two subgroups are marked as A and B in Fig. 3-4, and we call other excitatory neurons as non-selective neurons, $$N_{non} = (1-2*0.15)N_E$$.
 
 <center><img src="../../figs/nets/3-5.png" width="440" height="240"></center>
 
@@ -85,9 +85,9 @@ During the simulation, subgroup A receives a larger stimulus input than B, after
 In addition to spiking models, BrainPy can also implement Firing rate models. Let's first look at the implementation of a simplified version of the decision model. The model was simplified by the researcher (Wong & Wang, 2006) through a series of means such as mean field approach. In the end, there are only two variables, $$S_1$$ and $$S_2$$, which respectively represent the state of two neuron groups and correspond to two options.
 
 <div align="center">
-  <img src="../../figs/nets/decision.png" width="300">
+  <img src="../../figs/nets/3-5decision.png" width="300">
   <br>
-  <strong>Fig. 3-1 Reduced decision model.</strong> (From <cite>Wong & Wang, 2006 <sup><a href="#fn_3">3</a></sup></cite>)
+  <strong>Fig. 3-5 Reduced decision model.</strong> (From <cite>Wong & Wang, 2006 <sup><a href="#fn_3">3</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -111,7 +111,7 @@ $$
 f(I)= \frac {aI-b} {1- \exp [-d(aI-b)]}
 $$
 
-where $$I_{syn, i}$$ is given by the model structure (Fig. 3-1),
+where $$I_{syn, i}$$ is given by the model structure (Fig. 3-5),
 
 $$
 I_{syn, 1} = J_{11} S_1 - J_{12} S_2 + I_0 + I_1
