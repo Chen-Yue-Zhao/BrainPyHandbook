@@ -244,12 +244,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../networks/spiking_neural_networks.html">
+        <li class="chapter " data-level="1.4.1" data-path="../networks/EI_balanced_network.html">
             
-                <a href="../networks/spiking_neural_networks.html">
+                <a href="../networks/EI_balanced_network.html">
             
                     
-                    3.1 Spiking neural networks
+                    3.1 E-I balanced network
             
                 </a>
             
@@ -257,12 +257,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../networks/rate_models.html">
+        <li class="chapter " data-level="1.4.2" data-path="../networks/decision_making_networks.html">
             
-                <a href="../networks/rate_models.html">
+                <a href="../networks/decision_making_networks.html">
             
                     
-                    3.2 Firing rate networks
+                    3.2 Decision making networks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../networks/cann.html">
+            
+                <a href="../networks/cann.html">
+            
+                    
+                    3.3 Continuous attractor neural network
             
                 </a>
             
@@ -275,9 +288,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="../en/appendix.md">
+        <li class="chapter " data-level="1.5" data-path="../appendix.html">
             
-                <span>
+                <a href="../appendix.html">
             
                     
                     Appendix: model code
@@ -379,7 +392,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="21-synaptic-models">2.1 Synaptic Models</h2>
-<p>We have learned how to model the action potential of neurons in the previous chapters, so how are the neurons connected? How are the action potentials of neurons transmitted between different neurons? Here, we will introduce how to use BrainPy to simulate the communication between neurons.</p>
+<p>We have learned how to model neurons in the previous chapters, so how are the neurons connected? How are the action potentials of neurons transmitted between different neurons? Here, we will introduce how to use BrainPy to simulate the communication between neurons.</p>
 <h3 id="211-chemical-synapses">2.1.1 Chemical Synapses</h3>
 <h4 id="biological-background">Biological Background</h4>
 <p>Figure 2-1 describes the biological process of information transmission between neurons. When the action potential of a presynaptic neuron is transmitted to the terminal of the axon, the presynaptic neuron releases <strong>neurotransmitters</strong> (also called transmitters). Neurotransmitters bind to receptors on postsynaptic neurons to cause changes in the membrane potential of postsynaptic neurons. These changes are called post-synaptic potential (PSP). Depending on the type of neurotransmitter, postsynaptic potentials can be excitatory or inhibitory. For example, <strong>Glutamate</strong> is an important excitatory neurotransmitter, while <strong>GABA</strong> is an important inhibitory neurotransmitter.</p>
@@ -390,9 +403,9 @@
 <li><strong>GABA<sub>A</sub></strong> and <strong>GABA<sub>B</sub></strong>: They are two classes of GABA receptors, of which GABA<sub>A</sub> are ionotropic receptors that typically produce fast inhibitory potentials; while GABA<sub>B</sub> are metabotropic receptors that typically produce slow inhibitory potentials.</li>
 </ul>
 <div style="text-align:center">
-  <img src="../../figs/syns/bio_syn.png" width="450">
+  <img src="../../figs/syns/2-1bio_syn.png" width="450">
   <br>
-    <strong> Fig. 2-1 Biological Synapse </strong> (Adapted from <cite id="reffn_1">Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
+    <strong> Fig. 2-1 Biological Synapse </strong> (Adapted from <cite>Gerstner et al., 2014 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -401,7 +414,7 @@
 <p>As we mentioned before, the AMPA receptor is an ionotropic receptor, that is, when a neurotransmitter binds to it, the ion channel will be opened immediately to allow Na<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span></span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mbin mtight">+</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> and K<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.771331em;"></span><span class="strut bottom" style="height:0.771331em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span></span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mbin mtight">+</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> ions flux.</p>
 <p>We can use Markov process to describe the opening and closing process of ion channels. As shown in Fig. 2-2,  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">s</span></span></span></span> represents the probability of channel opening, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&#x2212;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">1-s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mbin">&#x2212;</span><span class="mord mathit">s</span></span></span></span> represents the probability of ion channel closing, and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3B1;</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.0037em;">&#x3B1;</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3B2;</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05278em;">&#x3B2;</span></span></span></span> are the transition probability. Because neurotransmitters can open ion channels, the transfer probability from <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>&#x2212;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">1-s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mbin">&#x2212;</span><span class="mord mathit">s</span></span></span></span> to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">s</span></span></span></span> is affected by the concentration of neurotransmitters. We denote the concentration of neurotransmitters as [T].</p>
 <div style="text-align:center">
-  <img src="../../figs/syns/markov.png" width="170"> 
+  <img src="../../figs/syns/2-2markov.png" width="170"> 
   <br>    
   <strong> Fig. 2-2 Markov process of channel dynamics </strong>
 </div>
@@ -568,13 +581,13 @@ As the dual exponential synapse,  <span class="katex"><span class="katex-mathml"
         <strong>(a)</strong>
       </div>
       <div style="grid-column:2;grid-row:2">
-        <img src="../../figs/syns/bio_gap.png" width="200">
+        <img src="../../figs/syns/2-3a_bio_gap.png" width="200">
       </div>
       <div style="grid-column:3;grid-row:1;align-self:end;justify-self:end">
         <strong>(b)</strong>
       </div>
       <div style="grid-column:4;grid-row:2">
-        <img style="width:200px" src="../../figs/syns/gap_model.jpg">
+        <img style="width:200px" src="../../figs/syns/2-3b_gap_model.jpg">
       </div>
     </div>
   <br>
@@ -619,12 +632,8 @@ plt.show()
 </code></pre>
 <p><img src="../../figs/syns/out/output_37_0.png" alt="png"></p>
 <h3 id="references">References</h3>
-<blockquote id="fn_1">
-<sup>1</sup>. Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. Sterratt, David, et al. Principles of computational modeling in neuroscience. Cambridge University Press, 2011.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
-</blockquote>
+<p><span id="fn_1"></span>[1] Gerstner, Wulfram, et al. <em>Neuronal dynamics: From single neurons to networks and models of cognition</em>. Cambridge University Press, 2014.</p>
+<p><span id="fn_2"></span>[2] Sterratt, David, et al. <em>Principles of computational modelling in neuroscience</em>. Cambridge University Press, 2011.</p>
 
                                 
                                 </section>
@@ -668,7 +677,7 @@ plt.show()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.1 Synaptic models","level":"1.3.1","depth":2,"next":{"title":"2.2 Plasticity models","level":"1.3.2","depth":2,"path":"synapses/plasticity.md","ref":"synapses/plasticity.md","articles":[]},"previous":{"title":"2. Synapse models","level":"1.3","depth":1,"path":"synapses.md","ref":"synapses.md","articles":[{"title":"2.1 Synaptic models","level":"1.3.1","depth":2,"path":"synapses/dynamics.md","ref":"synapses/dynamics.md","articles":[]},{"title":"2.2 Plasticity models","level":"1.3.2","depth":2,"path":"synapses/plasticity.md","ref":"synapses/plasticity.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"splitter":{},"search-pro":{},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy Handbook","language":"en","gitbook":"*","description":"A Handbook introducing how to implement brain models by BrainPy for computational neuroscience."},"file":{"path":"synapses/dynamics.md","mtime":"2021-05-14T09:32:46.869Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-14T09:32:51.282Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"2.1 Synaptic models","level":"1.3.1","depth":2,"next":{"title":"2.2 Plasticity models","level":"1.3.2","depth":2,"path":"synapses/plasticity.md","ref":"synapses/plasticity.md","articles":[]},"previous":{"title":"2. Synapse models","level":"1.3","depth":1,"path":"synapses.md","ref":"synapses.md","articles":[{"title":"2.1 Synaptic models","level":"1.3.1","depth":2,"path":"synapses/dynamics.md","ref":"synapses/dynamics.md","articles":[]},{"title":"2.2 Plasticity models","level":"1.3.2","depth":2,"path":"synapses/plasticity.md","ref":"synapses/plasticity.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"code":{"copyButtons":true},"splitter":{},"search-pro":{},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy Handbook","language":"en","gitbook":"*","description":"A Handbook introducing how to implement brain models by BrainPy for computational neuroscience."},"file":{"path":"synapses/dynamics.md","mtime":"2021-05-18T09:13:11.775Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-18T09:15:55.653Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
@@ -691,10 +700,6 @@ plt.show()
     
         
         <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
