@@ -12,7 +12,7 @@
 * [3. Network models](networks.md)
     * [3.1 E-I balanced network](networks/EI_balanced_network.md)
     * [3.2 Decision making networks](networks/decision_making_networks.md)
-    * [3.3 Continuous attractor neural network](networks/continuous_attractor_neural_network.md)
+    * [3.3 Continuous attractor neural network](networks/cann.md)
 * [Appendix: model code](appendix.md)
     * [Neuron models](appendix/neurons.md)
     * [Synapse models](appendix/synapses.md)

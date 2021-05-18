@@ -12,7 +12,7 @@
 * [3. 网络模型](networks.md)
     * [3.1 兴奋-抑制平衡网络](networks/EI_balanced_network.md)
     * [3.2 抉择网络](networks/decision_making_networks.md)
-    * [3.3 连续吸引子神经网络](networks/continuous_attractor_neural_network.md)
+    * [3.3 连续吸引子神经网络](networks/cann.md)
 * [附录：模型代码](appendix.md)
     * [神经元模型](appendix/neurons.md)
     * [突触模型](appendix/synapses.md)
