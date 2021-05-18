@@ -10,4 +10,4 @@ In this chapter, we will briefly introduce how to implement computational neuros
 
 3) Call BrainPy modules like the `measure` module and the `visualize` module to display the simulation results.
 
-With this overall concept of BrainPy, we will go into more detail about implementations in the following sections. In neural systems, neurons are connected by synapses to build networks, so we will introduce [neuron models](neurons.md), [synapse models](synapses.md), and [network models](networks.md) in order.
+With this overall concept of BrainPy, we will go into more detail about implementations in the following sections. In neural systems, neurons are connected by synapses to build networks, so we will introduce [1. neuron models](neurons.md), [2. synapse models](synapses.md), and [3. network models](networks.md) in order.

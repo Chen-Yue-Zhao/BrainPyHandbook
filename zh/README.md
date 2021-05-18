@@ -22,6 +22,6 @@
 
 3）调用BrainPy的测度模块`measure`或可视化模块`visualize`等，展示仿真结果。
 
-带着上述对BrainPy的粗略理解，我们希望下述各节中的代码实例能够帮助读者更好地理解计算神经科学模型和其中蕴含的思想。下面，我们将按照[神经元模型](neurons.md), [突触模型](synapses.md)和[网络模型](networks.md)的顺序进行介绍。
+带着上述对BrainPy的粗略理解，我们希望下述各节中的代码实例能够帮助读者更好地理解计算神经科学模型和其中蕴含的思想。下面，我们将按照[1. 神经元模型](neurons.md), [2. 突触模型](synapses.md)和[3. 网络模型](networks.md)的顺序进行介绍。
 
 > 关于BrainPy的下载及使用上的更多细节，请参考我们的Github仓库：https://github.com/PKU-NIP-Lab/BrainPy。

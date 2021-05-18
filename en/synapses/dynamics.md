@@ -381,6 +381,4 @@ plt.show()
 
 <span id="fn_1"></span>[1] Gerstner, Wulfram, et al. *Neuronal dynamics: From single neurons to networks and models of cognition*. Cambridge University Press, 2014.
 
-
-
 <span id="fn_2"></span>[2] Sterratt, David, et al. *Principles of computational modelling in neuroscience*. Cambridge University Press, 2011.
