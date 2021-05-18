@@ -72,6 +72,8 @@
     <link rel="next" href="synapses.html" />
     
     
+    <link rel="prev" href="../appendix.html" />
+    
 
     </head>
     <body>
@@ -242,12 +244,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../networks/spiking_neural_networks.html">
+        <li class="chapter " data-level="1.4.1" data-path="../networks/EI_balanced_network.html">
             
-                <a href="../networks/spiking_neural_networks.html">
+                <a href="../networks/EI_balanced_network.html">
             
                     
-                    3.1 Spiking neural networks
+                    3.1 E-I balanced network
             
                 </a>
             
@@ -255,12 +257,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../networks/rate_models.html">
+        <li class="chapter " data-level="1.4.2" data-path="../networks/decision_making_networks.html">
             
-                <a href="../networks/rate_models.html">
+                <a href="../networks/decision_making_networks.html">
             
                     
-                    3.2 Firing rate networks
+                    3.2 Decision making networks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../networks/cann.html">
+            
+                <a href="../networks/cann.html">
+            
+                    
+                    3.3 Continuous attractor neural network
             
                 </a>
             
@@ -273,14 +288,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" >
+        <li class="chapter " data-level="1.5" data-path="../appendix.html">
             
-                <span>
+                <a href="../appendix.html">
             
                     
-                    Appendix
+                    Appendix: model code
             
-                </span>
+                </a>
             
 
             
@@ -799,7 +814,7 @@ bp.visualize.line_plot(group.mon.ts, group.mon.V, show=<span class="hljs-keyword
 
 <span class="hljs-comment"># Phase plane analysis</span>
 phase_plane_analyzer = bp.analysis.PhasePlane(
-    neu.integral,
+    group.integral,
     target_vars={<span class="hljs-string">&apos;V&apos;</span>: [<span class="hljs-number">-3.</span>, <span class="hljs-number">3.</span>], <span class="hljs-string">&apos;y&apos;</span>: [<span class="hljs-number">-20.</span>, <span class="hljs-number">5.</span>]},
     fixed_vars={<span class="hljs-string">&apos;z&apos;</span>: <span class="hljs-number">0.</span>},
     pars_update={<span class="hljs-string">&apos;I_ext&apos;</span>: param[mode][<span class="hljs-number">1</span>], <span class="hljs-string">&apos;a&apos;</span>: <span class="hljs-number">1.</span>, <span class="hljs-string">&apos;b&apos;</span>: <span class="hljs-number">3.</span>,
@@ -1151,8 +1166,12 @@ size_b = row_b * col_b
 
             
                 
+                <a href="../appendix.html" class="navigation navigation-prev " aria-label="Previous page: Appendix: model code">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="synapses.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Synapse models">
+                
+                <a href="synapses.html" class="navigation navigation-next " aria-label="Next page: Synapse models">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1163,7 +1182,7 @@ size_b = row_b * col_b
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Neuron models","level":"1.5.1","depth":2,"next":{"title":"Synapse models","level":"1.5.2","depth":2,"path":"appendix/synapses.md","ref":"appendix/synapses.md","articles":[]},"previous":{"title":"Appendix","level":"1.5","depth":1,"ref":"","articles":[{"title":"Neuron models","level":"1.5.1","depth":2,"path":"appendix/neurons.md","ref":"appendix/neurons.md","articles":[]},{"title":"Synapse models","level":"1.5.2","depth":2,"path":"appendix/synapses.md","ref":"appendix/synapses.md","articles":[]},{"title":"Network models","level":"1.5.3","depth":2,"path":"appendix/networks.md","ref":"appendix/networks.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"code":{"copyButtons":true},"splitter":{},"search-pro":{},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy Handbook","language":"en","gitbook":"*","description":"A Handbook introducing how to implement brain models by BrainPy for computational neuroscience."},"file":{"path":"appendix/neurons.md","mtime":"2021-05-12T07:13:37.772Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-13T13:45:39.454Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Neuron models","level":"1.5.1","depth":2,"next":{"title":"Synapse models","level":"1.5.2","depth":2,"path":"appendix/synapses.md","ref":"appendix/synapses.md","articles":[]},"previous":{"title":"Appendix: model code","level":"1.5","depth":1,"path":"appendix.md","ref":"appendix.md","articles":[{"title":"Neuron models","level":"1.5.1","depth":2,"path":"appendix/neurons.md","ref":"appendix/neurons.md","articles":[]},{"title":"Synapse models","level":"1.5.2","depth":2,"path":"appendix/synapses.md","ref":"appendix/synapses.md","articles":[]},{"title":"Network models","level":"1.5.3","depth":2,"path":"appendix/networks.md","ref":"appendix/networks.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","code","splitter","-lunr","-search","search-pro"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"code":{"copyButtons":true},"splitter":{},"search-pro":{},"highlight":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":"_TITLE_","paperSize":"a4","margin":{"right":62,"left":62,"top":56,"bottom":56},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"BrainPy Handbook","language":"en","gitbook":"*","description":"A Handbook introducing how to implement brain models by BrainPy for computational neuroscience."},"file":{"path":"appendix/neurons.md","mtime":"2021-05-18T08:21:08.257Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-18T09:15:55.653Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
