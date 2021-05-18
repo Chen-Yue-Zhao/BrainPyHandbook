@@ -124,5 +124,5 @@ plot_animate()
 
 ### 参考资料
 
-<span id="fn_1"></span>[1] Si Wu, Kosuke Hamaguchi, and Shun-ichi Amari. "Dynamics and computation of continuous attractors." Neural computation 20.4 (2008): 994-1025.
+<span id="fn_1"></span>[1] Wu, Si, Kosuke Hamaguchi, and Shun-ichi Amari. "Dynamics and computation of continuous attractors." *Neural computation*20.4 (2008): 994-1025.
 

@@ -10,7 +10,7 @@
 
 ### 2.2.1 突触短时程可塑性（STP）
 
-我们首先从实验结果来介绍突触短时程可塑性。在图2-4中，上图表示突触前神经元的动作电位，下图为突触后神经元的膜电位。我们可以看到，当突触前神经元在短时间内持续发放的时候，突触后神经元的反应越来越弱，呈现出短时程抑制 (short term depression)效果。而当突触前神经元停止发放几百毫秒后，再来一个动作电位，此时突触后神经元的反应基本恢复到一开始的状态，因此这个抑制效果持续的时间很短，称为短时程可塑性。
+我们首先从实验结果来介绍突触短时程可塑性。在图2-4中，上图表示突触前神经元的动作电位，下图为突触后神经元的膜电位。我们可以看到，当突触前神经元在短时间内持续发放的时候，突触后神经元的反应越来越弱，呈现出短时程抑制（short term depression）效果。而当突触前神经元停止发放几百毫秒后，再来一个动作电位，此时突触后神经元的反应基本恢复到一开始的状态，因此这个抑制效果持续的时间很短，称为短时程可塑性。
 
 <div style="text-align:center">
   <img src="../../figs/syns/2-4stp.png" width="400">
@@ -19,7 +19,7 @@
 </div>
 <div><br></div>
 
-那么接下来就让我们来看看描述短时程可塑性的计算模型。短时程可塑性主要由神经递质释放的概率$$u$$和神经递质的剩余量$$x$$两个变量来描述。整体的动力学方程如下：
+那么接下来就让我们来看看描述短时程可塑性的计算模型 <sup><a href="#fn_2">2</a></sup>。短时程可塑性主要由神经递质释放的概率$$u$$和神经递质的剩余量$$x$$两个变量来描述。整体的动力学方程如下：
 $$
 \frac {dI} {dt} = - \frac I {\tau}
 $$
@@ -114,7 +114,7 @@ run_stp(U=0.1, tau_d=10, tau_f=100.)
 <div style="text-align:center">
   <img src="../../figs/syns/2-5stdp.png" width="350" height="320">
   <br>
-  <strong>图2-5 脉冲时间依赖可塑性</strong> (改编自 <cite  id="reffn_2">Bi & Poo, 2001 <sup><a href="#fn_2">2</a></sup></cite>)
+  <strong>图2-5 脉冲时间依赖可塑性</strong> (改编自 <cite>Bi & Poo, 2001 <sup><a href="#fn_3">3</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -357,9 +357,13 @@ plt.show()
 
 ### 参考资料
 
-<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. *Neuronal dynamics: From single neurons to networks and models of cognition*. Cambridge University Press, 2014.
 
 
 
-<span id="fn_2"></span>[2] Bi, Guo-qiang, and Mu-ming Poo. "Synaptic modification by correlated activity: Hebb's postulate revisited." Annual review of neuroscience 24.1 (2001): 139-166.
+<span id="fn_2"></span>[2] Tsodyks, Misha, and Si Wu. "Short-term synaptic plasticity." *Scholarpedia* 8.10 (2013): 3153.
+
+
+
+<span id="fn_3"></span>[3] Bi, Guo-qiang, and Mu-ming Poo. "Synaptic modification by correlated activity: Hebb's postulate revisited." *Annual review of neuroscience* 24.1 (2001): 139-166.
 

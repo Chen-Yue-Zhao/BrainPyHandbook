@@ -370,13 +370,15 @@ plt.show()
 
 ![png](../../figs/syns/out/output_37_0.png)
 
-结果图中，下图$$V_0$$表示0号神经元的膜电位变化，而上图$$V_1$$为1号神经元的膜电位。0号神经元因为有电流输入而有持续的发放，并给1号神经元输入，导致$$V1$$产生阈值下的改变。
+结果图中，下图$$V_0$$表示0号神经元的膜电位变化，而上图$$V_1$$为1号神经元的膜电位。0号神经元因为有电流输入而有持续的发放，并给1号神经元输入，导致$$V_1$$产生阈值下的改变。
 
 
 
 ### 参考资料
 
-<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. *Neuronal dynamics: From single neurons to networks and models of cognition*. Cambridge University Press, 2014.
 
-<span id="fn_2"></span>[2] Sterratt, David, et al. Principles of computational modeling in neuroscience. Cambridge University Press, 2011.
+
+
+<span id="fn_2"></span>[2] Sterratt, David, et al. *Principles of computational modelling in neuroscience*. Cambridge University Press, 2011.
 

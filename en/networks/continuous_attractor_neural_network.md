@@ -5,7 +5,7 @@ Let's see another example of firing rate model, a continuous attractor neural ne
 <div align="center">
   <img src="../../figs/nets/3-6cann.png" width="300">
   <br>
-  <strong>Fig. 3-6 Structure of CANN.</strong> (From <cite>Wu et al., 2008 <sup><a href="#fn_2">2</a></sup></cite>)
+  <strong>Fig. 3-6 Structure of CANN.</strong> (From <cite>Wu et al., 2008 <sup><a href="#fn_1">1</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -126,4 +126,5 @@ plot_animate()
 
 ### Reference
 
-[^1]: Si Wu, Kosuke Hamaguchi, and Shun-ichi Amari. "Dynamics and computation of continuous attractors." Neural computation 20.4 (2008): 994-1025.
+<span id="fn_1"></span>[1] Wu, Si, Kosuke Hamaguchi, and Shun-ichi Amari. "Dynamics and computation of continuous attractors." *Neural computation*20.4 (2008): 994-1025.
+

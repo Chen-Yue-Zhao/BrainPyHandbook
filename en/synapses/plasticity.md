@@ -27,7 +27,7 @@ Let's first look at short-term plasticity. We will start with the results of the
 </div>
 <div><br></div>
 
-Now let's turn to the model. The short term plasticity can be described by two variables, $$u$$ and $$x$$. Where $$u$$ represents the probability of neurotransmitter release, and  $$x$$ represents the residual amount of neurotransmitters. The dynamic of a synapse with short term plasticity is given by,
+Now let's turn to the model <sup><a href="#fn_2">2</a></sup>. The short term plasticity can be described by two variables, $$u$$ and $$x$$. Where $$u$$ represents the probability of neurotransmitter release, and  $$x$$ represents the residual amount of neurotransmitters. The dynamic of a synapse with short term plasticity is given by,
 $$
 \frac {dI} {dt} = - \frac I {\tau}
 $$
@@ -123,7 +123,7 @@ Fig. 2-5 shows the spiking timing dependent plasticity (STDP) of experimental re
 <div style="text-align:center">
   <img src="../../figs/syns/2-5stdp.png" width="350" height="320">
   <br>
-  <strong>Fig. 2-5 Spike timing dependent plasticity.</strong> (Adapted from <cite  id="reffn_2">Bi & Poo, 2001 <sup><a href="#fn_2">2</a></sup></cite>)
+  <strong>Fig. 2-5 Spike timing dependent plasticity.</strong> (Adapted from <cite>Bi & Poo, 2001 <sup><a href="#fn_3">3</a></sup></cite>)
 </div>
 <div><br></div>
 
@@ -382,7 +382,13 @@ The results show that the blue group with stronger input demonstrating LTP, whil
 
 ### References
 
-[^1]: Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. *Neuronal dynamics: From single neurons to networks and models of cognition*. Cambridge University Press, 2014.
 
-[^2]: Bi, Guo-qiang, and Mu-ming Poo. "Synaptic modification by correlated activity: Hebb's postulate revisited." Annual review of neuroscience 24.1 (2001): 139-166.
+
+
+<span id="fn_2"></span>[2] Tsodyks, Misha, and Si Wu. "Short-term synaptic plasticity." *Scholarpedia* 8.10 (2013): 3153.
+
+
+
+<span id="fn_3"></span>[3] Bi, Guo-qiang, and Mu-ming Poo. "Synaptic modification by correlated activity: Hebb's postulate revisited." *Annual review of neuroscience* 24.1 (2001): 139-166.
 

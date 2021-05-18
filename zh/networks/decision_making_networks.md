@@ -81,7 +81,7 @@ $$
 
 ### 3.2.2 发放率神经网络
 
-我们在上一节中介绍了Wang（2002）提出的抉择模型，现在来介绍他们后续做的一个基于发放率（firing rate）的简化模型（Wong & Wang, 2006[^1]）。该模型的实验背景与上一节的相同，在脉冲神经网络模型的基础上，他们使用平均场近似（mean-field approach）等方法，使用一群神经元的发放率来表示整群神经元的状态，而不再关注每个神经元的脉冲。他们拟合出输入-输出函数（input-output function）来表示给一群神经元一个外界输入电流$$I$$时，这群神经元的发放率$$r$$如何改变，即$$r=f(I)$$。经过这样的简化后，我们就可以很方便地对其进行动力学分析。
+我们在上一节中介绍了Wang（2002）提出的抉择模型，现在来介绍他们后续做的一个基于发放率（firing rate）的简化模型（Wong & Wang, 2006）。该模型的实验背景与上一节的相同，在脉冲神经网络模型的基础上，他们使用平均场近似（mean-field approach）等方法，使用一群神经元的发放率来表示整群神经元的状态，而不再关注每个神经元的脉冲。他们拟合出输入-输出函数（input-output function）来表示给一群神经元一个外界输入电流$$I$$时，这群神经元的发放率$$r$$如何改变，即$$r=f(I)$$。经过这样的简化后，我们就可以很方便地对其进行动力学分析。
 
 
 
@@ -136,15 +136,15 @@ $$
 
 接下来，我们将继承``bp.NeuGroup``类，并用BrainPy提供的相平面分析方法``bp.analysis.PhasePlane``进行动力学分析。首先，我们把上面的动力学公式写到一个``derivative``函数中，定义一个Decision类（本章代码请查看[附录](../appendix/networks.md)，或[点此](../appendix/networks.ipynb)下载jupyter notebook）。
 
-![decision01](/home/annatar/BrainPyHandbook/figs/nets/codes/zh/decision01.png)
+![decision01](../../figs/nets/codes/zh/decision01.png)
 
-![decision02](/home/annatar/BrainPyHandbook/figs/nets/codes/zh/decision02.png)
+![decision02](../../figs/nets/codes/zh/decision02.png)
 
 
 
 接下来，我们想要看模型在不同输入情况下的动力学，因此，我们先定义一个对抉择模型做相平面分析的方法，可以让我们改变``I``（即外界输入强度$$\mu_0$$）和``coh``（即输入的一致性$$c'$$），而固定了参数的值等。
 
-![decision_run](/home/annatar/BrainPyHandbook/figs/nets/codes/zh/decision_run.png)
+![decision_run](../../figs/nets/codes/zh/decision_run.png)
 
 
 
@@ -166,7 +166,7 @@ phase_analyze(I=0., coh=0.)
 
 
 
-![png](/home/annatar/BrainPyHandbook/figs/nets/out/output_77_1.png)
+![png](../../figs/nets/out/output_77_1.png)
 
 
 由此可见，用BrainPy进行动力学分析是非常方便的。向量场和不动点 (fixed point)表示了不同初始值下最终会落在哪个选项。
@@ -200,7 +200,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](/home/annatar/BrainPyHandbook/figs/nets/out/output_79_1.png)
+![png](../../figs/nets/out/output_79_1.png)
 
 
     coherence = 51.2%
@@ -213,7 +213,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](/home/annatar/BrainPyHandbook/figs/nets/out/output_79_3.png)
+![png](../../figs/nets/out/output_79_3.png)
 
 
     coherence = 100%
@@ -224,14 +224,14 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](/home/annatar/BrainPyHandbook/figs/nets/out/output_79_5.png)
+![png](../../figs/nets/out/output_79_5.png)
 
 
 
 ### 参考资料
 
-<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. *Neuronal dynamics: From single neurons to networks and models of cognition*. Cambridge University Press, 2014.
 
 <span id="fn_2"></span>[2] Wang, Xiao-Jing. "Probabilistic decision making by slow reverberation in cortical circuits." *Neuron* 36.5 (2002): 955-968.
 
-<span id="fn_3"></span>[3] Wong, K.-F. & Wang, X.-J. A Recurrent Network Mechanism of Time Integration in Perceptual Decisions.  J. Neurosci. 26, 1314–1328 (2006).
+<span id="fn_3"></span>[3] Wong, Kong-Fatt, and Xiao-Jing Wang. "A recurrent network mechanism of time integration in perceptual decisions." *Journal of Neuroscience* 26.4 (2006): 1314-1328.

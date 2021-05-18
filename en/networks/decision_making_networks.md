@@ -136,15 +136,15 @@ $$
 
 The code implementation is as follows: we can create a neuron group class, and use $$S_1$$ and $$S_2$$ to store the two states of the neuron group. The dynamics of the model can be implemented by a ``derivative`` function for dynamics analysis.
 
-![decision01](/home/annatar/BrainPyHandbook/figs/nets/codes/en/decision01.png)
+![decision01](../../figs/nets/codes/en/decision01.png)
 
-![decision02](/home/annatar/BrainPyHandbook/figs/nets/codes/en/decision02.png)
+![decision02](../../figs/nets/codes/en/decision02.png)
 
 
 
 Then we can define a function to perform phase plane analysis.
 
-![decision_run](/home/annatar/BrainPyHandbook/figs/nets/codes/en/decision_run.png)
+![decision_run](../../figs/nets/codes/en/decision_run.png)
 
 Let's first look at the case when there is no external input. At this time, $$\mu_0 = 0$$.
 
@@ -165,7 +165,7 @@ Output:
 
 
 
-![png](/home/annatar/BrainPyHandbook/figs/nets/out/output_77_1.png)
+![png](../../figs/nets/out/output_77_1.png)
 
 
 It can be seen that it is very convenient to use BrainPy for dynamics analysis. The vector field and fixed point indicate which option will fall in the end under different initial values.
@@ -201,7 +201,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](/home/annatar/BrainPyHandbook/figs/nets/out/output_79_1.png)
+![png](../../figs/nets/out/output_79_1.png)
 
 
     coherence = 51.2%
@@ -214,7 +214,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-![png](/home/annatar/BrainPyHandbook/figs/nets/out/output_79_3.png)
+![png](../../figs/nets/out/output_79_3.png)
 
 
     coherence = 100%
@@ -225,7 +225,7 @@ phase_analyze(I=30., coh=1.)
 
 
 
-<img src="/home/annatar/BrainPyHandbook/figs/nets/out/output_79_5.png" alt="output: c'=100%" />
+<img src="../../figs/nets/out/output_79_5.png" alt="output: c'=100%" />
 
 
 
@@ -233,8 +233,8 @@ phase_analyze(I=30., coh=1.)
 
 ### References
 
-<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. Neuronal dynamics: From single neurons to networks and models of cognition. Cambridge University Press, 2014.
+<span id="fn_1"></span>[1] Gerstner, Wulfram, et al. *Neuronal dynamics: From single neurons to networks and models of cognition*. Cambridge University Press, 2014.
 
 <span id="fn_2"></span>[2] Wang, Xiao-Jing. "Probabilistic decision making by slow reverberation in cortical circuits." *Neuron* 36.5 (2002): 955-968.
 
-<span id="fn_3"></span>[3] Wong, K.-F. & Wang, X.-J. A Recurrent Network Mechanism of Time Integration in Perceptual Decisions.  J. Neurosci. 26, 1314–1328 (2006).
+<span id="fn_3"></span>[3] Wong, Kong-Fatt, and Xiao-Jing Wang. "A recurrent network mechanism of time integration in perceptual decisions." *Journal of Neuroscience* 26.4 (2006): 1314-1328.
