@@ -1,6 +1,6 @@
 ## 2.1 Synaptic Models
 
-We have learned how to model the action potential of neurons in the previous chapters, so how are the neurons connected? How are the action potentials of neurons transmitted between different neurons? Here, we will introduce how to use BrainPy to simulate the communication between neurons.
+We have learned how to model neurons in the previous chapters, so how are the neurons connected? How are the action potentials of neurons transmitted between different neurons? Here, we will introduce how to use BrainPy to simulate the communication between neurons.
 
 ### 2.1.1 Chemical Synapses
 

@@ -1,7 +1,7 @@
 
 ## 1.4 Firing Rate models
 
-Firing Rate models are simpler than reduced models. In these models, each compute unit represents a neuron group, the membrane potential variable $$V$$ in single neuron models is replaced by firing rate variable $$a$$ (or $$r$$ or $$\nu$$). Here we introduce a canonical firing rate unit.
+Firing Rate models are simpler than reduced models. Typically, firing rate models are used in network models, and they are regarded as compute units, with each of them representing a neuron group. The state of a computation unit is not described by the membrane potential variable $$V$$ but by the firing rate variable $$a$$ (or $$r$$ or $$\nu$$). Here we introduce a firing rate unit in the classical Wlison and Cowan model.
 
 ### 1.4.1 Firing Rate Unit
 

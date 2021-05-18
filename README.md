@@ -14,7 +14,7 @@ In this handbook, we will introduce a series of canonical computational neurosci
 
 We hope that, other than listing the models' definitions and functions, this handbook can also  provide an overview on the context and thoughts of the discipline of computational neuroscience. Through reading *BrainPy Handbook*, if our readers can establish a basic understanding of computational neuroscience modeling, know how to choose appropriate models in research and in application, or how to properly model biophysical phenomena, that is what we expected when editing this handbook.
 
-The BrainPy realization is attached to each model in our handbook to help beginners understanding the models and how to run their first simulation. For readers that are familiar with computational neuroscience, we also hope these codes can tell you the features and advantages of BrainPy.
+The BrainPy realization is attached to each model in our handbook to help beginners to understand the models and to run their first simulation. For readers that are familiar with computational neuroscience, we also hope these codes can tell you the features and advantages of BrainPy.
 
 
 
