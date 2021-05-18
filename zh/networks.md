@@ -14,4 +14,4 @@
 
 ### 3.2 [抉择网络](networks/decision_making_networks.md)
 
-### 3.3 [连续吸引子神经网络](networks/continuous_attractor_neural_network.md)
+### 3.3 [连续吸引子神经网络](networks/cann.md)

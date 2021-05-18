@@ -12,5 +12,5 @@ In this chapter, we will introduce networks belongs to these two types of networ
 
 ### 3.2 [Decision making networks](networks/decision_making_networks.md)
 
-### 3.3 [Continuous attractor neural network](networks/continuous_attractor_neural_network.md)
+### 3.3 [Continuous attractor neural network](networks/cann.md)
 
