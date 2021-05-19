@@ -1,15 +1,26 @@
-## 3.2 连续吸引子模型（CANN）
+## 3.3 连续吸引子模型（CANN）
 
-这里我们将介绍发放率模型的另一个例子——连续吸引子神经网络（CANN）。图3-6呈现了一维CANN的结构。
+在本节中，我们关注如何用神经网络来做计算的问题，例如，我们在做预测跟踪时的神经编码是怎样的呢？Georgopoulos和他的同事（1995）关于运动控制的实验结果发现，单个神经元的活动可以绘制成调谐曲线（tuning curve，如图3-6），每个神经元有一个优选的方向（即对这一方向的刺激的活动最强）。预测跟踪
 
 <div align="center">
-  <img src="../../figs/nets/3-6cann.png" width="300">
+  <img src="../../figs/nets/3-6tuning_curve.png" width="300">
   <br>
-  <strong>图3-6 连续吸引子神经网络</strong> (引自 <cite>Wu et al., 2008 <sup><a href="#fn_1">1</a></sup></cite>)
+  <strong>图3-6 调谐曲线</strong>
 </div>
 <div><br></div>
 
-神经元的突触总输入$$u$$的动力学方程如下：
+那么，什么样的网络连接可以产生调谐曲线呢？这里我们要介绍其中一种可能方式——连续吸引子神经网络（CANN）。CANN最开始是由Amari（1977）等计算神经科学先驱从纯理论角度提出来的，后来被广泛应用于建模多种神经信息处理，包括头朝向编码、空间位置编码等。我们以一维的CANN为例，介绍它在神经元群编码及预测跟踪方面的功能。
+
+
+
+<div align="center">
+  <img src="../../figs/nets/3-7cann.png" width="300">
+  <br>
+  <strong>图3-7 连续吸引子神经网络</strong> (引自 <cite>Wu et al., 2008 <sup><a href="#fn_1">1</a></sup></cite>)
+</div>
+<div><br></div>
+
+图3-7呈现了一维CANN的结构，神经元的突触总输入$$u$$的动力学方程如下：
 $$
 \tau \frac{du(x,t)}{dt} = -u(x,t) + \rho \int dx' J(x,x') r(x',t)+I_{ext}
 $$
